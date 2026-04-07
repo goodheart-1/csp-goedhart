@@ -11,8 +11,8 @@ export const experiences: Experience[] = [
     facility: "Amstelmeren (GGZ inGeest) - Amstelveenseweg 589, 1081 JC Amsterdam",
     verdict: "bad",
     emoji: "🚫",
-    summary: "Absoluut niet - het ergste wat je iemand in een manie kunt aandoen",
-    details: "Het was daar fucking druk. Het stonk fucking hard. Er liepen gewoon ratten. Mensen liepen op dode voeten. Er was weinig begeleiding. Mensen waren depressief. Sommige mensen waren zelfs luid. Het was daar gewoon echt heel goor.\n\nAls je iemand in een manie hebt, moet die persoon tot rust kunnen komen. Om tot rust te komen moet diegene zich in een rustige omgeving bevinden. Dat betekent: niet te veel mensen, en wel hygiene. Bij Amstelmeren was dat allesbehalve.\n\nDit is eigenlijk het allerergste wat je iemand in een manie kunt aandoen. Sterker nog: stuur iemand in een manie NOOIT naar zo'n plek als diegene nog tot rede vatbaar is.\n\nBeter is het om iemand gewoon in een hutje in een bos te zetten, met een hot tub en een warme douche, zodat diegene echt goed tot rust kan komen.\n\nDaantje heeft zelf twee schoonmakers in dienst en een robotstofzuiger - zijn schoonmaakbehoefte is heel hoog. Hij kon hier absoluut niet tot rust komen."
+    summary: "Absoluut niet - het ergste wat je iemand in een \"manie\" kunt aandoen",
+    details: "De omstandigheden op Amstelmeren waren ronduit onacceptabel. De afdeling was overvol, er hing een doordringende stank doordat er structureel niet goed werd schoongemaakt, en er liepen ratten over de gang. Medebewoners liepen op open wonden aan hun voeten. Er was nauwelijks begeleiding aanwezig. Veel medebewoners waren ernstig depressief, anderen waren luidruchtig en onvoorspelbaar. De algehele hygiene was zwaar onder de maat.\n\nVoor iemand in een zogenaamde \"manie\" is rust essentieel om tot herstel te komen. Dat vereist een rustige, schone omgeving met zo min mogelijk prikkels. Amstelmeren bood het tegenovergestelde: overvolle ruimtes, slechte hygiene, en een onrustige sfeer. Dit werkt herstel niet alleen tegen - het verergert de situatie actief.\n\nDit is het slechtste wat je iemand kunt aandoen. Stuur iemand nooit naar een dergelijke instelling zolang diegene nog tot rede vatbaar is. In het geval van Daantje was er geen sprake van een manie - hij werd door paniek van omstanders in deze situatie gebracht.\n\nTer context: Daantje heeft in zijn dagelijks leven twee schoonmakers in dienst en een robotstofzuiger die elke dag de vloeren reinigt. Zijn behoefte aan een schone leefomgeving is uitzonderlijk hoog. In een instelling waar basale hygiene niet op orde is, was het voor hem onmogelijk om tot rust te komen.\n\nEen betere oplossing zou zijn: een rustige plek in de natuur, met goede sanitaire voorzieningen, warmte, en stilte - zodat iemand daadwerkelijk tot rust kan komen."
   },
   {
     facility: "Parnassia Castricum Unit 6 - Dokter de Jonghweg 2, 1901 DB Castricum",
@@ -150,7 +150,7 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "😴 Slaap **3-4 uur** en het 'geweldig' vinden\n❤️ Whoop recovery **rood** (**<34%**), meerdere dagen\n🔀 Meerdere projecten tegelijk starten\n😤 Ongeduldig of geirriteerd als iemand tegenspreekt\n💸 Impulsieve beslissingen (financieel, zakelijk)\n🔍 Achterdocht richting collega's of naasten\n🌙 's Nachts actief met AI, werk of plannen",
+            "😴 Slaap **3-4 uur** en het 'geweldig' vinden\n❤️ Whoop recovery **rood** (**<34%**), meerdere dagen\n🔀 Meerdere projecten tegelijk starten\n😤 Ongeduldig of geirriteerd als iemand tegenspreekt\n💸 Impulsieve beslissingen (financieel, zakelijk)\n🔍 Achterdocht richting collega's of naasten\n🌙 's Nachts actief met AI, werk of plannen\n✊ Lichamelijke spanning: gebalde vuisten, dreigende houding, paniekaanvallen",
         },
         {
           label: "Wat kan ik zelf doen?",
