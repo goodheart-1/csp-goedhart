@@ -4,6 +4,24 @@ import { useState, useCallback } from "react";
 import Image from "next/image";
 import { defaultCSPData, type CSPData, type Phase } from "./csp-data";
 
+function RichText({ text }: { text: string }) {
+  return (
+    <div className="space-y-1">
+      {text.split("\n").map((line, i) => (
+        <div key={i} className={line === "" ? "h-2" : ""}>
+          {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
+            part.startsWith("**") && part.endsWith("**") ? (
+              <strong key={j} className="font-bold text-stone-900">{part.slice(2, -2)}</strong>
+            ) : (
+              <span key={j}>{part}</span>
+            )
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const phaseColors = {
   "0": {
     bg: "bg-phase-0-light",
@@ -143,13 +161,9 @@ function PhaseCard({
                   <span>{field.icon}</span>
                   {field.label}
                 </label>
-                <textarea
-                  value={field.value}
-                  onChange={(e) => onFieldChange(fieldIndex, e.target.value)}
-                  className={`w-full rounded-xl border ${colors.border} bg-white/70 px-4 py-3 text-sm text-stone-800 placeholder:text-stone-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-1 transition-colors duration-200 resize-y leading-relaxed`}
-                  placeholder={`Vul in...`}
-                  rows={3}
-                />
+                <div className={`rounded-xl border ${colors.border} bg-white/70 px-4 py-3 text-sm text-stone-800 leading-relaxed`}>
+                  <RichText text={field.value || "Nog niet ingevuld"} />
+                </div>
               </div>
             ))}
           </div>
@@ -228,18 +242,8 @@ function TableView({ data }: { data: CSPData }) {
                       key={phase.id}
                       className={`p-3 align-top border border-stone-200 ${c.bg}`}
                     >
-                      <div className="text-[13px] text-stone-800 leading-relaxed space-y-1">
-                        {(phase.fields[fieldIndex]?.value || "").split("\n").map((line, i) => (
-                          <div key={i} className={line === "" ? "h-2" : ""}>
-                            {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
-                              part.startsWith("**") && part.endsWith("**") ? (
-                                <strong key={j} className="font-bold text-stone-900">{part.slice(2, -2)}</strong>
-                              ) : (
-                                <span key={j}>{part}</span>
-                              )
-                            )}
-                          </div>
-                        ))}
+                      <div className="text-[13px] text-stone-800 leading-relaxed">
+                        <RichText text={phase.fields[fieldIndex]?.value || ""} />
                       </div>
                     </td>
                   );
