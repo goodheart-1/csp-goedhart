@@ -257,6 +257,11 @@ const family = [
   { nr: 4, emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
 ];
 
+const inlaws: typeof family = [
+  { nr: 0, emoji: "🎸", name: "Sven Morsman", role: "Zwager (Sanne)", phone: "+31614604129" },
+  { nr: 0, emoji: "🦌", name: "Niels de Nijs", role: "Zwager (Roosje)", phone: "+31628717258" },
+];
+
 const friends: typeof family = [
   { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
   { nr: 0, emoji: "🔱", name: "Don Mehrow", role: "", phone: "+31636311764" },
@@ -307,6 +312,16 @@ function ProtectorsCard() {
         </h2>
         <div className="divide-y divide-phase-0-border/40">
           {family.map((p) => <ContactRow key={p.phone} p={p} />)}
+        </div>
+      </div>
+
+      {/* In-laws */}
+      <div className="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
+          💍 Aangetrouwd
+        </h2>
+        <div className="divide-y divide-stone-100">
+          {inlaws.map((p) => <ContactRow key={p.phone} p={p} />)}
         </div>
       </div>
 
