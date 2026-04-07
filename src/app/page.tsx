@@ -8,6 +8,34 @@ import { defaultCSPData, type CSPData, type Phase, experiences } from "./csp-dat
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
 const FacilitiesMap = dynamic(() => import("./map").then(mod => ({ default: mod.FacilitiesMap })), { ssr: false });
 
+const amstelmerePhotos = Array.from({ length: 11 }, (_, i) => `/amstelmere/${String(i + 1).padStart(2, "0")}.jpg`);
+
+function PhotoGallery() {
+  const [selected, setSelected] = useState<number | null>(null);
+  return (
+    <>
+      <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 gap-2">
+        {amstelmerePhotos.map((src, i) => (
+          <button key={src} onClick={() => setSelected(i)} className="relative aspect-square rounded-lg overflow-hidden hover:ring-2 hover:ring-red-400 transition-all focus:outline-none focus:ring-2 focus:ring-red-400">
+            <Image src={src} alt={`Amstelmeren foto ${i + 1}`} fill className="object-cover" sizes="(max-width: 640px) 33vw, 25vw" />
+          </button>
+        ))}
+      </div>
+      {selected !== null && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
+          <button onClick={() => setSelected(null)} className="absolute top-4 right-4 text-white/80 hover:text-white text-3xl font-light z-10" aria-label="Sluiten">&times;</button>
+          <button onClick={(e) => { e.stopPropagation(); setSelected((selected - 1 + 11) % 11); }} className="absolute left-4 text-white/80 hover:text-white text-3xl z-10" aria-label="Vorige">&lsaquo;</button>
+          <button onClick={(e) => { e.stopPropagation(); setSelected((selected + 1) % 11); }} className="absolute right-4 text-white/80 hover:text-white text-3xl z-10" aria-label="Volgende">&rsaquo;</button>
+          <div className="relative w-full max-w-3xl aspect-[4/3]" onClick={(e) => e.stopPropagation()}>
+            <Image src={amstelmerePhotos[selected]} alt={`Amstelmeren foto ${selected + 1}`} fill className="object-contain" sizes="100vw" priority />
+          </div>
+          <div className="absolute bottom-4 text-white/60 text-sm">{selected + 1} / {amstelmerePhotos.length}</div>
+        </div>
+      )}
+    </>
+  );
+}
+
 function RichText({ text }: { text: string }) {
   return (
     <div className="space-y-1">
@@ -578,6 +606,7 @@ export default function Home() {
                   <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
                     {exp.details}
                   </div>
+                  {exp.verdict === "bad" && <PhotoGallery />}
                 </div>
               ))}
             </div>
