@@ -375,7 +375,7 @@ function ContactCard({ p }: { p: typeof family[0] }) {
             )}
           </div>
         )}
-        <div className="text-sm font-medium text-phase-0 tabular-nums mt-0.5">
+        <div className="text-sm font-medium text-phase-0 tabular-nums mt-0.5 whitespace-nowrap">
           {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
         </div>
       </div>
@@ -406,7 +406,7 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
       </button>
       {isOpen && (
         <div id={`group-${groupId}-content`} className="px-4 pb-4 sm:px-6 sm:pb-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
             {children}
           </div>
         </div>
@@ -452,7 +452,7 @@ function ProtectorsCard() {
             Altijd #1 prioriteit
           </span>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {family.map((p) => <ContactCard key={p.phone} p={p} />)}
         </div>
       </div>
