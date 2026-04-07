@@ -12,7 +12,7 @@ export const experiences: Experience[] = [
     verdict: "bad",
     emoji: "🚫",
     summary: "Absoluut niet - het ergste wat je iemand in een manie kunt aandoen",
-    details: "Fucking druk. Stonk fucking hard. Er liepen gewoon ratten. Mensen liepen op dode voeten. Weinig begeleiding. Mensen waren depressief. Sommige mensen waren luid. Gewoon echt heel goor.\n\nIemand in een manie heeft rust nodig om tot zichzelf te komen. Amstelmeren is het tegenovergestelde: te veel mensen, geen hygiene, geen rust. Stuur iemand die nog tot rede vatbaar is hier NOOIT naartoe.\n\nDaantje heeft zelf twee schoonmakers in dienst en een robotstofzuiger - zijn schoonmaakbehoefte is heel hoog. Hij kon hier absoluut niet tot rust komen."
+    details: "Het was daar fucking druk. Het stonk fucking hard. Er liepen gewoon ratten. Mensen liepen op dode voeten. Er was weinig begeleiding. Mensen waren depressief. Sommige mensen waren zelfs luid. Het was daar gewoon echt heel goor.\n\nAls je iemand in een manie hebt, moet die persoon tot rust kunnen komen. Om tot rust te komen moet diegene zich in een rustige omgeving bevinden. Dat betekent: niet te veel mensen, en wel hygiene. Bij Amstelmeren was dat allesbehalve.\n\nDit is eigenlijk het allerergste wat je iemand in een manie kunt aandoen. Sterker nog: stuur iemand in een manie NOOIT naar zo'n plek als diegene nog tot rede vatbaar is.\n\nBeter is het om iemand gewoon in een hutje in een bos te zetten, met een hot tub en een warme douche, zodat diegene echt goed tot rust kan komen.\n\nDaantje heeft zelf twee schoonmakers in dienst en een robotstofzuiger - zijn schoonmaakbehoefte is heel hoog. Hij kon hier absoluut niet tot rust komen."
   },
   {
     facility: "Parnassia Castricum Unit 6",
