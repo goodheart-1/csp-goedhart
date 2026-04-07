@@ -46,14 +46,19 @@ export async function getAccessToken(): Promise<string> {
 
   const { clientId, clientSecret } = getClientCredentials();
 
+  // Whoop requires Basic Auth for token requests
+  const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
+
   const res = await fetch(WHOOP_TOKEN_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Authorization": `Basic ${basicAuth}`,
+    },
     body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token: refreshToken,
-      client_id: clientId,
-      client_secret: clientSecret,
+      scope: "read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement offline",
     }),
   });
 

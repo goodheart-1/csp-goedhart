@@ -435,7 +435,7 @@ function ProtectorsCard() {
           <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
             <div className="relative shrink-0">
               <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-blue-600 font-mono">XY</span>
+              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">💚</span>
             </div>
             <div>
               <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
@@ -447,7 +447,7 @@ function ProtectorsCard() {
           <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
             <div className="relative shrink-0">
               <img src="/contacts/Margha Klaver.png" alt="Margha Klaver" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-pink-50 border border-pink-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-pink-600 font-mono">XX</span>
+              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">🍀</span>
             </div>
             <div>
               <div className="text-lg font-bold text-stone-900">Margha Klaver</div>
