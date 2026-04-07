@@ -37,6 +37,21 @@ body {
   font-family: 'SF Pro Rounded', 'SF Pro Display', -apple-system, system-ui, sans-serif;
 }
 
+/* Apple-style card shadows */
+.apple-card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid rgba(214, 211, 209, 0.2);
+}
+
+.apple-card-elevated {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  border: 1px solid rgba(214, 211, 209, 0.15);
+}
+
+.apple-avatar {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
 /* Smooth accordion transitions */
 .accordion-content {
   display: grid;

@@ -110,7 +110,7 @@ function PhaseCard({
   const colors = phaseColors[phase.colorKey as keyof typeof phaseColors];
 
   return (
-    <div className={`rounded-xl border ${colors.border} ${colors.bg} overflow-hidden transition-all duration-200`} style={{ borderLeftWidth: '4px', borderLeftColor: `var(--color-phase-${phase.colorKey})` }}>
+    <div className={`rounded-xl border border-stone-200/20 ${colors.bg} overflow-hidden transition-all duration-200 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]`} style={{ borderLeftWidth: '4px', borderLeftColor: `var(--color-phase-${phase.colorKey})` }}>
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
@@ -219,11 +219,13 @@ function TableView({ data }: { data: CSPData }) {
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
           Locaties (Live)
         </h2>
-        <LocationMap />
+        <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20">
+          <LocationMap />
+        </div>
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto -mx-4 sm:mx-0">
+      <div className="overflow-x-auto -mx-4 sm:mx-0 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <table className="w-full border-collapse text-[13px]" style={{ borderSpacing: 0 }}>
           <thead>
             <tr>
@@ -307,7 +309,7 @@ const friends: typeof family = [
 
 function ContactCard({ p }: { p: typeof family[0] }) {
   return (
-    <a href={`https://wa.me/${p.phone.replace("+", "")}`} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer ${p.primary ? "bg-phase-0-light border border-phase-0-border" : "border border-stone-200/50"}`}>
+    <a href={`https://wa.me/${p.phone.replace("+", "")}`} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] ${p.primary ? "bg-phase-0-light border border-stone-200/30" : "border border-stone-200/30"}`}>
       {p.nr > 0 && (
         <div className={`flex items-center justify-center w-7 h-7 rounded-lg font-bold text-xs shrink-0 ${
           p.nr === 1 ? "bg-phase-0 text-white" :
@@ -317,7 +319,7 @@ function ContactCard({ p }: { p: typeof family[0] }) {
           {p.nr}
         </div>
       )}
-      <span className="text-xl shrink-0">{p.emoji}</span>
+      <span className="flex items-center justify-center w-10 h-10 rounded-full bg-stone-100 shadow-[0_1px_3px_rgba(0,0,0,0.1)] text-xl shrink-0">{p.emoji}</span>
       <div>
         <div className={`${p.primary ? "text-sm font-bold text-stone-900" : "text-sm font-medium text-stone-700"}`}>
           {p.name}
@@ -352,7 +354,7 @@ function ProtectorsCard() {
   return (
     <div className="space-y-4">
       {/* Family */}
-      <div className="bg-white rounded-xl border border-phase-0-border bg-phase-0-light p-4 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-stone-200/20 bg-phase-0-light p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
             🩸 Familie
@@ -367,7 +369,7 @@ function ProtectorsCard() {
       </div>
 
       {/* In-laws */}
-      <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
           💍 Aangetrouwd
         </h2>
@@ -377,7 +379,7 @@ function ProtectorsCard() {
       </div>
 
       {/* Friends */}
-      <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
           🛡️ Vrienden
         </h2>
@@ -472,7 +474,7 @@ export default function Home() {
         {view === "edit" ? (
           <>
             {/* Progress */}
-            <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
+            <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
               <ProgressBar phases={data.phases} />
             </div>
 
@@ -484,7 +486,9 @@ export default function Home() {
               <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
                 Locaties (Live)
               </h2>
-              <LocationMap />
+              <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20">
+                <LocationMap />
+              </div>
             </div>
 
             {/* Expand/Collapse controls */}
@@ -522,7 +526,7 @@ export default function Home() {
         )}
 
         {/* Crisis banner */}
-        <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+        <div className="bg-red-50 border border-red-200/50 rounded-xl p-4 flex items-center gap-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
           <span className="text-2xl">📞</span>
           <div>
             <div className="text-sm font-bold text-red-700">Noodsituatie of acute crisis?</div>
