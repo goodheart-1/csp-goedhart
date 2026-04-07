@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { defaultCSPData, type CSPData, type Phase } from "./csp-data";
+import { defaultCSPData, type CSPData, type Phase, experiences } from "./csp-data";
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
 const FacilitiesMap = dynamic(() => import("./map").then(mod => ({ default: mod.FacilitiesMap })), { ssr: false });
@@ -225,6 +225,27 @@ function TableView({ data }: { data: CSPData }) {
         <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
           <FacilitiesMap />
         </div>
+      </div>
+
+      {/* Ervaringen */}
+      <div className="space-y-3">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+          📖 Ervaringen & Lessen
+        </h2>
+        {experiences.map((exp) => (
+          <div key={exp.facility} className={`rounded-xl p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] ${exp.verdict === "bad" ? "bg-red-50 border border-red-200/50" : "bg-white border border-stone-200/20"}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xl">{exp.emoji}</span>
+              <h3 className="text-sm font-bold text-stone-900">{exp.facility}</h3>
+            </div>
+            <div className={`text-sm font-medium mb-2 ${exp.verdict === "bad" ? "text-red-700" : "text-phase-0"}`}>
+              {exp.summary}
+            </div>
+            <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
+              {exp.details}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Footer */}
@@ -538,6 +559,27 @@ export default function Home() {
               <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
                 <FacilitiesMap />
               </div>
+            </div>
+
+            {/* Ervaringen */}
+            <div className="space-y-3">
+              <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+                📖 Ervaringen & Lessen
+              </h2>
+              {experiences.map((exp) => (
+                <div key={exp.facility} className={`rounded-xl p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] ${exp.verdict === "bad" ? "bg-red-50 border border-red-200/50" : "bg-white border border-stone-200/20"}`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">{exp.emoji}</span>
+                    <h3 className="text-sm font-bold text-stone-900">{exp.facility}</h3>
+                  </div>
+                  <div className={`text-sm font-medium mb-2 ${exp.verdict === "bad" ? "text-red-700" : "text-phase-0"}`}>
+                    {exp.summary}
+                  </div>
+                  <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
+                    {exp.details}
+                  </div>
+                </div>
+              ))}
             </div>
           </>
         ) : (

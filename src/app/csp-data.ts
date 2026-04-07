@@ -1,3 +1,42 @@
+export interface Experience {
+  facility: string;
+  verdict: "good" | "bad";
+  emoji: string;
+  summary: string;
+  details: string;
+}
+
+export const experiences: Experience[] = [
+  {
+    facility: "Amstelmeren (GGZ inGeest)",
+    verdict: "bad",
+    emoji: "🚫",
+    summary: "Absoluut niet - het ergste wat je iemand in een manie kunt aandoen",
+    details: "Fucking druk. Stonk fucking hard. Er liepen gewoon ratten. Mensen liepen op dode voeten. Weinig begeleiding. Mensen waren depressief. Sommige mensen waren luid. Gewoon echt heel goor.\n\nIemand in een manie heeft rust nodig om tot zichzelf te komen. Amstelmeren is het tegenovergestelde: te veel mensen, geen hygiene, geen rust. Stuur iemand die nog tot rede vatbaar is hier NOOIT naartoe.\n\nDaantje heeft zelf twee schoonmakers in dienst en een robotstofzuiger - zijn schoonmaakbehoefte is heel hoog. Hij kon hier absoluut niet tot rust komen."
+  },
+  {
+    facility: "Parnassia Castricum Unit 6",
+    verdict: "good",
+    emoji: "✅",
+    summary: "Prima - rustige mensen, redelijk clean",
+    details: "Rustige omgeving met rustige medebewoners. Redelijk schoon. Miste wel het eigen leven: een goed bad, douche, en gym. Maar over het geheel een acceptabele plek waar je tot rust kunt komen."
+  },
+  {
+    facility: "De Nieuwe Valerius",
+    verdict: "good",
+    emoji: "✅",
+    summary: "Oke - goed bad, vriendelijk personeel, maar heftige medebewoners",
+    details: "Het bad was nice. Personeel was heel vriendelijk (maar dat zijn ze overal). Wel hele heftige mensen daar. De voornaamste uitdaging was het vermijden van alle impulsen, en dat ging lastig omdat het een vrij kleine plek was."
+  },
+  {
+    facility: "Wat WEL werkt bij manie",
+    verdict: "good",
+    emoji: "🏡",
+    summary: "Hutje in het bos, hot tub, warme douche, rust",
+    details: "Iemand in een manie moet tot rust komen. Dat betekent:\n- Rustige omgeving (bos, natuur)\n- Niet te veel mensen\n- Goede hygiene (schoon, fris)\n- Hot tub / warm bad\n- Warme douche\n- Pen en papier (geen schermen)\n- Hondjes Lotje & Doortje als anker\n\nDit is het tegenovergestelde van een drukke, vieze instelling. Rust, natuur, en warmte zijn de sleutel."
+  }
+];
+
 export interface PhaseField {
   label: string;
   icon: string;
