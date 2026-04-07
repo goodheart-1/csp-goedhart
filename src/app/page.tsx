@@ -186,27 +186,26 @@ function TableView({ data }: { data: CSPData }) {
 
       {/* Table */}
       <div className="overflow-x-auto -mx-4 sm:mx-0">
-        <table className="w-full min-w-[700px] border-collapse text-[13px]">
-          {/* Phase header row */}
+        <table className="w-full border-collapse text-[13px]" style={{ borderSpacing: 0 }}>
           <thead>
             <tr>
-              <th className="w-[120px] p-2 text-left text-xs font-semibold text-stone-400 uppercase tracking-wide align-bottom" />
+              <th className="w-[140px] p-3 text-left text-[11px] font-bold text-stone-400 uppercase tracking-[1.5px] align-bottom border border-stone-200 bg-stone-50" />
               {data.phases.map((phase) => {
                 const c = phaseColors[phase.colorKey as keyof typeof phaseColors];
                 return (
                   <th
                     key={phase.id}
-                    className={`p-3 text-left align-bottom rounded-t-xl ${c.bg} border-2 border-b-0 ${c.border}`}
+                    className={`p-3 text-left align-bottom ${c.bg} border border-stone-200`}
                   >
                     <div className="flex items-center gap-2">
-                      <div className={`flex items-center justify-center w-7 h-7 rounded-lg ${c.accent} text-white font-bold text-xs`}>
+                      <div className={`flex items-center justify-center w-7 h-7 rounded-lg ${c.accent} text-white font-bold text-xs shrink-0`}>
                         {phase.id}
                       </div>
                       <div>
                         <div className={`text-[10px] font-bold uppercase tracking-[1.5px] ${c.accentText} opacity-80`}>
                           Fase {phase.id}
                         </div>
-                        <div className="text-xs font-semibold text-stone-700 mt-0.5 leading-tight">
+                        <div className="text-[13px] font-semibold text-stone-700 mt-0.5 leading-tight">
                           {phase.emoji} {phase.name}
                         </div>
                       </div>
@@ -219,19 +218,22 @@ function TableView({ data }: { data: CSPData }) {
           <tbody>
             {fieldLabels.map((label, fieldIndex) => (
               <tr key={fieldIndex}>
-                <td className="p-2 text-xs font-semibold text-stone-500 align-top leading-tight">
+                <td className="p-3 text-[11px] font-bold text-stone-500 uppercase tracking-[1px] align-top leading-tight border border-stone-200 bg-stone-50">
                   {data.phases[0]?.fields[fieldIndex]?.icon} {label}
                 </td>
                 {data.phases.map((phase) => {
                   const c = phaseColors[phase.colorKey as keyof typeof phaseColors];
-                  const isLast = fieldIndex === fieldLabels.length - 1;
                   return (
                     <td
                       key={phase.id}
-                      className={`p-3 align-top ${c.bg} border-x-2 ${c.border} ${isLast ? `border-b-2 rounded-b-xl` : ""}`}
+                      className={`p-3 align-top border border-stone-200 ${c.bg}`}
                     >
-                      <div className="text-[12px] text-stone-800 whitespace-pre-wrap leading-relaxed">
-                        {phase.fields[fieldIndex]?.value || ""}
+                      <div className="text-[13px] text-stone-800 leading-relaxed space-y-1">
+                        {(phase.fields[fieldIndex]?.value || "").split("\n").map((line, i) => (
+                          <div key={i} className={line === "" ? "h-2" : ""}>
+                            {line}
+                          </div>
+                        ))}
                       </div>
                     </td>
                   );
@@ -387,7 +389,7 @@ export default function Home() {
 
       {/* Top bar */}
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-lg border-b border-stone-200 no-print">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
               src="/avatar.png"
@@ -424,7 +426,7 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <main id="main-content" className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      <main id="main-content" className="flex-1 max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {view === "edit" ? (
           <>
             {/* Progress */}
