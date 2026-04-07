@@ -84,7 +84,7 @@ export const defaultCSPData: CSPData = {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "👋 Signaal afgeven aan naasten (Daan, Don)\n🩺 Psychiater informeren bij volgend gesprek",
+            "👋 Signaal afgeven aan naasten (Don, Jeroen)\n🩺 Psychiater informeren bij volgend gesprek",
         },
         {
           label: "Wat kunnen anderen doen?",
@@ -123,7 +123,7 @@ export const defaultCSPData: CSPData = {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "🩺 Psychiater direct bellen\n💚 Aad (vader) inschakelen\n🪖 Daan en/of 🔱 Don\n🏥 Huisartsenpost (0900-1515) als psychiater niet bereikbaar",
+            "🩺 Psychiater direct bellen\n💚 Aad (vader) inschakelen\n🔱 Don en/of ⛰️ Jeroen\n🏥 Huisartsenpost (0900-1515) als psychiater niet bereikbaar",
         },
         {
           label: "Wat kunnen anderen doen?",
