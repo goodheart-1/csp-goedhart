@@ -51,26 +51,79 @@ export interface Medication {
 
 export const medications: Medication[] = [
   // --- Actief ---
-  // Vul hier je huidige medicatie in
+  {
+    name: "Lithium",
+    type: "mood_stabilizer",
+    status: "active",
+    dosage: "...",
+    timing: "... x per dag",
+    started: "...",
+    prescribed_by: "...",
+    notes: "Bloedspiegel elke 3 maanden controleren. Veel water drinken.",
+  },
+  {
+    name: "Melatonine",
+    type: "sleep",
+    status: "active",
+    dosage: "...",
+    timing: "'s Avonds voor het slapen",
+    started: "...",
+    notes: "...",
+  },
+
+  // --- Zo nodig ---
+  {
+    name: "Oxazepam",
+    type: "sleep",
+    status: "as_needed",
+    dosage: "...",
+    timing: "Alleen bij acute onrust / slapeloosheid",
+    prescribed_by: "...",
+    notes: "Niet langer dan 2 weken achtereen. Verslavingsgevoelig.",
+  },
 
   // --- Geweigerd ---
-  // {
-  //   name: "Voorbeeld",
-  //   type: "antipsychotic",
-  //   status: "refused",
-  //   dosage: "5mg",
-  //   notes: "Reden van weigering",
-  // },
+  {
+    name: "Olanzapine (Zyprexa)",
+    type: "antipsychotic",
+    status: "refused",
+    dosage: "...",
+    notes: "Reden: ...",
+  },
+  {
+    name: "Quetiapine (Seroquel)",
+    type: "antipsychotic",
+    status: "refused",
+    dosage: "...",
+    notes: "Reden: ...",
+  },
+  {
+    name: "Haloperidol (Haldol)",
+    type: "antipsychotic",
+    status: "refused",
+    dosage: "...",
+    notes: "Reden: ...",
+  },
 
   // --- Gestopt ---
-  // {
-  //   name: "Voorbeeld",
-  //   type: "mood_stabilizer",
-  //   status: "stopped",
-  //   started: "2024-01",
-  //   stopped: "2024-06",
-  //   notes: "Reden van stoppen",
-  // },
+  {
+    name: "Aripiprazol (Abilify)",
+    type: "antipsychotic",
+    status: "stopped",
+    dosage: "...",
+    started: "...",
+    stopped: "...",
+    notes: "Reden van stoppen: ...",
+  },
+  {
+    name: "Valproaat (Depakine)",
+    type: "mood_stabilizer",
+    status: "stopped",
+    dosage: "...",
+    started: "...",
+    stopped: "...",
+    notes: "Reden van stoppen: ...",
+  },
 ];
 
 export interface PhaseField {
