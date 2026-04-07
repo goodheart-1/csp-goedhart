@@ -2,7 +2,10 @@
 
 import { useState, useCallback } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { defaultCSPData, type CSPData, type Phase } from "./csp-data";
+
+const LocationMap = dynamic(() => import("./map"), { ssr: false });
 
 function RichText({ text }: { text: string }) {
   return (
@@ -107,7 +110,7 @@ function PhaseCard({
   const colors = phaseColors[phase.colorKey as keyof typeof phaseColors];
 
   return (
-    <div className={`rounded-xl border ${colors.border} ${colors.bg} overflow-hidden transition-all duration-200`}>
+    <div className={`rounded-xl border ${colors.border} ${colors.bg} overflow-hidden transition-all duration-200`} style={{ borderLeftWidth: '4px', borderLeftColor: `var(--color-phase-${phase.colorKey})` }}>
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
@@ -155,17 +158,30 @@ function PhaseCard({
         <div>
           <div className="px-4 pb-4 sm:px-6 sm:pb-6 space-y-4">
             <div className={`h-px ${colors.border} bg-current opacity-30`} />
-            {phase.fields.map((field, fieldIndex) => (
-              <div key={fieldIndex} className="space-y-1.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {phase.fields.slice(0, 4).map((field, fieldIndex) => (
+                <div key={fieldIndex} className="space-y-1.5">
+                  <label className={`flex items-center gap-2 text-[13px] font-semibold ${colors.accentText}`}>
+                    <span>{field.icon}</span>
+                    {field.label}
+                  </label>
+                  <div className={`rounded-lg border ${colors.border} bg-white/70 px-4 py-3 text-sm text-stone-800 leading-relaxed`}>
+                    <RichText text={field.value || "Nog niet ingevuld"} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            {phase.fields.length > 4 && (
+              <div className="space-y-1.5">
                 <label className={`flex items-center gap-2 text-[13px] font-semibold ${colors.accentText}`}>
-                  <span>{field.icon}</span>
-                  {field.label}
+                  <span>{phase.fields[4].icon}</span>
+                  {phase.fields[4].label}
                 </label>
                 <div className={`rounded-lg border ${colors.border} bg-white/70 px-4 py-3 text-sm text-stone-800 leading-relaxed`}>
-                  <RichText text={field.value || "Nog niet ingevuld"} />
+                  <RichText text={phase.fields[4].value || "Nog niet ingevuld"} />
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
@@ -197,6 +213,14 @@ function TableView({ data }: { data: CSPData }) {
 
       {/* Protectors */}
       <ProtectorsCard />
+
+      {/* Map */}
+      <div className="space-y-2">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+          Locaties (Live)
+        </h2>
+        <LocationMap />
+      </div>
 
       {/* Table */}
       <div className="overflow-x-auto -mx-4 sm:mx-0">
@@ -331,7 +355,7 @@ function ProtectorsCard() {
       <div className="bg-white rounded-xl border border-phase-0-border bg-phase-0-light p-4 sm:p-6 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            Familie
+            🩸 Familie
           </h2>
           <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
             Altijd #1 prioriteit
@@ -345,7 +369,7 @@ function ProtectorsCard() {
       {/* In-laws */}
       <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          Aangetrouwd
+          💍 Aangetrouwd
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {inlaws.map((p) => <ContactCard key={p.phone} p={p} />)}
@@ -355,7 +379,7 @@ function ProtectorsCard() {
       {/* Friends */}
       <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          Vrienden
+          🛡️ Vrienden
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
@@ -455,6 +479,14 @@ export default function Home() {
             {/* Protectors */}
             <ProtectorsCard />
 
+            {/* Map */}
+            <div className="space-y-2">
+              <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+                Locaties (Live)
+              </h2>
+              <LocationMap />
+            </div>
+
             {/* Expand/Collapse controls */}
             <div className="flex items-center justify-end gap-2 no-print">
               <button
@@ -488,6 +520,15 @@ export default function Home() {
         ) : (
           <TableView data={data} />
         )}
+
+        {/* Crisis banner */}
+        <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+          <span className="text-2xl">📞</span>
+          <div>
+            <div className="text-sm font-bold text-red-700">Noodsituatie of acute crisis?</div>
+            <div className="text-sm text-red-600">Bel direct de crisisdienst GGZ InGeest of de huisartsenpost.</div>
+          </div>
+        </div>
 
         {/* Footer */}
         <footer className="text-center text-xs text-stone-400 py-4 space-y-1 no-print">
