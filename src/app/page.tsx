@@ -265,8 +265,8 @@ const inlaws: typeof family = [
 ];
 
 const friends: typeof family = [
-  { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
   { nr: 0, emoji: "🔱", name: "Don Mehrow", role: "", phone: "+31636311764" },
+  { nr: 0, emoji: "⛰️", name: "Jeroen Blokzijl", role: "", phone: "+31640998822" },
   { nr: 0, emoji: "🦁", name: "Mats Duijn", role: "", phone: "+31623043383" },
   { nr: 0, emoji: "🐂", name: "Bram Veldhuijs", role: "", phone: "+31612422016" },
 ];
