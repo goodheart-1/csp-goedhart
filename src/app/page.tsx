@@ -251,10 +251,10 @@ function TableView({ data }: { data: CSPData }) {
 }
 
 const family = [
-  { emoji: "💚", name: "Aad Goedhart", role: "Vader", phone: "+31646102228", primary: true },
-  { emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
-  { emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
-  { emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
+  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Vader", phone: "+31646102228", primary: true },
+  { nr: 2, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
+  { nr: 3, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
+  { nr: 4, emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
 ];
 
 const friends = [
@@ -266,6 +266,9 @@ function ContactRow({ p }: { p: typeof family[0] }) {
   return (
     <div className={`flex items-center justify-between py-2.5`}>
       <div className="flex items-center gap-2.5">
+        {"nr" in p && p.nr && (
+          <span className="text-xs font-bold text-stone-400 w-4 text-right">{p.nr}.</span>
+        )}
         <span className="text-lg">{p.emoji}</span>
         <div>
           <span className={`text-sm ${p.primary ? "font-bold text-stone-900" : "font-medium text-stone-700"}`}>
