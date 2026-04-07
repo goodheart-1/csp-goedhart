@@ -281,38 +281,33 @@ const friends: typeof family = [
   { nr: 0, emoji: "🐂", name: "Bram Veldhuijs", role: "", phone: "+31612422016" },
 ];
 
-function ContactRow({ p }: { p: typeof family[0] }) {
+function ContactCard({ p }: { p: typeof family[0] }) {
   return (
-    <div className={`flex items-center gap-4 py-3 ${p.primary ? "py-4" : ""}`}>
-      <div className="flex items-center gap-3">
-        {p.nr > 0 && (
-          <div className={`flex items-center justify-center w-8 h-8 rounded-lg font-bold text-sm ${
-            p.nr === 1 ? "bg-phase-0 text-white" :
-            p.nr === 2 ? "bg-phase-0-medium text-phase-0" :
-            "bg-stone-100 text-stone-500"
-          }`}>
-            {p.nr}
+    <a href={`tel:${p.phone}`} className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer ${p.primary ? "bg-phase-0-light border border-phase-0-border" : "border border-stone-100"}`}>
+      {p.nr > 0 && (
+        <div className={`flex items-center justify-center w-7 h-7 rounded-lg font-bold text-xs shrink-0 ${
+          p.nr === 1 ? "bg-phase-0 text-white" :
+          p.nr === 2 ? "bg-phase-0-medium text-phase-0" :
+          "bg-stone-100 text-stone-500"
+        }`}>
+          {p.nr}
+        </div>
+      )}
+      <span className="text-xl shrink-0">{p.emoji}</span>
+      <div>
+        <div className={`${p.primary ? "text-sm font-bold text-stone-900" : "text-sm font-medium text-stone-700"}`}>
+          {p.name}
+        </div>
+        {p.role && (
+          <div className={`text-xs ${p.primary ? "text-phase-0 font-semibold" : "text-stone-400"}`}>
+            {p.role}
           </div>
         )}
-        <span className="text-xl">{p.emoji}</span>
-        <div>
-          <div className={`${p.primary ? "text-base font-bold text-stone-900" : "text-sm font-medium text-stone-700"}`}>
-            {p.name}
-          </div>
-          {p.role && (
-            <div className={`text-xs ${p.primary ? "text-phase-0 font-semibold uppercase tracking-wide" : "text-stone-400"}`}>
-              {p.primary ? "Primair contactpersoon" : p.role}
-            </div>
-          )}
+        <div className="text-sm font-medium text-phase-0 tabular-nums mt-0.5">
+          {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
         </div>
       </div>
-      <a
-        href={`tel:${p.phone}`}
-        className="text-sm font-medium text-phase-0 hover:underline tabular-nums"
-      >
-        {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
-      </a>
-    </div>
+    </a>
   );
 }
 
@@ -329,8 +324,8 @@ function ProtectorsCard() {
             Altijd #1 prioriteit
           </span>
         </div>
-        <div className="divide-y divide-phase-0-border/40">
-          {family.map((p) => <ContactRow key={p.phone} p={p} />)}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {family.map((p) => <ContactCard key={p.phone} p={p} />)}
         </div>
       </div>
 
@@ -339,8 +334,8 @@ function ProtectorsCard() {
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
           💍 Aangetrouwd
         </h2>
-        <div className="divide-y divide-stone-100">
-          {inlaws.map((p) => <ContactRow key={p.phone} p={p} />)}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {inlaws.map((p) => <ContactCard key={p.phone} p={p} />)}
         </div>
       </div>
 
@@ -349,8 +344,8 @@ function ProtectorsCard() {
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
           🛡️ Vrienden
         </h2>
-        <div className="divide-y divide-stone-100">
-          {friends.map((p) => <ContactRow key={p.phone} p={p} />)}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
         </div>
       </div>
     </div>
