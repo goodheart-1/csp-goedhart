@@ -195,36 +195,6 @@ const fieldLabels = ["Signalen", "Wat kan ik zelf doen?", "Wie kan ik bellen voo
 function TableView({ data }: { data: CSPData }) {
   return (
     <div className="space-y-5">
-      {/* Header */}
-      <div className="flex flex-col items-center space-y-3">
-        <Image
-          src="/avatar.png"
-          alt="Daantje Goedhart"
-          width={72}
-          height={72}
-          className="rounded-full object-cover"
-        />
-        <div className="text-center space-y-1">
-          <h2 className="font-sans text-2xl sm:text-3xl font-bold text-stone-900">
-            Bescherm Plan
-          </h2>
-          <p className="text-sm text-stone-500">Daantje Goedhart</p>
-        </div>
-      </div>
-
-      {/* Protectors */}
-      <ProtectorsCard />
-
-      {/* Map */}
-      <div className="space-y-2">
-        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
-          Locaties (Live)
-        </h2>
-        <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
-          <LocationMap />
-        </div>
-      </div>
-
       {/* Table */}
       <div className="overflow-x-auto -mx-4 sm:mx-0 rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <table className="w-full border-collapse text-[13px]" style={{ borderSpacing: 0 }}>
@@ -551,26 +521,8 @@ export default function Home() {
 
       {/* Main content */}
       <main id="main-content" className="flex-1 max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
-        {/* View toggle */}
-        <div className="flex bg-stone-100/80 rounded-[10px] p-0.5 w-fit">
-          {(["edit", "preview"] as const).map((v) => (
-            <button
-              key={v}
-              onClick={() => setView(v)}
-              className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
-                view === v
-                  ? "bg-white text-stone-900 shadow-sm"
-                  : "text-stone-400 hover:text-stone-600"
-              }`}
-            >
-              {v === "edit" ? "Accordion" : "Tabel"}
-            </button>
-          ))}
-        </div>
-
-        {view === "edit" ? (
-          <>
-            {/* Progress */}
+        {/* Shared sections (both views) */}
+        {/* Progress */}
             <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
               <ProgressBar phases={data.phases} />
             </div>
@@ -588,23 +540,34 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Expand/Collapse controls */}
-            <div className="flex items-center justify-end gap-2 no-print">
+        {/* View toggle */}
+        <div className="flex items-center justify-between">
+          <div className="flex bg-stone-100/80 rounded-[10px] p-0.5">
+            {(["edit", "preview"] as const).map((v) => (
               <button
-                onClick={expandAll}
-                className="text-xs text-stone-500 hover:text-stone-700 transition-colors"
+                key={v}
+                onClick={() => setView(v)}
+                className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
+                  view === v
+                    ? "bg-white text-stone-900 shadow-sm"
+                    : "text-stone-400 hover:text-stone-600"
+                }`}
               >
-                Alles openen
+                {v === "edit" ? "Accordion" : "Tabel"}
               </button>
+            ))}
+          </div>
+          {view === "edit" && (
+            <div className="flex items-center gap-2">
+              <button onClick={expandAll} className="text-xs text-stone-500 hover:text-stone-700 transition-colors">Alles openen</button>
               <span className="text-stone-300">|</span>
-              <button
-                onClick={collapseAll}
-                className="text-xs text-stone-500 hover:text-stone-700 transition-colors"
-              >
-                Alles sluiten
-              </button>
+              <button onClick={collapseAll} className="text-xs text-stone-500 hover:text-stone-700 transition-colors">Alles sluiten</button>
             </div>
+          )}
+        </div>
 
+        {view === "edit" ? (
+          <>
             {/* Phase cards */}
             <div className="space-y-4">
               {data.phases.map((phase) => (
