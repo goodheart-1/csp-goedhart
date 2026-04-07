@@ -258,7 +258,7 @@ const family = [
 ];
 
 const inlaws: typeof family = [
-  { nr: 0, emoji: "🎸", name: "Sven Morsman", role: "Zwager (Sanne)", phone: "+31614604129" },
+  { nr: 0, emoji: "🪚", name: "Sven Morsman", role: "Zwager (Sanne)", phone: "+31614604129" },
   { nr: 0, emoji: "🦌", name: "Niels de Nijs", role: "Zwager (Roosje)", phone: "+31628717258" },
 ];
 
