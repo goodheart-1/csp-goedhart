@@ -286,8 +286,8 @@ function TableView({ data }: { data: CSPData }) {
 }
 
 const family = [
-  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Hetzelfde brein - begrijpt het als geen ander", phone: "+31646102228", primary: true },
-  { nr: 2, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins", phone: "+31617421388" },
+  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Papa / Vader", subtitle: "Hetzelfde brein - begrijpt het als geen ander", phone: "+31646102228", primary: true },
+  { nr: 2, emoji: "🍀", name: "Margha Klaver", role: "Mama / Moeder", subtitle: "Dagelijks contact, check-ins", phone: "+31617421388" },
   { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
 ];
@@ -419,25 +419,27 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
 function ProtectorsCard() {
   return (
     <div className="space-y-4">
-      {/* DNA - Both parents */}
+      {/* DNA - Familie */}
       <div className="bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            🧬 DNA - Eerste Contactpersonen
+            🧬 DNA - Familie
           </h2>
           <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
             #1 Bel altijd eerst
           </span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+        {/* Parents - XY & XX */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
             <div className="relative shrink-0">
               <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">💚</span>
+              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-blue-600 font-mono">XY</span>
             </div>
             <div>
               <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
-              <div className="text-sm text-phase-0 font-semibold">Vader</div>
+              <div className="text-sm text-phase-0 font-semibold">Papa / Vader</div>
               <div className="text-xs text-stone-500 mt-0.5">Hetzelfde brein - begrijpt het als geen ander</div>
               <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 46 10 22 28</div>
             </div>
@@ -445,30 +447,22 @@ function ProtectorsCard() {
           <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
             <div className="relative shrink-0">
               <img src="/contacts/Margha Klaver.png" alt="Margha Klaver" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">🍀</span>
+              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-pink-50 border border-pink-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-pink-600 font-mono">XX</span>
             </div>
             <div>
               <div className="text-lg font-bold text-stone-900">Margha Klaver</div>
-              <div className="text-sm text-phase-0 font-semibold">Mama</div>
+              <div className="text-sm text-phase-0 font-semibold">Mama / Moeder</div>
               <div className="text-xs text-stone-500 mt-0.5">Dagelijks contact, check-ins</div>
               <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 17 42 13 88</div>
             </div>
           </a>
         </div>
-      </div>
 
-      {/* Family */}
-      <div className="bg-white rounded-xl border border-stone-200/20 bg-phase-0-light p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            🩸 Familie
-          </h2>
-          <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
-            Altijd #1 prioriteit
-          </span>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-          {family.map((p) => <ContactCard key={p.phone} p={p} />)}
+        {/* Siblings */}
+        <div className="border-t border-phase-0-border/30 pt-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {family.filter(p => p.nr >= 3).map((p) => <ContactCard key={p.phone} p={p} />)}
+          </div>
         </div>
       </div>
 
