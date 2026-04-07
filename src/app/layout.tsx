@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://csp-goedhart.vercel.app"),
   title: "Bescherm Plan - Daantje Goedhart",
   description: "Persoonlijk beschermplan - 4 fases van stabiliteit tot crisis",
   icons: {
