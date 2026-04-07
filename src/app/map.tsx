@@ -25,6 +25,62 @@ const locations = [
   { name: "Daantje (Jij)", label: "", lat: 52.483, lng: 4.655, emoji: "📍" },
 ];
 
+const facilities = [
+  { name: "Amstelmeren (GGZ inGeest)", lat: 52.3020, lng: 4.8530, emoji: "🚫", tooltip: "NIET - onhygienisch", color: "red" },
+  { name: "Parnassia Castricum Unit 6", lat: 52.5450, lng: 4.6600, emoji: "✅", tooltip: "Prima - rustig, clean", color: "green" },
+  { name: "De Nieuwe Valerius", lat: 52.3540, lng: 4.8670, emoji: "✅", tooltip: "Prima - heftige mensen, maar goed bad en vriendelijk personeel", color: "green" },
+];
+
+const facilitiesMe = { name: "Jij", lat: 52.4830, lng: 4.6550, emoji: "📍" };
+
+export function FacilitiesMap() {
+  return (
+    <div className="relative rounded-xl overflow-hidden" style={{ height: 350 }}>
+      <MapContainer
+        center={[52.42, 4.76]}
+        zoom={10}
+        scrollWheelZoom={false}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer
+          attribution='Tiles &copy; Esri'
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        />
+        {facilities.map((f) => (
+          <Marker key={f.name} position={[f.lat, f.lng]} icon={emojiIcon(f.emoji)}>
+            <Popup>
+              <strong>{f.name}</strong>
+              <div className="text-xs text-stone-500">{f.tooltip}</div>
+            </Popup>
+          </Marker>
+        ))}
+        <Marker position={[facilitiesMe.lat, facilitiesMe.lng]} icon={emojiIcon(facilitiesMe.emoji)}>
+          <Popup>
+            <strong>{facilitiesMe.name}</strong>
+          </Popup>
+        </Marker>
+      </MapContainer>
+
+      {/* Frosted glass legend */}
+      <div className="absolute bottom-3 left-3 z-[1000] bg-white/80 backdrop-blur-xl rounded-lg border border-stone-200/60 px-4 py-3 shadow-lg">
+        <div className="text-[10px] font-bold uppercase tracking-[2px] text-stone-400 mb-2">
+          Legenda
+        </div>
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 text-sm text-stone-700">
+            <span>✅</span>
+            <span>Goedgekeurd</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-stone-700">
+            <span>🚫</span>
+            <span>Afgekeurd</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LocationMap() {
   return (
     <div className="relative rounded-xl overflow-hidden" style={{ height: 400 }}>

@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { defaultCSPData, type CSPData, type Phase } from "./csp-data";
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
+const FacilitiesMap = dynamic(() => import("./map").then(mod => ({ default: mod.FacilitiesMap })), { ssr: false });
 
 function RichText({ text }: { text: string }) {
   return (
@@ -280,6 +281,16 @@ function TableView({ data }: { data: CSPData }) {
         </table>
       </div>
 
+      {/* Facilities map */}
+      <div className="space-y-2">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+          🏥 Faciliteiten
+        </h2>
+        <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
+          <FacilitiesMap />
+        </div>
+      </div>
+
       {/* Footer */}
       <div className="text-center text-xs text-stone-400 pt-2">
         <p>Bij crisis: bel crisisdienst GGZ InGeest of huisartsenpost</p>
@@ -311,8 +322,14 @@ const friends: typeof family = [
   { nr: 0, emoji: "🕺🏽", name: "Samuel Hoekstra", role: "", phone: "+31614986071" },
   { nr: 0, emoji: "💙", name: "Tim Jacobsen", role: "", phone: "+31648880599" },
   { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
+];
+
+const moreGoodFriends: typeof family = [
   { nr: 0, emoji: "🏂", name: "Patrick de Hart", role: "", phone: "+31653676907" },
   { nr: 0, emoji: "🎯", name: "Jan Jaap Rixten", role: "", phone: "+31682914795" },
+  { nr: 0, emoji: "💪", name: "Bas Bults", role: "", phone: "+31640502444" },
+  { nr: 0, emoji: "🎬", name: "Daaf de Jonge", role: "", phone: "+31627356938" },
+  { nr: 0, emoji: "🎵", name: "Jonne Krom", role: "", phone: "+31624531189" },
 ];
 
 const teamClearly: typeof family = [
@@ -413,6 +430,16 @@ function ProtectorsCard() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
+        </div>
+      </div>
+
+      {/* More Good Friends */}
+      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
+          🤙 More Good Friends
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {moreGoodFriends.map((p) => <ContactCard key={p.phone} p={p} />)}
         </div>
       </div>
 
@@ -558,6 +585,16 @@ export default function Home() {
                   onFieldChange={(fieldIndex, value) => updateField(phase.id, fieldIndex, value)}
                 />
               ))}
+            </div>
+
+            {/* Facilities map */}
+            <div className="space-y-2">
+              <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+                🏥 Faciliteiten
+              </h2>
+              <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
+                <FacilitiesMap />
+              </div>
             </div>
           </>
         ) : (
