@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { defaultCSPData, type CSPData, type Phase, experiences } from "./csp-data";
+import SleepDashboard from "./sleep-dashboard";
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
 const FacilitiesMap = dynamic(() => import("./map").then(mod => ({ default: mod.FacilitiesMap })), { ssr: false });
@@ -418,29 +419,43 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
 function ProtectorsCard() {
   return (
     <div className="space-y-4">
-      {/* DNA - Primary contact */}
-      <a href={`https://wa.me/31646102228`} target="_blank" rel="noopener noreferrer" className="block bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] hover:brightness-[0.98] transition-all cursor-pointer">
-        <div className="flex items-center justify-between mb-3">
+      {/* DNA - Both parents */}
+      <div className="bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+        <div className="flex items-center justify-between mb-4">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            🧬 DNA - Eerste Contactpersoon
+            🧬 DNA - Eerste Contactpersonen
           </h2>
           <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
             #1 Bel altijd eerst
           </span>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="relative shrink-0">
-            <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-            <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">💚</span>
-          </div>
-          <div>
-            <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
-            <div className="text-sm text-phase-0 font-semibold">Vader</div>
-            <div className="text-xs text-stone-500 mt-0.5">Hetzelfde brein - begrijpt het als geen ander</div>
-            <div className="text-sm font-medium text-phase-0 tabular-nums mt-1">+316 46 10 22 28</div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
+            <div className="relative shrink-0">
+              <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
+              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">💚</span>
+            </div>
+            <div>
+              <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
+              <div className="text-sm text-phase-0 font-semibold">Vader</div>
+              <div className="text-xs text-stone-500 mt-0.5">Hetzelfde brein - begrijpt het als geen ander</div>
+              <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">06 46 10 22 28</div>
+            </div>
+          </a>
+          <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
+            <div className="relative shrink-0">
+              <img src="/contacts/Margha Klaver.png" alt="Margha Klaver" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
+              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">🍀</span>
+            </div>
+            <div>
+              <div className="text-lg font-bold text-stone-900">Margha Klaver</div>
+              <div className="text-sm text-phase-0 font-semibold">Mama</div>
+              <div className="text-xs text-stone-500 mt-0.5">Dagelijks contact, check-ins</div>
+              <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">06 17 42 13 88</div>
+            </div>
+          </a>
         </div>
-      </a>
+      </div>
 
       {/* Family */}
       <div className="bg-white rounded-xl border border-stone-200/20 bg-phase-0-light p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
@@ -527,6 +542,9 @@ export default function Home() {
         {/* Shared sections (both views) */}
         {/* Protectors */}
             <ProtectorsCard />
+
+            {/* Sleep & Recovery */}
+            <SleepDashboard />
 
             {/* Map */}
             <div className="space-y-2">
@@ -616,11 +634,27 @@ export default function Home() {
         )}
 
         {/* Crisis banner */}
-        <div className="bg-red-50 border border-red-200/50 rounded-xl p-4 flex items-center gap-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-          <span className="text-2xl">📞</span>
-          <div>
+        <div className="bg-red-50 border border-red-200/50 rounded-xl p-5 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">📞</span>
             <div className="text-sm font-bold text-red-700">Noodsituatie of acute crisis?</div>
-            <div className="text-sm text-red-600">Bel direct de crisisdienst GGZ InGeest of de huisartsenpost.</div>
+          </div>
+          <div className="text-sm text-red-600 space-y-1">
+            <p>Bel de <strong>crisisdienst GGZ InGeest</strong> of de <strong>huisartsenpost</strong> (0900-1515).</p>
+          </div>
+          <div className="bg-red-100/60 rounded-lg p-3 text-[13px] text-red-800 space-y-2">
+            <p><strong>112 alleen bij direct fysiek gevaar</strong> - als iemand zichzelf of een ander kan verwonden en niemand de situatie onder controle heeft. In alle andere gevallen: bel eerst Aad (vader), dan de crisisdienst. Politie en ambulance zijn niet getraind op manie en kunnen de situatie verergeren door dwangmiddelen en vervoer naar een willekeurige instelling.</p>
+          </div>
+        </div>
+
+        {/* P.S. */}
+        <div className="bg-phase-0-light border border-phase-0-border rounded-xl p-5 space-y-2 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+          <div className="text-sm font-bold text-phase-0">P.S. van Daantje</div>
+          <div className="text-[13px] text-stone-700 leading-relaxed">
+            Ik vind het leven gigantisch veel te leuk. Ik ken geen depressieve gedachten (meer) en ik zou <strong>nooit</strong> zelfmoord plegen. De missie waar we met Clearly aan werken is voor mijn gevoel de mooiste missie op aarde - ik leef echt mijn gelukkigste leven en vind het zo mooi waar we samen aan kunnen bouwen. Dat zou ik nooit opgeven.
+          </div>
+          <div className="text-[13px] text-stone-700 leading-relaxed mt-1">
+            Dit plan bestaat niet omdat ik een gevaar ben voor mezelf. Het bestaat omdat manie soms lijkt op een crisis voor de mensen om me heen, terwijl ik me juist fantastisch voel. Dit plan helpt hen om het verschil te zien en de juiste stappen te nemen.
           </div>
         </div>
 
