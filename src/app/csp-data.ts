@@ -37,6 +37,74 @@ export const experiences: Experience[] = [
   }
 ];
 
+export interface PersonalInfo {
+  label: string;
+  value: string;
+  sensitive?: boolean;
+}
+
+export interface PersonalSection {
+  title: string;
+  emoji: string;
+  items: PersonalInfo[];
+}
+
+export const personalSections: PersonalSection[] = [
+  {
+    title: "Persoonsgegevens",
+    emoji: "🪪",
+    items: [
+      { label: "Naam", value: "Daantje Goedhart" },
+      { label: "Geboortedatum", value: "..." },
+      { label: "BSN", value: "...", sensitive: true },
+      { label: "Adres", value: "..." },
+      { label: "Telefoon", value: "..." },
+      { label: "E-mail", value: "daantje@clearly.co" },
+    ],
+  },
+  {
+    title: "Zorgverzekering",
+    emoji: "🏥",
+    items: [
+      { label: "Verzekeraar", value: "..." },
+      { label: "Polisnummer", value: "...", sensitive: true },
+      { label: "Type", value: "..." },
+      { label: "Aanvullend", value: "..." },
+    ],
+  },
+  {
+    title: "Medisch",
+    emoji: "🩺",
+    items: [
+      { label: "Diagnose", value: "Bipolaire stoornis type I" },
+      { label: "Bloedgroep", value: "..." },
+      { label: "Allergieen", value: "..." },
+      { label: "Eerste episode", value: "..." },
+      { label: "Aantal episodes", value: "..." },
+    ],
+  },
+  {
+    title: "Behandelteam",
+    emoji: "👨‍⚕️",
+    items: [
+      { label: "Psychiater", value: "..." },
+      { label: "Huisarts", value: "..." },
+      { label: "Huisartsenpraktijk", value: "..." },
+      { label: "Apotheek", value: "..." },
+      { label: "Crisisdienst", value: "GGZ InGeest" },
+    ],
+  },
+  {
+    title: "Identificatie",
+    emoji: "📋",
+    items: [
+      { label: "Paspoort nr.", value: "...", sensitive: true },
+      { label: "Rijbewijs nr.", value: "...", sensitive: true },
+      { label: "ID geldig tot", value: "..." },
+    ],
+  },
+];
+
 export interface Medication {
   name: string;
   type: "mood_stabilizer" | "antipsychotic" | "sleep" | "supplement" | "other";

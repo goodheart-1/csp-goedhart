@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { defaultCSPData, type CSPData, type Phase, experiences, medications, type Medication } from "./csp-data";
+import { defaultCSPData, type CSPData, type Phase, experiences, medications, type Medication, personalSections } from "./csp-data";
 import SleepDashboard from "./sleep-dashboard";
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
@@ -431,8 +431,8 @@ function ProtectorsCard() {
         </div>
 
         {/* Parents - XY & XX */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-          <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 mb-4 items-center">
+          <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-blue-50/60 transition-colors cursor-pointer">
             <div className="relative shrink-0">
               <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
               <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-blue-600 font-mono">XY</span>
@@ -444,7 +444,8 @@ function ProtectorsCard() {
               <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 46 10 22 28</div>
             </div>
           </a>
-          <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-white/50 transition-colors cursor-pointer">
+          <div className="hidden sm:flex items-center justify-center text-4xl">🧬</div>
+          <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-pink-50/60 transition-colors cursor-pointer">
             <div className="relative shrink-0">
               <img src="/contacts/Margha Klaver.png" alt="Margha Klaver" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
               <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-pink-50 border border-pink-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-pink-600 font-mono">XX</span>
@@ -481,6 +482,48 @@ function ProtectorsCard() {
       <CollapsibleGroup title="🩵 Team Clearly" count={teamClearly.length}>
         {teamClearly.map((p) => <ContactCard key={p.phone} p={p} />)}
       </CollapsibleGroup>
+    </div>
+  );
+}
+
+function PersonalInfoSection() {
+  const [showSensitive, setShowSensitive] = useState(false);
+
+  return (
+    <div id="personal" className="space-y-3 scroll-mt-20">
+      <div className="flex items-center justify-between">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+          🪪 Mijn Gegevens
+        </h2>
+        <button
+          onClick={() => setShowSensitive(!showSensitive)}
+          className="text-xs text-stone-400 hover:text-stone-600 transition-colors flex items-center gap-1 no-print"
+        >
+          {showSensitive ? "🔓 Verberg gevoelige info" : "🔒 Toon gevoelige info"}
+        </button>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {personalSections.map((section) => (
+          <div
+            key={section.title}
+            className="rounded-xl bg-white border border-stone-200/20 p-4 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]"
+          >
+            <h3 className="text-xs font-semibold text-stone-500 mb-3 flex items-center gap-1.5">
+              <span>{section.emoji}</span> {section.title}
+            </h3>
+            <div className="space-y-2">
+              {section.items.map((item) => (
+                <div key={item.label} className="flex justify-between gap-2 text-[13px]">
+                  <span className="text-stone-400 shrink-0">{item.label}</span>
+                  <span className={`text-stone-900 font-medium text-right ${item.sensitive && !showSensitive ? "blur-sm select-none" : ""}`}>
+                    {item.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -572,6 +615,7 @@ function MedicationSection() {
 
 const sections = [
   { id: "intro", emoji: "👋", label: "Intro" },
+  { id: "personal", emoji: "🪪", label: "Gegevens" },
   { id: "protectors", emoji: "🛡️", label: "Protectors" },
   { id: "medication", emoji: "💊", label: "Medicatie" },
   { id: "phases", emoji: "📊", label: "Fases" },
@@ -762,6 +806,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Persoonlijke gegevens */}
+        <PersonalInfoSection />
 
         {/* Protectors */}
             <div id="protectors" className="scroll-mt-20"><ProtectorsCard /></div>
