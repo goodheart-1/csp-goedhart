@@ -59,8 +59,12 @@ export async function getAccessToken(): Promise<string> {
 
   if (!res.ok) {
     const error = await res.text();
-    console.error("Token refresh failed:", error);
-    throw new Error("TOKEN_REFRESH_FAILED");
+    console.error("Token refresh failed:", res.status, error);
+    console.error("Used refresh_token starting with:", refreshToken.substring(0, 10));
+    console.error("Used client_id:", clientId);
+    const err = new Error("TOKEN_REFRESH_FAILED");
+    (err as unknown as Record<string, unknown>).details = { status: res.status, body: error, tokenPrefix: refreshToken.substring(0, 10) };
+    throw err;
   }
 
   const data = await res.json();

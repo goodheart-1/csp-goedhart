@@ -90,7 +90,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "✅ Naasten hoeven niks speciaals te doen\n💬 Open communicatie onderhouden over hoe het gaat",
+            "✅ Naasten hoeven niks speciaals te doen\n💬 Open communicatie onderhouden over hoe het gaat\n🙏 Vraag hoe je kunt ondersteunen, geef geen ongevraagde adviezen\n📚 Leer over bipolaire stoornis (psycho-educatie) zodat je signalen herkent",
         },
         {
           label: "Doel",
@@ -129,7 +129,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "💤 Naasten mogen vragen: 'Hoeveel slaap je?'\n🪞 Naasten mogen zeggen: 'Ik merk dat je sneller praat / meer energie hebt'\n👂 Serieus nemen als zij iets signaleren",
+            "💤 Naasten mogen vragen: 'Hoeveel slaap je?'\n🪞 Naasten mogen zeggen: 'Ik merk dat je sneller praat / meer energie hebt'\n👂 Serieus nemen als zij iets signaleren\n🗣️ Gebruik korte zinnen, praat rustiger, herhaal dingen als het nodig is\n🤝 Bekrachtig gewenst gedrag, ga niet de strijd aan\n❤️ Richt je op onderliggende gevoelens, niet op de inhoud van de ontregeling",
         },
         {
           label: "Doel",
@@ -168,7 +168,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "💚 **Aad (vader)** mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het rustig is, bij Aad als het heftig is",
+            "💚 **Aad (vader)** mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n🏡 Haal mij weg bij de bron van onrust, bied een **prikkelarme omgeving**\n🕊️ Maak de situatie veilig met **zo min mogelijk dwang en drang**\n💛 Stel mij gerust en geef hoop, maar geen valse geruststellingen\n🗣️ Gebruik korte zinnen, praat rustiger, herhaal indien nodig\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het rustig is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
@@ -207,7 +207,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het tranquillo is, bij Aad als het heftig is\n\n🏥 Mocht opname ooit nodig zijn (niet verwacht):\n✅ **Parnassia Castricum Unit 6** - prima\n✅ **De Nieuwe Valerius** - prima\n🚫 **NIET Amstelmeren** - onhygienisch, kan daar niet tot rust komen",
+            "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n🕊️ Maak de situatie veilig met **zo min mogelijk dwang en drang**\n🗣️ Praat langzamer, gebruik korte zinnen, herhaal dingen\n💛 Stel mij gerust, verzeker mij van mijn veiligheid\n👨‍👩‍👦 Betrek naasten, moedig ze aan om bij mij te blijven (rooming-in)\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het tranquillo is, bij Aad als het heftig is\n\n🏥 Mocht opname ooit nodig zijn (niet verwacht):\n✅ **Parnassia Castricum Unit 6** - prima\n✅ **De Nieuwe Valerius** - prima\n🚫 **NIET Amstelmeren** - onhygienisch, kan daar niet tot rust komen",
         },
         {
           label: "Doel",

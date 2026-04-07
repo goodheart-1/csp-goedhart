@@ -49,8 +49,11 @@ export async function GET() {
     if (!sleepRes.ok || !recoveryRes.ok) {
       const sleepErr = !sleepRes.ok ? await sleepRes.text() : "";
       const recErr = !recoveryRes.ok ? await recoveryRes.text() : "";
-      console.error("Whoop API error:", { sleep: sleepErr, recovery: recErr });
-      return NextResponse.json({ error: "Failed to fetch Whoop data" }, { status: 502 });
+      console.error("Whoop API error:", { sleep: sleepRes.status, sleepErr, recovery: recoveryRes.status, recErr });
+      return NextResponse.json({
+        error: "Failed to fetch Whoop data",
+        debug: { sleepStatus: sleepRes.status, recoveryStatus: recoveryRes.status, sleepErr, recErr }
+      }, { status: 502 });
     }
 
     const sleepData = await sleepRes.json();
@@ -107,8 +110,9 @@ export async function GET() {
     const message = err instanceof Error ? err.message : "Unknown error";
 
     if (message === "NO_REFRESH_TOKEN" || message === "TOKEN_REFRESH_FAILED") {
+      const details = (err as unknown as Record<string, unknown>).details;
       return NextResponse.json(
-        { error: message, authorizeUrl: "/api/whoop/authorize" },
+        { error: message, authorizeUrl: "/api/whoop/authorize", debug: details },
         { status: 401 }
       );
     }
