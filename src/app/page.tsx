@@ -264,7 +264,7 @@ function TableView({ data }: { data: CSPData }) {
 
 const family = [
   { nr: 1, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins, hoe gaat het", phone: "+31617421388", primary: true },
-  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Alleen bij nood - puur uit voorzorg", phone: "+31646102228" },
+  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Alleen bij nood - puur uit voorzorg", info: "Papa staat als #2 puur uit voorzorg. We verwachten niet dat dit punt bereikt wordt. Dit plan bestaat zodat iedereen weet wat te doen, niet omdat het nodig zal zijn.", phone: "+31646102228" },
   { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
 ];
@@ -304,7 +304,17 @@ function ContactCard({ p }: { p: typeof family[0] }) {
           </div>
         )}
         {"subtitle" in p && p.subtitle && (
-          <div className="text-[11px] text-stone-400 italic mt-0.5">{p.subtitle}</div>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <span className="text-[11px] text-stone-400 italic">{p.subtitle}</span>
+            {"info" in p && p.info && (
+              <span className="relative group cursor-help" onClick={(e) => e.preventDefault()}>
+                <span className="flex items-center justify-center w-4 h-4 rounded-full bg-stone-200 text-stone-500 text-[9px] font-bold">i</span>
+                <span className="absolute left-0 top-5 w-56 bg-stone-900 text-white text-[11px] rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+                  {p.info}
+                </span>
+              </span>
+            )}
+          </div>
         )}
         <div className="text-sm font-medium text-phase-0 tabular-nums mt-0.5">
           {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
