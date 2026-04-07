@@ -522,12 +522,7 @@ export default function Home() {
       {/* Main content */}
       <main id="main-content" className="flex-1 max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {/* Shared sections (both views) */}
-        {/* Progress */}
-            <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-              <ProgressBar phases={data.phases} />
-            </div>
-
-            {/* Protectors */}
+        {/* Protectors */}
             <ProtectorsCard />
 
             {/* Map */}
