@@ -129,7 +129,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nMacBook en telefoon innemen\nNiet in discussie gaan, maar grenzen stellen\n\nPlan A: Breng me naar Margha (mama) - voorkeur\nPlan B: Terug naar appartement\n\nLotje & Doortje: bij mama als het rustig is, bij Aad als het heftig is",
+            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nMacBook en telefoon innemen\nNiet in discussie gaan, maar grenzen stellen\n\nPlan A: Breng me naar Margha (mama) - voorkeur\nPlan B: Terug naar appartement\n\nWie bellen?\nOnschuldige avonturen (midgetgolf, spontane uitjes): bel mama\nEcht grensoverschrijdend gedrag: bel Aad (vader)\n\nLotje & Doortje: bij mama als het rustig is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
@@ -168,7 +168,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Contact opnemen met psychiater of crisisdienst namens mij\nAlleen pen en papier, geen MacBook of telefoon\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan\n\nPlan A: Breng me naar Margha (mama) - voorkeur\nPlan B: Terug naar appartement\n\nLotje & Doortje: bij mama als het tranquillo is, bij Aad als het heftig is",
+            "Contact opnemen met psychiater of crisisdienst namens mij\nAlleen pen en papier, geen MacBook of telefoon\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan\n\nPlan A: Breng me naar Margha (mama) - voorkeur\nPlan B: Terug naar appartement\n\nWie bellen?\nOnschuldige avonturen (spontane uitjes): bel mama\nEcht grensoverschrijdend gedrag: bel Aad (vader)\n\nLotje & Doortje: bij mama als het tranquillo is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
