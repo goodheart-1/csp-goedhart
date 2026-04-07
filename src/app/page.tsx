@@ -356,13 +356,15 @@ function ContactCard({ p }: { p: typeof family[0] }) {
         </div>
       )}
       <div className="relative shrink-0">
-        <Image
+        <img
           src={`/contacts/${p.name}.png`}
           alt={p.name}
           width={40}
           height={40}
           className="w-10 h-10 rounded-full object-cover shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
+          onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }}
         />
+        <span className="hidden flex items-center justify-center w-10 h-10 rounded-full bg-stone-100 shadow-[0_1px_3px_rgba(0,0,0,0.1)] text-xl">{p.emoji}</span>
         <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-5 h-5 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[11px]">{p.emoji}</span>
       </div>
       <div>
