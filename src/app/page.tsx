@@ -77,7 +77,7 @@ function ProgressBar({ phases }: { phases: Phase[] }) {
           {percentage}%
         </span>
       </div>
-      <div className="h-1.5 w-full rounded-full bg-stone-200 overflow-hidden" role="progressbar" aria-valuenow={percentage} aria-valuemin={0} aria-valuemax={100} aria-label={`${percentage}% ingevuld`}>
+      <div className="h-1 w-full rounded-full bg-stone-200 overflow-hidden" role="progressbar" aria-valuenow={percentage} aria-valuemin={0} aria-valuemax={100} aria-label={`${percentage}% ingevuld`}>
         <div
           className="h-full rounded-full transition-all duration-500 ease-out"
           style={{
@@ -107,16 +107,16 @@ function PhaseCard({
   const colors = phaseColors[phase.colorKey as keyof typeof phaseColors];
 
   return (
-    <div className={`rounded-2xl border-2 ${colors.border} ${colors.bg} overflow-hidden transition-all duration-200`}>
+    <div className={`rounded-xl border ${colors.border} ${colors.bg} overflow-hidden transition-all duration-200`}>
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`phase-${phase.id}-content`}
-        className="w-full flex items-center justify-between px-5 py-4 sm:px-6 sm:py-5 cursor-pointer hover:brightness-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 rounded-2xl"
+        className="w-full flex items-center justify-between px-4 py-4 sm:px-6 sm:py-5 cursor-pointer hover:brightness-[0.98] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 rounded-xl"
       >
         <div className="flex items-center gap-3 sm:gap-4">
           <div
-            className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl ${colors.accent} text-white font-bold text-lg sm:text-xl shadow-sm`}
+            className={`flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg ${colors.accent} text-white font-bold text-lg sm:text-xl shadow-sm`}
           >
             {phase.id}
           </div>
@@ -124,7 +124,7 @@ function PhaseCard({
             <div className={`text-[11px] font-bold uppercase tracking-[2px] ${colors.accentText} opacity-80`}>
               Fase {phase.id}
             </div>
-            <h3 className="font-serif font-semibold text-base sm:text-lg text-stone-900 mt-0.5">
+            <h3 className="font-sans font-semibold text-base sm:text-lg text-stone-900 mt-0.5">
               {phase.emoji} {phase.name}
             </h3>
           </div>
@@ -153,7 +153,7 @@ function PhaseCard({
 
       <div id={`phase-${phase.id}-content`} role="region" aria-label={`${phase.name} details`} className={`accordion-content ${isOpen ? "open" : ""}`}>
         <div>
-          <div className="px-5 pb-5 sm:px-6 sm:pb-6 space-y-4">
+          <div className="px-4 pb-4 sm:px-6 sm:pb-6 space-y-4">
             <div className={`h-px ${colors.border} bg-current opacity-30`} />
             {phase.fields.map((field, fieldIndex) => (
               <div key={fieldIndex} className="space-y-1.5">
@@ -161,7 +161,7 @@ function PhaseCard({
                   <span>{field.icon}</span>
                   {field.label}
                 </label>
-                <div className={`rounded-xl border ${colors.border} bg-white/70 px-4 py-3 text-sm text-stone-800 leading-relaxed`}>
+                <div className={`rounded-lg border ${colors.border} bg-white/70 px-4 py-3 text-sm text-stone-800 leading-relaxed`}>
                   <RichText text={field.value || "Nog niet ingevuld"} />
                 </div>
               </div>
@@ -188,10 +188,10 @@ function TableView({ data }: { data: CSPData }) {
           className="rounded-full object-cover"
         />
         <div className="text-center space-y-1">
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
-            🛡️ Bescherm Plan
+          <h2 className="font-sans text-2xl sm:text-3xl font-bold text-stone-900">
+            Bescherm Plan
           </h2>
-          <p className="text-sm text-stone-500">🍀 Daantje Goedhart</p>
+          <p className="text-sm text-stone-500">Daantje Goedhart</p>
         </div>
       </div>
 
@@ -203,13 +203,13 @@ function TableView({ data }: { data: CSPData }) {
         <table className="w-full border-collapse text-[13px]" style={{ borderSpacing: 0 }}>
           <thead>
             <tr>
-              <th className="w-[140px] p-3 text-left text-[11px] font-bold text-stone-400 uppercase tracking-[1.5px] align-bottom border border-stone-200 bg-stone-50" />
+              <th className="w-[140px] p-3 text-left text-[11px] font-bold text-stone-400 uppercase tracking-[1.5px] align-bottom border border-stone-200/60 bg-stone-50" />
               {data.phases.map((phase) => {
                 const c = phaseColors[phase.colorKey as keyof typeof phaseColors];
                 return (
                   <th
                     key={phase.id}
-                    className={`p-3 text-left align-bottom ${c.bg} border border-stone-200`}
+                    className={`p-3 text-left align-bottom ${c.bg} border border-stone-200/60`}
                   >
                     <div className="flex items-center gap-2">
                       <div className={`flex items-center justify-center w-7 h-7 rounded-lg ${c.accent} text-white font-bold text-xs shrink-0`}>
@@ -232,7 +232,7 @@ function TableView({ data }: { data: CSPData }) {
           <tbody>
             {fieldLabels.map((label, fieldIndex) => (
               <tr key={fieldIndex}>
-                <td className="p-3 text-[11px] font-bold text-stone-500 uppercase tracking-[1px] align-top leading-tight border border-stone-200 bg-stone-50">
+                <td className="p-3 text-[11px] font-bold text-stone-500 uppercase tracking-[1px] align-top leading-tight border border-stone-200/60 bg-stone-50">
                   {data.phases[0]?.fields[fieldIndex]?.icon} {label}
                 </td>
                 {data.phases.map((phase) => {
@@ -240,7 +240,7 @@ function TableView({ data }: { data: CSPData }) {
                   return (
                     <td
                       key={phase.id}
-                      className={`p-3 align-top border border-stone-200 ${c.bg}`}
+                      className={`p-3 align-top border border-stone-200/60 ${c.bg}`}
                     >
                       <div className="text-[13px] text-stone-800 leading-relaxed">
                         <RichText text={phase.fields[fieldIndex]?.value || ""} />
@@ -283,7 +283,7 @@ const friends: typeof family = [
 
 function ContactCard({ p }: { p: typeof family[0] }) {
   return (
-    <a href={`tel:${p.phone}`} className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer ${p.primary ? "bg-phase-0-light border border-phase-0-border" : "border border-stone-100"}`}>
+    <a href={`tel:${p.phone}`} className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer ${p.primary ? "bg-phase-0-light border border-phase-0-border" : "border border-stone-200/50"}`}>
       {p.nr > 0 && (
         <div className={`flex items-center justify-center w-7 h-7 rounded-lg font-bold text-xs shrink-0 ${
           p.nr === 1 ? "bg-phase-0 text-white" :
@@ -328,10 +328,10 @@ function ProtectorsCard() {
   return (
     <div className="space-y-4">
       {/* Family */}
-      <div className="bg-white rounded-2xl border-2 border-phase-0-border bg-phase-0-light p-5 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-phase-0-border bg-phase-0-light p-4 sm:p-6 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            🩸 Familie
+            Familie
           </h2>
           <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
             Altijd #1 prioriteit
@@ -343,9 +343,9 @@ function ProtectorsCard() {
       </div>
 
       {/* In-laws */}
-      <div className="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          💍 Aangetrouwd
+          Aangetrouwd
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {inlaws.map((p) => <ContactCard key={p.phone} p={p} />)}
@@ -353,9 +353,9 @@ function ProtectorsCard() {
       </div>
 
       {/* Friends */}
-      <div className="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+      <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          🛡️ Vrienden
+          Vrienden
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
@@ -406,7 +406,7 @@ export default function Home() {
       <a href="#main-content" className="skip-link">Ga naar inhoud</a>
 
       {/* Top bar */}
-      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-lg border-b border-stone-200 no-print">
+      <header className="sticky top-0 z-10 bg-white/70 backdrop-blur-xl border-b border-stone-200/50 no-print">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
@@ -417,26 +417,26 @@ export default function Home() {
               className="rounded-full object-cover"
             />
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-[3px] text-stone-400">🛡️ Bescherm Plan</div>
-              <h1 className="font-serif font-bold text-lg text-stone-900">
-                🍀 Daantje Goedhart
+              <div className="text-[11px] font-bold uppercase tracking-[3px] text-stone-400">Bescherm Plan</div>
+              <h1 className="font-sans font-semibold text-lg text-stone-900">
+                Daantje Goedhart
               </h1>
             </div>
           </div>
 
           {/* Segmented toggle */}
-          <div className="flex bg-stone-100 rounded-xl p-1 border border-stone-200">
+          <div className="flex bg-stone-100/80 rounded-[10px] p-0.5">
             {(["edit", "preview"] as const).map((v) => (
               <button
                 key={v}
                 onClick={() => setView(v)}
-                className={`px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
+                className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
                   view === v
-                    ? "bg-white text-stone-900 shadow-sm border border-stone-200"
-                    : "text-stone-400 hover:text-stone-600 border border-transparent"
+                    ? "bg-white text-stone-900 shadow-sm"
+                    : "text-stone-400 hover:text-stone-600"
                 }`}
               >
-                {v === "edit" ? "📋 Accordion" : "📊 Tabel"}
+                {v === "edit" ? "Accordion" : "Tabel"}
               </button>
             ))}
           </div>
@@ -448,7 +448,7 @@ export default function Home() {
         {view === "edit" ? (
           <>
             {/* Progress */}
-            <div className="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+            <div className="bg-white rounded-xl border border-stone-200/60 p-4 sm:p-6 shadow-sm">
               <ProgressBar phases={data.phases} />
             </div>
 

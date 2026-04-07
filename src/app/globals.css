@@ -3,8 +3,7 @@
 @theme inline {
   --color-background: #fafaf9;
   --color-foreground: #1c1917;
-  --font-sans: var(--font-dm-sans);
-  --font-serif: var(--font-fraunces);
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
 
   --color-phase-0: #16a34a;
   --color-phase-0-light: #f0fdf4;
@@ -30,14 +29,19 @@
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* SF Pro Rounded utility */
+.sf-rounded {
+  font-family: 'SF Pro Rounded', 'SF Pro Display', -apple-system, system-ui, sans-serif;
 }
 
 /* Smooth accordion transitions */
 .accordion-content {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s ease-out;
+  transition: grid-template-rows 0.25s ease-out;
 }
 
 .accordion-content.open {
