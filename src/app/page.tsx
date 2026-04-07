@@ -265,6 +265,8 @@ const inlaws: typeof family = [
 const friends: typeof family = [
   { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
   { nr: 0, emoji: "🔱", name: "Don Mehrow", role: "", phone: "+31636311764" },
+  { nr: 0, emoji: "🦁", name: "Mats Duijn", role: "", phone: "+31623043383" },
+  { nr: 0, emoji: "🐂", name: "Bram Veldhuijs", role: "", phone: "+31612422016" },
 ];
 
 function ContactRow({ p }: { p: typeof family[0] }) {
@@ -307,9 +309,14 @@ function ProtectorsCard() {
     <div className="space-y-4">
       {/* Family */}
       <div className="bg-white rounded-2xl border-2 border-phase-0-border bg-phase-0-light p-5 sm:p-6 shadow-sm">
-        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0 mb-3">
-          🏡 Familie
-        </h2>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
+            🏡 Familie
+          </h2>
+          <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
+            Altijd #1 prioriteit
+          </span>
+        </div>
         <div className="divide-y divide-phase-0-border/40">
           {family.map((p) => <ContactRow key={p.phone} p={p} />)}
         </div>
