@@ -8,21 +8,21 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    facility: "Amstelmeren (GGZ inGeest)",
+    facility: "Amstelmeren (GGZ inGeest) - Amstelveenseweg 589, 1081 JC Amsterdam",
     verdict: "bad",
     emoji: "🚫",
     summary: "Absoluut niet - het ergste wat je iemand in een manie kunt aandoen",
     details: "Het was daar fucking druk. Het stonk fucking hard. Er liepen gewoon ratten. Mensen liepen op dode voeten. Er was weinig begeleiding. Mensen waren depressief. Sommige mensen waren zelfs luid. Het was daar gewoon echt heel goor.\n\nAls je iemand in een manie hebt, moet die persoon tot rust kunnen komen. Om tot rust te komen moet diegene zich in een rustige omgeving bevinden. Dat betekent: niet te veel mensen, en wel hygiene. Bij Amstelmeren was dat allesbehalve.\n\nDit is eigenlijk het allerergste wat je iemand in een manie kunt aandoen. Sterker nog: stuur iemand in een manie NOOIT naar zo'n plek als diegene nog tot rede vatbaar is.\n\nBeter is het om iemand gewoon in een hutje in een bos te zetten, met een hot tub en een warme douche, zodat diegene echt goed tot rust kan komen.\n\nDaantje heeft zelf twee schoonmakers in dienst en een robotstofzuiger - zijn schoonmaakbehoefte is heel hoog. Hij kon hier absoluut niet tot rust komen."
   },
   {
-    facility: "Parnassia Castricum Unit 6",
+    facility: "Parnassia Castricum Unit 6 - Dokter de Jonghweg 2, 1901 DB Castricum",
     verdict: "good",
     emoji: "✅",
     summary: "Prima - rustige mensen, redelijk clean",
     details: "Rustige omgeving met rustige medebewoners. Redelijk schoon. Miste wel het eigen leven: een goed bad, douche, en gym. Maar over het geheel een acceptabele plek waar je tot rust kunt komen."
   },
   {
-    facility: "De Nieuwe Valerius",
+    facility: "De Nieuwe Valerius (GGZ inGeest) - Valeriusplein 9, 1075 BG Amsterdam",
     verdict: "good",
     emoji: "✅",
     summary: "Oke - goed bad, vriendelijk personeel, maar heftige medebewoners",
