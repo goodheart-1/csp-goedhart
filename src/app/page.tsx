@@ -305,6 +305,14 @@ const friends: typeof family = [
   { nr: 0, emoji: "⛰️", name: "Jeroen Blokzijl", role: "", phone: "+31640998822" },
   { nr: 0, emoji: "🦁", name: "Mats Duijn", role: "", phone: "+31623043383" },
   { nr: 0, emoji: "🐂", name: "Bram Veldhuijs", role: "", phone: "+31612422016" },
+  { nr: 0, emoji: "🎠", name: "Luca Mehrow", role: "", phone: "+31681505806" },
+  { nr: 0, emoji: "🌞", name: "Max Zonneveld", role: "", phone: "+31631675943" },
+  { nr: 0, emoji: "🦊", name: "Robin Kalmeijer", role: "", phone: "+31626995705" },
+  { nr: 0, emoji: "🕺🏽", name: "Samuel Hoekstra", role: "", phone: "+31614986071" },
+  { nr: 0, emoji: "💙", name: "Tim Jacobsen", role: "", phone: "+31648880599" },
+  { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
+  { nr: 0, emoji: "🏂", name: "Patrick de Hart", role: "", phone: "+31653676907" },
+  { nr: 0, emoji: "🎯", name: "Jan Jaap Rixten", role: "", phone: "+31682914795" },
 ];
 
 function ContactCard({ p }: { p: typeof family[0] }) {
@@ -450,27 +458,28 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Segmented toggle */}
-          <div className="flex bg-stone-100/80 rounded-[10px] p-0.5">
-            {(["edit", "preview"] as const).map((v) => (
-              <button
-                key={v}
-                onClick={() => setView(v)}
-                className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
-                  view === v
-                    ? "bg-white text-stone-900 shadow-sm"
-                    : "text-stone-400 hover:text-stone-600"
-                }`}
-              >
-                {v === "edit" ? "Accordion" : "Tabel"}
-              </button>
-            ))}
-          </div>
         </div>
       </header>
 
       {/* Main content */}
       <main id="main-content" className="flex-1 max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+        {/* View toggle */}
+        <div className="flex bg-stone-100/80 rounded-[10px] p-0.5 w-fit">
+          {(["edit", "preview"] as const).map((v) => (
+            <button
+              key={v}
+              onClick={() => setView(v)}
+              className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
+                view === v
+                  ? "bg-white text-stone-900 shadow-sm"
+                  : "text-stone-400 hover:text-stone-600"
+              }`}
+            >
+              {v === "edit" ? "Accordion" : "Tabel"}
+            </button>
+          ))}
+        </div>
+
         {view === "edit" ? (
           <>
             {/* Progress */}
