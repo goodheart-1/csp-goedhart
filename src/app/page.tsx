@@ -22,14 +22,14 @@ function PhotoGallery() {
         ))}
       </div>
       {selected !== null && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
-          <button onClick={() => setSelected(null)} className="absolute top-4 right-4 text-white/80 hover:text-white text-3xl font-light z-10" aria-label="Sluiten">&times;</button>
-          <button onClick={(e) => { e.stopPropagation(); setSelected((selected - 1 + 11) % 11); }} className="absolute left-4 text-white/80 hover:text-white text-3xl z-10" aria-label="Vorige">&lsaquo;</button>
-          <button onClick={(e) => { e.stopPropagation(); setSelected((selected + 1) % 11); }} className="absolute right-4 text-white/80 hover:text-white text-3xl z-10" aria-label="Volgende">&rsaquo;</button>
-          <div className="relative w-full max-w-3xl aspect-[4/3]" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 bg-black flex items-center justify-center" onClick={() => setSelected(null)}>
+          <button onClick={() => setSelected(null)} className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl z-10 transition-colors" aria-label="Sluiten">&times;</button>
+          <button onClick={(e) => { e.stopPropagation(); setSelected((selected - 1 + 11) % 11); }} className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl z-10 transition-colors" aria-label="Vorige">&lsaquo;</button>
+          <button onClick={(e) => { e.stopPropagation(); setSelected((selected + 1) % 11); }} className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white text-2xl z-10 transition-colors" aria-label="Volgende">&rsaquo;</button>
+          <div className="relative w-full h-full" onClick={(e) => e.stopPropagation()}>
             <Image src={amstelmerePhotos[selected]} alt={`Amstelmeren foto ${selected + 1}`} fill className="object-contain" sizes="100vw" priority />
           </div>
-          <div className="absolute bottom-4 text-white/60 text-sm">{selected + 1} / {amstelmerePhotos.length}</div>
+          <div className="absolute bottom-4 text-white/40 text-sm">{selected + 1} / {amstelmerePhotos.length}</div>
         </div>
       )}
     </>
@@ -376,7 +376,7 @@ function ContactCard({ p }: { p: typeof family[0] }) {
           </div>
         )}
         <div className="text-sm font-medium text-phase-0 tabular-nums mt-0.5 whitespace-nowrap">
-          {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
+          {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "+316 $1 $2 $3 $4")}
         </div>
       </div>
     </a>
@@ -437,7 +437,7 @@ function ProtectorsCard() {
             <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
             <div className="text-sm text-phase-0 font-semibold">Vader</div>
             <div className="text-xs text-stone-500 mt-0.5">Hetzelfde brein - begrijpt het als geen ander</div>
-            <div className="text-sm font-medium text-phase-0 tabular-nums mt-1">06 46 10 22 28</div>
+            <div className="text-sm font-medium text-phase-0 tabular-nums mt-1">+316 46 10 22 28</div>
           </div>
         </div>
       </a>
