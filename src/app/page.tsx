@@ -159,9 +159,9 @@ function PhaseCard({
   );
 }
 
-function ExportView({ data }: { data: CSPData }) {
-  const colors = phaseColors;
+const fieldLabels = ["Signalen", "Wat kan ik zelf doen?", "Wie kan ik bellen voor hulp?", "Wat kunnen anderen doen?", "Doel"];
 
+function TableView({ data }: { data: CSPData }) {
   return (
     <div className="space-y-5">
       {/* Header */}
@@ -184,47 +184,63 @@ function ExportView({ data }: { data: CSPData }) {
       {/* Protectors */}
       <ProtectorsCard />
 
-      {/* Phase cards in preview mode */}
-      {data.phases.map((phase) => {
-        const c = colors[phase.colorKey as keyof typeof colors];
-        return (
-          <div key={phase.id} className={`rounded-2xl border-2 ${c.border} ${c.bg} p-5 sm:p-6`}>
-            {/* Phase header */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`flex items-center justify-center w-9 h-9 rounded-lg ${c.accent} text-white font-bold text-sm shadow-sm`}>
-                {phase.id}
-              </div>
-              <div>
-                <span className={`text-[11px] font-bold uppercase tracking-[2px] ${c.accentText} opacity-80`}>
-                  Fase {phase.id}
-                </span>
-                <span className="text-[13px] text-stone-500 ml-2">{phase.name}</span>
-              </div>
-              <span className="text-xl ml-auto">{phase.emoji}</span>
-            </div>
-
-            {/* Fields in 2-column grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {phase.fields.map((field, i) => {
-                if (!field.value.trim()) return null;
+      {/* Table */}
+      <div className="overflow-x-auto -mx-4 sm:mx-0">
+        <table className="w-full min-w-[700px] border-collapse text-[13px]">
+          {/* Phase header row */}
+          <thead>
+            <tr>
+              <th className="w-[120px] p-2 text-left text-xs font-semibold text-stone-400 uppercase tracking-wide align-bottom" />
+              {data.phases.map((phase) => {
+                const c = phaseColors[phase.colorKey as keyof typeof phaseColors];
                 return (
-                  <div
-                    key={i}
-                    className={`rounded-xl bg-white/60 p-3 ${i === phase.fields.length - 1 && phase.fields.length % 2 === 1 ? "sm:col-span-2" : ""}`}
+                  <th
+                    key={phase.id}
+                    className={`p-3 text-left align-bottom rounded-t-xl ${c.bg} border-2 border-b-0 ${c.border}`}
                   >
-                    <div className={`text-[11px] font-bold uppercase tracking-[1px] ${c.accentText} opacity-70 mb-1.5`}>
-                      {field.icon} {field.label}
+                    <div className="flex items-center gap-2">
+                      <div className={`flex items-center justify-center w-7 h-7 rounded-lg ${c.accent} text-white font-bold text-xs`}>
+                        {phase.id}
+                      </div>
+                      <div>
+                        <div className={`text-[10px] font-bold uppercase tracking-[1.5px] ${c.accentText} opacity-80`}>
+                          Fase {phase.id}
+                        </div>
+                        <div className="text-xs font-semibold text-stone-700 mt-0.5 leading-tight">
+                          {phase.emoji} {phase.name}
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-[13px] text-stone-800 whitespace-pre-wrap leading-relaxed">
-                      {field.value}
-                    </div>
-                  </div>
+                  </th>
                 );
               })}
-            </div>
-          </div>
-        );
-      })}
+            </tr>
+          </thead>
+          <tbody>
+            {fieldLabels.map((label, fieldIndex) => (
+              <tr key={fieldIndex}>
+                <td className="p-2 text-xs font-semibold text-stone-500 align-top leading-tight">
+                  {data.phases[0]?.fields[fieldIndex]?.icon} {label}
+                </td>
+                {data.phases.map((phase) => {
+                  const c = phaseColors[phase.colorKey as keyof typeof phaseColors];
+                  const isLast = fieldIndex === fieldLabels.length - 1;
+                  return (
+                    <td
+                      key={phase.id}
+                      className={`p-3 align-top ${c.bg} border-x-2 ${c.border} ${isLast ? `border-b-2 rounded-b-xl` : ""}`}
+                    >
+                      <div className="text-[12px] text-stone-800 whitespace-pre-wrap leading-relaxed">
+                        {phase.fields[fieldIndex]?.value || ""}
+                      </div>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Footer */}
       <div className="text-center text-xs text-stone-400 pt-2">
@@ -397,7 +413,7 @@ export default function Home() {
             </div>
           </>
         ) : (
-          <ExportView data={data} />
+          <TableView data={data} />
         )}
 
         {/* Footer */}
