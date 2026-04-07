@@ -379,7 +379,7 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
             {title}
           </h2>
-          <span className="text-[10px] font-medium text-stone-300 bg-stone-100 px-1.5 py-0.5 rounded-full">{count}</span>
+          <span className="text-[11px] font-semibold text-stone-500 bg-stone-200 px-2 py-0.5 rounded-full">{count}</span>
         </div>
         <svg className={`w-4 h-4 text-stone-300 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
