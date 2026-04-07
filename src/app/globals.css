@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #fafaf9;
+  --color-foreground: #1c1917;
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-fraunces);
+
+  --color-phase-0: #16a34a;
+  --color-phase-0-light: #f0fdf4;
+  --color-phase-0-border: #bbf7d0;
+  --color-phase-0-medium: #dcfce7;
+
+  --color-phase-1: #ca8a04;
+  --color-phase-1-light: #fefce8;
+  --color-phase-1-border: #fef08a;
+  --color-phase-1-medium: #fef9c3;
+
+  --color-phase-2: #ea580c;
+  --color-phase-2-light: #fff7ed;
+  --color-phase-2-border: #fed7aa;
+  --color-phase-2-medium: #ffedd5;
+
+  --color-phase-3: #dc2626;
+  --color-phase-3-light: #fef2f2;
+  --color-phase-3-border: #fecaca;
+  --color-phase-3-medium: #fee2e2;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Smooth accordion transitions */
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+
+.accordion-content.open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+  overflow: hidden;
+}
+
+/* Textarea auto-resize styling */
+textarea {
+  field-sizing: content;
+  min-height: 2.5rem;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .accordion-content {
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 16px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: var(--color-foreground);
+  color: var(--color-background);
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .accordion-content {
+    grid-template-rows: 1fr !important;
+  }
+}
