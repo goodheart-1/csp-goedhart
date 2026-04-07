@@ -181,6 +181,9 @@ function ExportView({ data }: { data: CSPData }) {
         </div>
       </div>
 
+      {/* Protectors */}
+      <ProtectorsCard />
+
       {/* Phase cards in preview mode */}
       {data.phases.map((phase) => {
         const c = colors[phase.colorKey as keyof typeof colors];
@@ -226,6 +229,48 @@ function ExportView({ data }: { data: CSPData }) {
       {/* Footer */}
       <div className="text-center text-xs text-stone-400 pt-2">
         <p>Bij crisis: bel crisisdienst GGZ InGeest of huisartsenpost</p>
+      </div>
+    </div>
+  );
+}
+
+const protectors = [
+  { emoji: "💚", name: "Aad Goedhart", role: "Vader", phone: "+31646102228", primary: true },
+  { emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
+  { emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
+  { emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
+  { emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
+  { emoji: "🔱", name: "Don Mehrow", role: "", phone: "+31636311764" },
+];
+
+function ProtectorsCard() {
+  return (
+    <div className="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+      <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
+        🛡️ Protectors
+      </h2>
+      <div className="space-y-0 divide-y divide-stone-100">
+        {protectors.map((p) => (
+          <div key={p.phone} className={`flex items-center justify-between py-2.5 ${p.primary ? "first:pt-0" : ""}`}>
+            <div className="flex items-center gap-2.5">
+              <span className="text-lg">{p.emoji}</span>
+              <div>
+                <span className={`text-sm ${p.primary ? "font-bold text-stone-900" : "font-medium text-stone-700"}`}>
+                  {p.name}
+                </span>
+                {p.role && (
+                  <span className="text-xs text-stone-400 ml-1.5">{p.role}</span>
+                )}
+              </div>
+            </div>
+            <a
+              href={`tel:${p.phone}`}
+              className="text-sm text-phase-0 font-medium hover:underline tabular-nums"
+            >
+              {p.phone.replace("+31", "06 ").replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")}
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -317,6 +362,9 @@ export default function Home() {
             <div className="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
               <ProgressBar phases={data.phases} />
             </div>
+
+            {/* Protectors */}
+            <ProtectorsCard />
 
             {/* Expand/Collapse controls */}
             <div className="flex items-center justify-end gap-2 no-print">
