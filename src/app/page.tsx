@@ -318,7 +318,7 @@ function ProtectorsCard() {
       <div className="bg-white rounded-2xl border-2 border-phase-0-border bg-phase-0-light p-5 sm:p-6 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            🏡 Familie
+            🩸 Familie
           </h2>
           <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
             Altijd #1 prioriteit
