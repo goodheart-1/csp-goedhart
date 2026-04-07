@@ -129,7 +129,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nNaasten mogen mijn telefoon/laptop innemen 's avonds\nNiet in discussie gaan, maar grenzen stellen",
+            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nMacBook en telefoon innemen\nNiet in discussie gaan, maar grenzen stellen\nRustige omgeving creeren (boshuisje, natuur)\nZorg dat Lotje & Doortje bij me zijn",
         },
         {
           label: "Doel",
@@ -168,13 +168,13 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Contact opnemen met psychiater of crisisdienst namens mij\nNiet alleen laten\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan",
+            "Contact opnemen met psychiater of crisisdienst namens mij\nBreng me naar een rustige plek (boshuisje, natuur) - geen ziekenhuis\nAlleen pen en papier, geen MacBook of telefoon\nZorg dat Lotje & Doortje bij me zijn\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan",
         },
         {
           label: "Doel",
           icon: "🎯",
           value:
-            "Veiligheid waarborgen\nProfessionele hulp inschakelen\nOpname als noodzakelijk",
+            "Veiligheid waarborgen\nRust en natuur, niet een ziekenhuis\nProfessionele hulp op afstand (psychiater belt in)\nLotje & Doortje als anker",
         },
       ],
     },
