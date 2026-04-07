@@ -301,7 +301,7 @@ function TableView({ data }: { data: CSPData }) {
 
 const family = [
   { nr: 1, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins, hoe gaat het", phone: "+31617421388", primary: true },
-  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Alleen bij nood - puur uit voorzorg", info: "Papa staat als #2 puur uit voorzorg. We verwachten niet dat dit punt bereikt wordt. Dit plan bestaat zodat iedereen weet wat te doen, niet omdat het nodig zal zijn.", phone: "+31646102228" },
+  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader - kent manie uit eigen ervaring", subtitle: "Alleen bij nood - puur uit voorzorg", info: "Papa staat als #2 puur uit voorzorg. We verwachten niet dat dit punt bereikt wordt. Dit plan bestaat zodat iedereen weet wat te doen, niet omdat het nodig zal zijn. Aad begrijpt manie uit eigen ervaring.", phone: "+31646102228" },
   { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
 ];
@@ -329,7 +329,7 @@ const moreGoodFriends: typeof family = [
   { nr: 0, emoji: "🎯", name: "Jan Jaap Rixten", role: "", phone: "+31682914795" },
   { nr: 0, emoji: "💪", name: "Bas Bults", role: "", phone: "+31640502444" },
   { nr: 0, emoji: "🎬", name: "Daaf de Jonge", role: "", phone: "+31627356938" },
-  { nr: 0, emoji: "🎵", name: "Jonne Krom", role: "", phone: "+31624531189" },
+  { nr: 0, emoji: "🎵", name: "Jonne Krom", role: "Begrijpt manie uit eigen ervaring", phone: "+31624531189" },
 ];
 
 const teamClearly: typeof family = [
