@@ -308,7 +308,7 @@ function ContactCard({ p }: { p: typeof family[0] }) {
             <span className="text-[11px] text-stone-400 italic">{p.subtitle}</span>
             {"info" in p && p.info && (
               <span className="relative group cursor-help" onClick={(e) => e.preventDefault()}>
-                <span className="flex items-center justify-center w-4 h-4 rounded-full bg-stone-200 text-stone-500 text-[9px] font-bold">i</span>
+                <span className="flex items-center justify-center w-4 h-4 rounded-full bg-blue-100 text-blue-600 text-[9px] font-bold">i</span>
                 <span className="absolute left-0 top-5 w-56 bg-stone-900 text-white text-[11px] rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
                   {p.info}
                 </span>
