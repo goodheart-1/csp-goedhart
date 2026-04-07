@@ -123,13 +123,13 @@ export const defaultCSPData: CSPData = {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "Psychiater direct bellen\nDaan en/of Don inschakelen\nHuisartsenpost (0900-1515) als psychiater niet bereikbaar",
+            "Psychiater direct bellen\nAad (vader) inschakelen\nDaan en/of Don\nHuisartsenpost (0900-1515) als psychiater niet bereikbaar",
         },
         {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Daan/Don mogen actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nNaasten mogen mijn telefoon/laptop innemen 's avonds\nNiet in discussie gaan, maar grenzen stellen",
+            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nNaasten mogen mijn telefoon/laptop innemen 's avonds\nNiet in discussie gaan, maar grenzen stellen",
         },
         {
           label: "Doel",
@@ -162,7 +162,7 @@ export const defaultCSPData: CSPData = {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "112 bij direct gevaar\nPsychiater / crisisdienst GGZ\nHuisartsenpost\nDaan en Don als eerste contactpersonen",
+            "112 bij direct gevaar\nPsychiater / crisisdienst GGZ\nHuisartsenpost\nAad (vader) als eerste contactpersoon",
         },
         {
           label: "Wat kunnen anderen doen?",
