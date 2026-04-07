@@ -129,7 +129,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "💚 **Aad (vader)** mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n\n🏠 **Plan A**: Breng me naar **Margha (mama)** - voorkeur\n🔑 **Plan B**: Terug naar appartement\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het rustig is, bij Aad als het heftig is",
+            "💚 **Aad (vader)** mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het rustig is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
@@ -168,7 +168,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n\n🏠 **Plan A**: Breng me naar **Margha (mama)** - voorkeur\n🔑 **Plan B**: Terug naar appartement\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het tranquillo is, bij Aad als het heftig is",
+            "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het tranquillo is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
