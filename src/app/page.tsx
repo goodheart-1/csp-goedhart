@@ -257,9 +257,9 @@ const family = [
   { nr: 4, emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
 ];
 
-const friends = [
-  { emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
-  { emoji: "🔱", name: "Don Mehrow", role: "", phone: "+31636311764" },
+const friends: typeof family = [
+  { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "", phone: "+31615672234" },
+  { nr: 0, emoji: "🔱", name: "Don Mehrow", role: "", phone: "+31636311764" },
 ];
 
 function ContactRow({ p }: { p: typeof family[0] }) {
