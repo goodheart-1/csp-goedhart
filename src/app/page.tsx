@@ -400,7 +400,7 @@ function ProtectorsCard() {
       {/* Friends */}
       <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          🛡️ Vrienden
+          👊 Best Brothers
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
