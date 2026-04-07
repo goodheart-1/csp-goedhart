@@ -333,17 +333,9 @@ function ProtectorsCard() {
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
             🩸 Familie
           </h2>
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
-              Altijd #1 prioriteit
-            </span>
-            <span className="relative group cursor-help">
-              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-stone-200 text-stone-500 text-xs font-bold">i</span>
-              <span className="absolute right-0 top-7 w-64 bg-stone-900 text-white text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
-                Papa staat als #2 puur uit voorzorg. We verwachten niet dat dit punt bereikt wordt. Dit plan bestaat zodat iedereen weet wat te doen, niet omdat het nodig zal zijn.
-              </span>
-            </span>
-          </div>
+          <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
+            Altijd #1 prioriteit
+          </span>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {family.map((p) => <ContactCard key={p.phone} p={p} />)}
