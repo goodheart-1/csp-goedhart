@@ -429,7 +429,31 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
 function ProtectorsCard() {
   return (
     <div className="space-y-4">
-      {/* Family - always open */}
+      {/* DNA - Primary contact */}
+      <a href={`https://wa.me/31646102228`} target="_blank" rel="noopener noreferrer" className="block bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] hover:brightness-[0.98] transition-all cursor-pointer">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
+            🧬 DNA - Eerste Contactpersoon
+          </h2>
+          <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
+            #1 Bel altijd eerst
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="relative shrink-0">
+            <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
+            <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">💚</span>
+          </div>
+          <div>
+            <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
+            <div className="text-sm text-phase-0 font-semibold">Vader</div>
+            <div className="text-xs text-stone-500 mt-0.5">Heeft manie zelf meegemaakt - begrijpt het als geen ander</div>
+            <div className="text-sm font-medium text-phase-0 tabular-nums mt-1">06 46 10 22 28</div>
+          </div>
+        </div>
+      </a>
+
+      {/* Family */}
       <div className="bg-white rounded-xl border border-stone-200/20 bg-phase-0-light p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
