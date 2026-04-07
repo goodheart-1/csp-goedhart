@@ -37,6 +37,42 @@ export const experiences: Experience[] = [
   }
 ];
 
+export interface Medication {
+  name: string;
+  type: "mood_stabilizer" | "antipsychotic" | "sleep" | "supplement" | "other";
+  status: "active" | "refused" | "stopped" | "as_needed";
+  dosage?: string;
+  timing?: string;
+  started?: string;
+  stopped?: string;
+  prescribed_by?: string;
+  notes?: string;
+}
+
+export const medications: Medication[] = [
+  // --- Actief ---
+  // Vul hier je huidige medicatie in
+
+  // --- Geweigerd ---
+  // {
+  //   name: "Voorbeeld",
+  //   type: "antipsychotic",
+  //   status: "refused",
+  //   dosage: "5mg",
+  //   notes: "Reden van weigering",
+  // },
+
+  // --- Gestopt ---
+  // {
+  //   name: "Voorbeeld",
+  //   type: "mood_stabilizer",
+  //   status: "stopped",
+  //   started: "2024-01",
+  //   stopped: "2024-06",
+  //   notes: "Reden van stoppen",
+  // },
+];
+
 export interface PhaseField {
   label: string;
   icon: string;
