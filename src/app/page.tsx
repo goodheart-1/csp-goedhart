@@ -219,7 +219,7 @@ function TableView({ data }: { data: CSPData }) {
         <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
           Locaties (Live)
         </h2>
-        <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20">
+        <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
           <LocationMap />
         </div>
       </div>
@@ -486,7 +486,7 @@ export default function Home() {
               <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
                 Locaties (Live)
               </h2>
-              <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20">
+              <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
                 <LocationMap />
               </div>
             </div>
