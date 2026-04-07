@@ -263,10 +263,10 @@ function TableView({ data }: { data: CSPData }) {
 }
 
 const family = [
-  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Vader", phone: "+31646102228", primary: true },
-  { nr: 2, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
-  { nr: 3, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
-  { nr: 4, emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
+  { nr: 1, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins, hoe gaat het", phone: "+31617421388", primary: true },
+  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Escalatie, als dingen uit de hand lopen", phone: "+31646102228" },
+  { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
+  { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
 ];
 
 const inlaws: typeof family = [
@@ -302,6 +302,9 @@ function ContactCard({ p }: { p: typeof family[0] }) {
           <div className={`text-xs ${p.primary ? "text-phase-0 font-semibold" : "text-stone-400"}`}>
             {p.role}
           </div>
+        )}
+        {"subtitle" in p && p.subtitle && (
+          <div className="text-[11px] text-stone-400 italic mt-0.5">{p.subtitle}</div>
         )}
         <div className="text-sm font-medium text-phase-0 tabular-nums mt-0.5">
           {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
