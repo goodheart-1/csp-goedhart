@@ -283,7 +283,7 @@ const friends: typeof family = [
 
 function ContactCard({ p }: { p: typeof family[0] }) {
   return (
-    <a href={`tel:${p.phone}`} className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer ${p.primary ? "bg-phase-0-light border border-phase-0-border" : "border border-stone-200/50"}`}>
+    <a href={`https://wa.me/${p.phone.replace("+", "")}`} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer ${p.primary ? "bg-phase-0-light border border-phase-0-border" : "border border-stone-200/50"}`}>
       {p.nr > 0 && (
         <div className={`flex items-center justify-center w-7 h-7 rounded-lg font-bold text-xs shrink-0 ${
           p.nr === 1 ? "bg-phase-0 text-white" :
