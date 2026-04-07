@@ -308,7 +308,7 @@ function ContactRow({ p }: { p: typeof family[0] }) {
       </div>
       <a
         href={`tel:${p.phone}`}
-        className={`font-medium hover:underline tabular-nums ${p.primary ? "text-base text-phase-0" : "text-sm text-phase-0"}`}
+        className="text-sm font-medium text-phase-0 hover:underline tabular-nums"
       >
         {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
       </a>
