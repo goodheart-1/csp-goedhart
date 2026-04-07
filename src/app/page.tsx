@@ -300,8 +300,8 @@ function TableView({ data }: { data: CSPData }) {
 }
 
 const family = [
-  { nr: 1, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins, hoe gaat het", phone: "+31617421388", primary: true },
-  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader - kent manie uit eigen ervaring", subtitle: "Alleen bij nood - puur uit voorzorg", info: "Papa staat als #2 puur uit voorzorg. We verwachten niet dat dit punt bereikt wordt. Dit plan bestaat zodat iedereen weet wat te doen, niet omdat het nodig zal zijn. Aad begrijpt manie uit eigen ervaring.", phone: "+31646102228" },
+  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Heeft manie zelf meegemaakt - begrijpt het als geen ander", phone: "+31646102228", primary: true },
+  { nr: 2, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins", phone: "+31617421388" },
   { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
 ];
