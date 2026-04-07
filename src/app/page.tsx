@@ -397,10 +397,39 @@ function ContactCard({ p }: { p: typeof family[0] }) {
   );
 }
 
+function CollapsibleGroup({ title, count, children, defaultOpen = false }: { title: string; count: number; children: React.ReactNode; defaultOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  return (
+    <div className="bg-white rounded-xl border border-stone-200/20 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-4 sm:px-6 cursor-pointer hover:bg-stone-50/50 transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+            {title}
+          </h2>
+          <span className="text-[10px] font-medium text-stone-300 bg-stone-100 px-1.5 py-0.5 rounded-full">{count}</span>
+        </div>
+        <svg className={`w-4 h-4 text-stone-300 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+      {isOpen && (
+        <div className="px-4 pb-4 sm:px-6 sm:pb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {children}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ProtectorsCard() {
   return (
     <div className="space-y-4">
-      {/* Family */}
+      {/* Family - always open */}
       <div className="bg-white rounded-xl border border-stone-200/20 bg-phase-0-light p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
@@ -415,45 +444,21 @@ function ProtectorsCard() {
         </div>
       </div>
 
-      {/* In-laws */}
-      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          💍 Aangetrouwd
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {inlaws.map((p) => <ContactCard key={p.phone} p={p} />)}
-        </div>
-      </div>
+      <CollapsibleGroup title="💍 Aangetrouwd" count={inlaws.length}>
+        {inlaws.map((p) => <ContactCard key={p.phone} p={p} />)}
+      </CollapsibleGroup>
 
-      {/* Friends */}
-      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          👊 Best Brothers
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
-        </div>
-      </div>
+      <CollapsibleGroup title="👊 Best Brothers" count={friends.length}>
+        {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
+      </CollapsibleGroup>
 
-      {/* More Good Friends */}
-      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          🤙 More Good Friends
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {moreGoodFriends.map((p) => <ContactCard key={p.phone} p={p} />)}
-        </div>
-      </div>
+      <CollapsibleGroup title="🤙 More Good Friends" count={moreGoodFriends.length}>
+        {moreGoodFriends.map((p) => <ContactCard key={p.phone} p={p} />)}
+      </CollapsibleGroup>
 
-      {/* Team Clearly */}
-      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
-          🩵 Team Clearly
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          {teamClearly.map((p) => <ContactCard key={p.phone} p={p} />)}
-        </div>
-      </div>
+      <CollapsibleGroup title="🩵 Team Clearly" count={teamClearly.length}>
+        {teamClearly.map((p) => <ContactCard key={p.phone} p={p} />)}
+      </CollapsibleGroup>
     </div>
   );
 }
