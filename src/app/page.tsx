@@ -264,7 +264,7 @@ function TableView({ data }: { data: CSPData }) {
 
 const family = [
   { nr: 1, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins, hoe gaat het", phone: "+31617421388", primary: true },
-  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Escalatie, als dingen uit de hand lopen", phone: "+31646102228" },
+  { nr: 2, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Alleen bij nood - puur uit voorzorg", phone: "+31646102228" },
   { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
 ];
@@ -323,9 +323,17 @@ function ProtectorsCard() {
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
             🩸 Familie
           </h2>
-          <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
-            Altijd #1 prioriteit
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
+              Altijd #1 prioriteit
+            </span>
+            <span className="relative group cursor-help">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-stone-200 text-stone-500 text-xs font-bold">i</span>
+              <span className="absolute right-0 top-7 w-64 bg-stone-900 text-white text-xs rounded-lg px-3 py-2 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20">
+                Papa staat als #2 puur uit voorzorg. We verwachten niet dat dit punt bereikt wordt. Dit plan bestaat zodat iedereen weet wat te doen, niet omdat het nodig zal zijn.
+              </span>
+            </span>
+          </div>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {family.map((p) => <ContactCard key={p.phone} p={p} />)}
