@@ -252,9 +252,9 @@ function TableView({ data }: { data: CSPData }) {
 
 const family = [
   { emoji: "💚", name: "Aad Goedhart", role: "Vader", phone: "+31646102228", primary: true },
-  { emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
   { emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
+  { emoji: "🍀", name: "Margha Klaver", role: "Mama", phone: "+31617421388" },
 ];
 
 const friends = [
