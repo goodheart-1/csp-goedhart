@@ -264,24 +264,32 @@ const friends: typeof family = [
 
 function ContactRow({ p }: { p: typeof family[0] }) {
   return (
-    <div className={`flex items-center justify-between py-2.5`}>
-      <div className="flex items-center gap-2.5">
-        {"nr" in p && p.nr && (
-          <span className="text-xs font-bold text-stone-400 w-4 text-right">{p.nr}.</span>
+    <div className={`flex items-center justify-between py-3 ${p.primary ? "py-4" : ""}`}>
+      <div className="flex items-center gap-3">
+        {p.nr > 0 && (
+          <div className={`flex items-center justify-center w-8 h-8 rounded-lg font-bold text-sm ${
+            p.nr === 1 ? "bg-phase-0 text-white" :
+            p.nr === 2 ? "bg-phase-0-medium text-phase-0" :
+            "bg-stone-100 text-stone-500"
+          }`}>
+            {p.nr}
+          </div>
         )}
-        <span className="text-lg">{p.emoji}</span>
+        <span className="text-xl">{p.emoji}</span>
         <div>
-          <span className={`text-sm ${p.primary ? "font-bold text-stone-900" : "font-medium text-stone-700"}`}>
+          <div className={`${p.primary ? "text-base font-bold text-stone-900" : "text-sm font-medium text-stone-700"}`}>
             {p.name}
-          </span>
+          </div>
           {p.role && (
-            <span className="text-xs text-stone-400 ml-1.5">{p.role}</span>
+            <div className={`text-xs ${p.primary ? "text-phase-0 font-semibold uppercase tracking-wide" : "text-stone-400"}`}>
+              {p.primary ? "Primair contactpersoon" : p.role}
+            </div>
           )}
         </div>
       </div>
       <a
         href={`tel:${p.phone}`}
-        className="text-sm text-phase-0 font-medium hover:underline tabular-nums"
+        className={`font-medium hover:underline tabular-nums ${p.primary ? "text-base text-phase-0" : "text-sm text-phase-0"}`}
       >
         {p.phone.replace("+31", "06 ").replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")}
       </a>
