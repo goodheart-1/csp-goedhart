@@ -338,7 +338,16 @@ function ContactCard({ p }: { p: typeof family[0] }) {
           {p.nr}
         </div>
       )}
-      <span className="flex items-center justify-center w-10 h-10 rounded-full bg-stone-100 shadow-[0_1px_3px_rgba(0,0,0,0.1)] text-xl shrink-0">{p.emoji}</span>
+      <div className="relative shrink-0">
+        <Image
+          src={`/contacts/${p.name}.png`}
+          alt={p.name}
+          width={40}
+          height={40}
+          className="w-10 h-10 rounded-full object-cover shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
+        />
+        <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-5 h-5 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[11px]">{p.emoji}</span>
+      </div>
       <div>
         <div className={`${p.primary ? "text-sm font-bold text-stone-900" : "text-sm font-medium text-stone-700"}`}>
           {p.name}
