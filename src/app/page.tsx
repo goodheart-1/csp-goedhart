@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { defaultCSPData, type CSPData, type Phase, experiences } from "./csp-data";
@@ -485,6 +485,71 @@ function ProtectorsCard() {
   );
 }
 
+const sections = [
+  { id: "intro", emoji: "👋", label: "Intro" },
+  { id: "protectors", emoji: "🛡️", label: "Protectors" },
+  { id: "phases", emoji: "📊", label: "Fases" },
+  { id: "facilities", emoji: "🏥", label: "Faciliteiten" },
+  { id: "experiences", emoji: "📖", label: "Ervaringen" },
+  { id: "sleep", emoji: "😴", label: "Slaap" },
+  { id: "locations", emoji: "📍", label: "Locaties" },
+  { id: "crisis", emoji: "📞", label: "Crisis" },
+] as const;
+
+function SideNav() {
+  const [active, setActive] = useState("intro");
+  const clicking = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (clicking.current) return;
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+            break;
+          }
+        }
+      },
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    clicking.current = true;
+    setActive(id);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => { clicking.current = false; }, 800);
+  };
+
+  return (
+    <nav className="fixed left-0 top-1/2 -translate-y-1/2 z-20 hidden xl:flex flex-col gap-1 pl-2 no-print" aria-label="Secties">
+      {sections.map((s) => (
+        <button
+          key={s.id}
+          onClick={() => scrollTo(s.id)}
+          title={s.label}
+          className={`group flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-r-lg text-xs font-medium transition-all duration-200 cursor-pointer
+            ${active === s.id
+              ? "bg-white shadow-md text-stone-900 border border-stone-200/60 border-l-2 border-l-phase-0"
+              : "text-stone-400 hover:text-stone-600 hover:bg-white/60 border border-transparent"
+            }`}
+        >
+          <span className="text-sm">{s.emoji}</span>
+          <span className={`transition-all duration-200 ${active === s.id ? "opacity-100 max-w-24" : "opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-24"}`}>
+            {s.label}
+          </span>
+        </button>
+      ))}
+    </nav>
+  );
+}
+
 export default function Home() {
   const [data] = useState<CSPData>(defaultCSPData);
   const [view, setView] = useState<"edit" | "preview">("edit");
@@ -508,6 +573,7 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col">
       <a href="#main-content" className="skip-link">Ga naar inhoud</a>
+      <SideNav />
 
       {/* Top bar */}
       <header className="sticky top-0 z-10 bg-white/70 backdrop-blur-xl border-b border-stone-200/50 no-print">
@@ -534,7 +600,7 @@ export default function Home() {
       {/* Main content */}
       <main id="main-content" className="flex-1 max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {/* Intro Hero */}
-        <div className="bg-white rounded-2xl border border-stone-200/20 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+        <div id="intro" className="bg-white rounded-2xl border border-stone-200/20 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20">
           {/* Hero photo banner */}
           <div className="relative h-36 sm:h-44 overflow-hidden">
             <Image src="/intro/banner.jpg" alt="Daantje Goedhart YouTube banner" fill className="object-cover object-center" sizes="100vw" priority />
@@ -554,13 +620,16 @@ export default function Home() {
           {/* Content */}
           <div className="px-5 sm:px-8 pb-6 pt-3">
             <h2 className="text-2xl font-bold text-stone-900">Daantje Goedhart</h2>
-            <p className="text-sm text-stone-500 mt-2 leading-relaxed max-w-2xl">
+            <p className="text-sm text-stone-500 mt-2 leading-relaxed">
               Oprichter van{" "}
               <a href="https://clearly.nl/pages/our-goal" target="_blank" rel="noopener noreferrer" className="text-phase-0 font-medium hover:underline">Clearly</a>
-              {" "}- een gezondheidsmerk dat duidelijkheid brengt in supplementen en welzijn. Dit is mijn persoonlijk beschermplan bij bipolaire stoornis.
+              {" "}- een gezondheidsmerk dat duidelijkheid brengt in supplementen en welzijn. Dit is mijn persoonlijk beschermplan. Soms ga ik in overdrive - dat noemen ze dan een "manie". Dat heb ik 1x meegemaakt in mijn leven, en dat hou ik graag zo. Dit plan is er zodat de mensen om mij heen weten wat ze kunnen doen.
             </p>
-            <p className="text-sm text-stone-400 mt-2 leading-relaxed max-w-2xl">
+            <p className="text-sm text-stone-400 mt-2 leading-relaxed">
               Het beste is gewoon met me praten. Maar ik ben sinds mijn 16e ondernemer en ga soms sneller dan een ander - ik heb moeite om iemands tempo te spiegelen. Mijn kanalen hieronder geven extra context over wie ik ben en hoe ik denk. Uiteindelijk zijn we allemaal anders.
+            </p>
+            <p className="text-sm text-stone-400 mt-2 leading-relaxed">
+              Je hebt mannen van weinig woorden. Je hebt ze van veel woorden. Van heel veel. En nog meer. Ik zit daar ergens boven, soms. Dat is niet nieuw. Dat heb ik al heel mn leven. Ik heb tientallen dagboeken volgeschreven. Je moet wat als je bij niemand je gedachtens echt kwijt kan. Ik heb duizenden uren spraakmemos naar mezelf, dat doe ik al 8 jaar. Iedereen is anders.
             </p>
 
             {/* Social links */}
@@ -609,10 +678,10 @@ export default function Home() {
         </div>
 
         {/* Protectors */}
-            <ProtectorsCard />
+            <div id="protectors" className="scroll-mt-20"><ProtectorsCard /></div>
 
         {/* View toggle */}
-        <div className="flex items-center justify-between no-print">
+        <div id="phases" className="flex items-center justify-between no-print scroll-mt-20">
           <div className="flex bg-stone-100/80 rounded-[10px] p-0.5" role="group" aria-label="Weergave wisselen">
             {(["edit", "preview"] as const).map((v) => (
               <button
@@ -653,7 +722,7 @@ export default function Home() {
             </div>
 
             {/* Facilities map */}
-            <div className="space-y-2">
+            <div id="facilities" className="space-y-2 scroll-mt-20">
               <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
                 🏥 Faciliteiten
               </h2>
@@ -663,7 +732,7 @@ export default function Home() {
             </div>
 
             {/* Ervaringen */}
-            <div className="space-y-3">
+            <div id="experiences" className="space-y-3 scroll-mt-20">
               <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
                 📖 Ervaringen & Lessen
               </h2>
@@ -689,10 +758,10 @@ export default function Home() {
         )}
 
         {/* Sleep & Recovery */}
-            <SleepDashboard />
+            <div id="sleep" className="scroll-mt-20"><SleepDashboard /></div>
 
             {/* Map */}
-            <div className="space-y-2">
+            <div id="locations" className="space-y-2 scroll-mt-20">
               <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
                 Locaties (Live)
               </h2>
@@ -702,7 +771,7 @@ export default function Home() {
             </div>
 
         {/* Crisis banner */}
-        <div className="bg-red-50 border border-red-200/50 rounded-xl p-5 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+        <div id="crisis" className="bg-red-50 border border-red-200/50 rounded-xl p-5 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20">
           <div className="flex items-center gap-3">
             <span className="text-2xl">📞</span>
             <div className="text-sm font-bold text-red-700">Noodsituatie of acute crisis?</div>
