@@ -315,6 +315,17 @@ const friends: typeof family = [
   { nr: 0, emoji: "🎯", name: "Jan Jaap Rixten", role: "", phone: "+31682914795" },
 ];
 
+const teamClearly: typeof family = [
+  { nr: 0, emoji: "🦩", name: "Christoph Rottier", role: "", phone: "+31631239040" },
+  { nr: 0, emoji: "🌑", name: "Damien Donker", role: "", phone: "+31628867077" },
+  { nr: 0, emoji: "🍱", name: "Jurjen Lanting", role: "", phone: "+31640249983" },
+  { nr: 0, emoji: "🌳", name: "Michel Boom", role: "", phone: "+31642653343" },
+  { nr: 0, emoji: "🖥️", name: "Miles Jacobs", role: "", phone: "+31624408441" },
+  { nr: 0, emoji: "🐏", name: "Mats Rammers", role: "", phone: "+31639899464" },
+  { nr: 0, emoji: "🕵🏼‍♂️", name: "Robin Keijzer", role: "", phone: "+31683945615" },
+  { nr: 0, emoji: "🧞‍♂️", name: "Stefan Broekman", role: "", phone: "+31621198049" },
+];
+
 function ContactCard({ p }: { p: typeof family[0] }) {
   return (
     <a href={`https://wa.me/${p.phone.replace("+", "")}`} target="_blank" rel="noopener noreferrer" className={`flex items-center gap-3 rounded-xl p-3 hover:bg-stone-50 transition-colors cursor-pointer shadow-[0_1px_3px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] ${p.primary ? "bg-phase-0-light border border-stone-200/30" : "border border-stone-200/30"}`}>
@@ -393,6 +404,16 @@ function ProtectorsCard() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
+        </div>
+      </div>
+
+      {/* Team Clearly */}
+      <div className="bg-white rounded-xl border border-stone-200/20 p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+        <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400 mb-3">
+          🩵 Team Clearly
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {teamClearly.map((p) => <ContactCard key={p.phone} p={p} />)}
         </div>
       </div>
     </div>
