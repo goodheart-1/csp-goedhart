@@ -283,7 +283,7 @@ const friends: typeof family = [
 
 function ContactRow({ p }: { p: typeof family[0] }) {
   return (
-    <div className={`flex items-center justify-between py-3 ${p.primary ? "py-4" : ""}`}>
+    <div className={`flex items-center gap-4 py-3 ${p.primary ? "py-4" : ""}`}>
       <div className="flex items-center gap-3">
         {p.nr > 0 && (
           <div className={`flex items-center justify-center w-8 h-8 rounded-lg font-bold text-sm ${
