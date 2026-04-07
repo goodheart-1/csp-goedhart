@@ -37,6 +37,7 @@ export function FacilitiesMap() {
   return (
     <div className="relative rounded-xl overflow-hidden" style={{ height: 350 }}>
       <MapContainer
+        key="facilities-map"
         center={[52.42, 4.76]}
         zoom={10}
         scrollWheelZoom={false}
@@ -85,6 +86,7 @@ export default function LocationMap() {
   return (
     <div className="relative rounded-xl overflow-hidden" style={{ height: 400 }}>
       <MapContainer
+        key="location-map"
         center={[52.48, 4.65]}
         zoom={10}
         scrollWheelZoom={false}

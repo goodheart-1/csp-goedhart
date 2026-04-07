@@ -65,48 +65,14 @@ const phaseColors = {
   },
 } as const;
 
-function ProgressBar({ phases }: { phases: Phase[] }) {
-  const totalFields = phases.length * 5;
-  const filledFields = phases.reduce(
-    (acc, phase) => acc + phase.fields.filter((f) => f.value.trim().length > 0).length,
-    0
-  );
-  const percentage = Math.round((filledFields / totalFields) * 100);
-
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between text-sm text-stone-500">
-        <span>Voortgang</span>
-        <span className={`font-semibold ${percentage === 100 ? "text-phase-0" : "text-stone-600"}`}>
-          {percentage}%
-        </span>
-      </div>
-      <div className="h-1 w-full rounded-full bg-stone-200 overflow-hidden" role="progressbar" aria-valuenow={percentage} aria-valuemin={0} aria-valuemax={100} aria-label={`${percentage}% ingevuld`}>
-        <div
-          className="h-full rounded-full transition-all duration-500 ease-out"
-          style={{
-            width: `${percentage}%`,
-            background:
-              percentage === 100
-                ? "var(--color-phase-0)"
-                : "linear-gradient(90deg, var(--color-phase-0), var(--color-phase-1), var(--color-phase-2), var(--color-phase-3))",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
 function PhaseCard({
   phase,
   isOpen,
   onToggle,
-  onFieldChange,
 }: {
   phase: Phase;
   isOpen: boolean;
   onToggle: () => void;
-  onFieldChange: (fieldIndex: number, value: string) => void;
 }) {
   const colors = phaseColors[phase.colorKey as keyof typeof phaseColors];
 
@@ -331,6 +297,7 @@ function ContactCard({ p }: { p: typeof family[0] }) {
           alt={p.name}
           width={40}
           height={40}
+          loading="lazy"
           className="w-10 h-10 rounded-full object-cover shadow-[0_1px_3px_rgba(0,0,0,0.12)]"
           onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }}
         />
@@ -369,11 +336,14 @@ function ContactCard({ p }: { p: typeof family[0] }) {
 
 function CollapsibleGroup({ title, count, children, defaultOpen = false }: { title: string; count: number; children: React.ReactNode; defaultOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const groupId = title.replace(/[^a-z0-9]/gi, "-").toLowerCase();
   return (
     <div className="bg-white rounded-xl border border-stone-200/20 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 sm:px-6 cursor-pointer hover:bg-stone-50/50 transition-colors"
+        aria-expanded={isOpen}
+        aria-controls={`group-${groupId}-content`}
+        className="w-full flex items-center justify-between p-4 sm:px-6 cursor-pointer hover:bg-stone-50/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-inset"
       >
         <div className="flex items-center gap-2">
           <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
@@ -381,12 +351,12 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
           </h2>
           <span className="text-[11px] font-semibold text-stone-500 bg-stone-200 px-2 py-0.5 rounded-full">{count}</span>
         </div>
-        <svg className={`w-4 h-4 text-stone-300 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <svg className={`w-4 h-4 text-stone-300 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
         </svg>
       </button>
       {isOpen && (
-        <div className="px-4 pb-4 sm:px-6 sm:pb-6">
+        <div id={`group-${groupId}-content`} className="px-4 pb-4 sm:px-6 sm:pb-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {children}
           </div>
@@ -411,7 +381,7 @@ function ProtectorsCard() {
         </div>
         <div className="flex items-center gap-4">
           <div className="relative shrink-0">
-            <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
+            <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
             <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-sm">💚</span>
           </div>
           <div>
@@ -458,7 +428,7 @@ function ProtectorsCard() {
 }
 
 export default function Home() {
-  const [data, setData] = useState<CSPData>(defaultCSPData);
+  const [data] = useState<CSPData>(defaultCSPData);
   const [view, setView] = useState<"edit" | "preview">("edit");
   const [openPhases, setOpenPhases] = useState<Set<number>>(new Set([0]));
 
@@ -472,22 +442,6 @@ export default function Home() {
       }
       return next;
     });
-  }, []);
-
-  const updateField = useCallback((phaseId: number, fieldIndex: number, value: string) => {
-    setData((prev) => ({
-      ...prev,
-      phases: prev.phases.map((phase) =>
-        phase.id === phaseId
-          ? {
-              ...phase,
-              fields: phase.fields.map((field, i) =>
-                i === fieldIndex ? { ...field, value } : field
-              ),
-            }
-          : phase
-      ),
-    }));
   }, []);
 
   const expandAll = () => setOpenPhases(new Set([0, 1, 2, 3]));
@@ -536,12 +490,13 @@ export default function Home() {
             </div>
 
         {/* View toggle */}
-        <div className="flex items-center justify-between">
-          <div className="flex bg-stone-100/80 rounded-[10px] p-0.5">
+        <div className="flex items-center justify-between no-print">
+          <div className="flex bg-stone-100/80 rounded-[10px] p-0.5" role="group" aria-label="Weergave wisselen">
             {(["edit", "preview"] as const).map((v) => (
               <button
                 key={v}
                 onClick={() => setView(v)}
+                aria-pressed={view === v}
                 className={`px-3.5 py-1.5 rounded-[8px] text-[13px] font-medium transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 ${
                   view === v
                     ? "bg-white text-stone-900 shadow-sm"
@@ -554,9 +509,9 @@ export default function Home() {
           </div>
           {view === "edit" && (
             <div className="flex items-center gap-2">
-              <button onClick={expandAll} className="text-xs text-stone-500 hover:text-stone-700 transition-colors">Alles openen</button>
-              <span className="text-stone-300">|</span>
-              <button onClick={collapseAll} className="text-xs text-stone-500 hover:text-stone-700 transition-colors">Alles sluiten</button>
+              <button onClick={expandAll} className="text-xs text-stone-500 hover:text-stone-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 rounded">Alles openen</button>
+              <span className="text-stone-300" aria-hidden="true">|</span>
+              <button onClick={collapseAll} className="text-xs text-stone-500 hover:text-stone-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 rounded">Alles sluiten</button>
             </div>
           )}
         </div>
@@ -571,7 +526,6 @@ export default function Home() {
                   phase={phase}
                   isOpen={openPhases.has(phase.id)}
                   onToggle={() => togglePhase(phase.id)}
-                  onFieldChange={(fieldIndex, value) => updateField(phase.id, fieldIndex, value)}
                 />
               ))}
             </div>
