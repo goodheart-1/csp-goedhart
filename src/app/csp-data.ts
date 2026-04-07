@@ -34,13 +34,13 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "😴 7-8 uur slaap per nacht\n💚 Whoop recovery groen (>66%)\n📋 Gestructureerde dag met vaste routine\n🎯 Gefocust op Clearly zonder te veel parallelle projecten\n🧠 Rustig, helder denken\n🍽️ Normale eetlust en sociale contacten",
+            "😴 **7-8 uur** slaap per nacht\n💚 Whoop recovery **groen** (**>66%**)\n📋 Gestructureerde dag met vaste routine\n🎯 Gefocust op Clearly zonder te veel parallelle projecten\n🧠 Rustig, helder denken\n🍽️ Normale eetlust en sociale contacten",
         },
         {
           label: "Wat kan ik zelf doen?",
           icon: "🛠️",
           value:
-            "🛏️ Vaste bedtijd aanhouden (uiterlijk 23:00)\n🏃 Dagelijks bewegen / sporten\n⌚ Whoop recovery dagelijks checken\n📵 Telefoon weg na 22:00\n🤖 Beperkt AI-gebruik in de avond\n💧 Voldoende water drinken\n💊 Medicatie innemen zoals voorgeschreven",
+            "🛏️ Vaste bedtijd aanhouden (uiterlijk **23:00**)\n🏃 Dagelijks bewegen / sporten\n⌚ Whoop recovery dagelijks checken\n📵 Telefoon weg na **22:00**\n🤖 Beperkt AI-gebruik in de avond\n💧 Voldoende water drinken\n💊 Medicatie innemen zoals voorgeschreven",
         },
         {
           label: "Wie kan ik bellen voor hulp?",
@@ -72,19 +72,19 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "😴 Slaap zakt naar 5-6 uur per nacht\n💛 Whoop recovery geel (34-66%)\n⚡ Meer energie dan normaal, voelt fijn\n🗣️ Sneller praten, meer ideeen tegelijk\n🌙 's Avonds langer op met AI of werk\n🔀 Meerdere projecten tegelijk willen oppakken\n🏃 Minder behoefte aan pauzes",
+            "😴 Slaap zakt naar **5-6 uur** per nacht\n💛 Whoop recovery **geel** (**34-66%**)\n⚡ Meer energie dan normaal, voelt fijn\n🗣️ Sneller praten, meer ideeen tegelijk\n🌙 's Avonds langer op met AI of werk\n🔀 Meerdere projecten tegelijk willen oppakken\n🏃 Minder behoefte aan pauzes",
         },
         {
           label: "Wat kan ik zelf doen?",
           icon: "🛠️",
           value:
-            "📵 Telefoon weg na 22:00 (niet onderhandelbaar)\n😴 Slaap prioriteren boven alles\n⌚ Whoop checken en serieus nemen\n🚫 Geen nieuwe projecten starten\n🏃 Extra bewegen om energie kwijt te raken\n🤖 AI-gebruik 's avonds stoppen",
+            "📵 Telefoon weg na **22:00** (**niet onderhandelbaar**)\n😴 Slaap prioriteren boven alles\n⌚ Whoop checken en serieus nemen\n🚫 Geen nieuwe projecten starten\n🏃 Extra bewegen om energie kwijt te raken\n🤖 AI-gebruik 's avonds stoppen",
         },
         {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "👋 Signaal afgeven aan naasten (Don, Jeroen)\n🩺 Psychiater informeren bij volgend gesprek",
+            "👋 Signaal afgeven aan naasten (**Don**, **Jeroen**)\n🩺 Psychiater informeren bij volgend gesprek",
         },
         {
           label: "Wat kunnen anderen doen?",
@@ -96,7 +96,7 @@ export const defaultCSPData: CSPData = {
           label: "Doel",
           icon: "🎯",
           value:
-            "⬇️ Terug naar fase 0\n😴 Slaap herstellen naar 7-8 uur\n🛑 Escalatie voorkomen",
+            "⬇️ Terug naar fase 0\n😴 Slaap herstellen naar **7-8 uur**\n🛑 Escalatie voorkomen",
         },
       ],
     },
@@ -111,25 +111,25 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "😴 Slaap 3-4 uur en het 'geweldig' vinden\n❤️ Whoop recovery rood (<34%), meerdere dagen\n🔀 Meerdere projecten tegelijk starten\n😤 Ongeduldig of geirriteerd als iemand tegenspreekt\n💸 Impulsieve beslissingen (financieel, zakelijk)\n🔍 Achterdocht richting collega's of naasten\n🌙 's Nachts actief met AI, werk of plannen",
+            "😴 Slaap **3-4 uur** en het 'geweldig' vinden\n❤️ Whoop recovery **rood** (**<34%**), meerdere dagen\n🔀 Meerdere projecten tegelijk starten\n😤 Ongeduldig of geirriteerd als iemand tegenspreekt\n💸 Impulsieve beslissingen (financieel, zakelijk)\n🔍 Achterdocht richting collega's of naasten\n🌙 's Nachts actief met AI, werk of plannen",
         },
         {
           label: "Wat kan ik zelf doen?",
           icon: "🛠️",
           value:
-            "📞 Psychiater bellen (niet wachten op volgend gesprek)\n💊 Medicatie checken met arts\n📴 Alle schermen uit na 21:00\n🚫 Geen grote beslissingen nemen\n✋ Geen contracten tekenen of geld uitgeven",
+            "📞 Psychiater bellen (**niet wachten** op volgend gesprek)\n💊 Medicatie checken met arts\n📴 Alle schermen uit na **21:00**\n🚫 **Geen grote beslissingen** nemen\n✋ **Geen contracten tekenen** of geld uitgeven",
         },
         {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "🩺 Psychiater direct bellen\n💚 Aad (vader) inschakelen\n🔱 Don en/of ⛰️ Jeroen\n🏥 Huisartsenpost (0900-1515) als psychiater niet bereikbaar",
+            "🩺 Psychiater direct bellen\n💚 **Aad (vader)** inschakelen\n🔱 **Don** en/of ⛰️ **Jeroen**\n🏥 **Huisartsenpost** (0900-1515) als psychiater niet bereikbaar",
         },
         {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "💚 Aad (vader) mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n\n🏠 Plan A: Breng me naar Margha (mama) - voorkeur\n🔑 Plan B: Terug naar appartement\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel Aad (vader)\n\n🐕 Lotje & Doortje: bij mama als het rustig is, bij Aad als het heftig is",
+            "💚 **Aad (vader)** mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n\n🏠 **Plan A**: Breng me naar **Margha (mama)** - voorkeur\n🔑 **Plan B**: Terug naar appartement\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het rustig is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
@@ -150,31 +150,31 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "🚫 Niet meer slapen en geen behoefte voelen\n🌀 Psychotische kenmerken: wanen, extreme achterdocht\n😡 Geloven dat anderen liegen, stelen of samenspannen\n🙈 Totaal geen ziekte-inzicht ('er is niks aan de hand')\n💥 Conflicten met iedereen die probeert te helpen\n⚠️ Onvoorspelbaar of roekeloos gedrag\n🔄 Dag en nacht lopen door elkaar",
+            "🚫 Niet meer slapen en geen behoefte voelen\n🌀 Psychotische kenmerken: wanen, extreme achterdocht\n😡 Geloven dat anderen liegen, stelen of samenspannen\n🙈 Totaal geen **ziekte-inzicht** ('er is niks aan de hand')\n💥 Conflicten met iedereen die probeert te helpen\n⚠️ Onvoorspelbaar of roekeloos gedrag\n🔄 Dag en nacht lopen door elkaar",
         },
         {
           label: "Wat kan ik zelf doen?",
           icon: "🛠️",
           value:
-            "🪞 In deze fase is zelfinzicht waarschijnlijk afwezig\n📋 Daarom is dit plan er: zodat anderen mogen handelen\n📞 Als er toch een helder moment is: bel crisisdienst GGZ InGeest",
+            "🪞 In deze fase is **zelfinzicht waarschijnlijk afwezig**\n📋 Daarom is dit plan er: zodat anderen mogen handelen\n📞 Als er toch een helder moment is: bel crisisdienst **GGZ InGeest**",
         },
         {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "🏥 Crisisdienst GGZ InGeest\n🩺 Psychiater\n🏥 Huisartsenpost\n💚 Aad (vader) als eerste contactpersoon",
+            "🏥 Crisisdienst **GGZ InGeest**\n🩺 Psychiater\n🏥 **Huisartsenpost**\n💚 **Aad (vader)** als eerste contactpersoon",
         },
         {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n\n🏠 Plan A: Breng me naar Margha (mama) - voorkeur\n🔑 Plan B: Terug naar appartement\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel Aad (vader)\n\n🐕 Lotje & Doortje: bij mama als het tranquillo is, bij Aad als het heftig is",
+            "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n\n🏠 **Plan A**: Breng me naar **Margha (mama)** - voorkeur\n🔑 **Plan B**: Terug naar appartement\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het tranquillo is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
           icon: "🎯",
           value:
-            "🛡️ Veiligheid waarborgen\n🌿 Rust en natuur, niet een ziekenhuis\n🩺 Professionele hulp op afstand (psychiater belt in)\n🐕 Lotje & Doortje als anker",
+            "🛡️ Veiligheid waarborgen\n🌿 Rust en natuur, niet een ziekenhuis\n🩺 Professionele hulp op afstand (psychiater belt in)\n🐕 **Lotje & Doortje** als anker",
         },
       ],
     },

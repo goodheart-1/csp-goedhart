@@ -231,7 +231,13 @@ function TableView({ data }: { data: CSPData }) {
                       <div className="text-[13px] text-stone-800 leading-relaxed space-y-1">
                         {(phase.fields[fieldIndex]?.value || "").split("\n").map((line, i) => (
                           <div key={i} className={line === "" ? "h-2" : ""}>
-                            {line}
+                            {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
+                              part.startsWith("**") && part.endsWith("**") ? (
+                                <strong key={j} className="font-bold text-stone-900">{part.slice(2, -2)}</strong>
+                              ) : (
+                                <span key={j}>{part}</span>
+                              )
+                            )}
                           </div>
                         ))}
                       </div>
@@ -300,7 +306,7 @@ function ContactRow({ p }: { p: typeof family[0] }) {
         href={`tel:${p.phone}`}
         className={`font-medium hover:underline tabular-nums ${p.primary ? "text-base text-phase-0" : "text-sm text-phase-0"}`}
       >
-        {p.phone.replace("+31", "06 ").replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4")}
+        {p.phone.replace(/^\+316(\d{2})(\d{2})(\d{2})(\d{2})$/, "06 $1 $2 $3 $4")}
       </a>
     </div>
   );
