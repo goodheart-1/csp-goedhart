@@ -300,7 +300,7 @@ function TableView({ data }: { data: CSPData }) {
 }
 
 const family = [
-  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Heeft manie zelf meegemaakt - begrijpt het als geen ander", phone: "+31646102228", primary: true },
+  { nr: 1, emoji: "💚", name: "Aad Goedhart", role: "Vader", subtitle: "Dezelfde brein - begrijpt het als geen ander", phone: "+31646102228", primary: true },
   { nr: 2, emoji: "🍀", name: "Margha Klaver", role: "Mama", subtitle: "Dagelijks contact, check-ins", phone: "+31617421388" },
   { nr: 3, emoji: "🌹", name: "Roosje Goedhart", role: "Zus", phone: "+31622309990" },
   { nr: 4, emoji: "👩🏼‍🚒", name: "Sanne Goedhart", role: "Tweelingzus", phone: "+31621388020" },
@@ -447,7 +447,7 @@ function ProtectorsCard() {
           <div>
             <div className="text-lg font-bold text-stone-900">Aad Goedhart</div>
             <div className="text-sm text-phase-0 font-semibold">Vader</div>
-            <div className="text-xs text-stone-500 mt-0.5">Heeft manie zelf meegemaakt - begrijpt het als geen ander</div>
+            <div className="text-xs text-stone-500 mt-0.5">Dezelfde brein - begrijpt het als geen ander</div>
             <div className="text-sm font-medium text-phase-0 tabular-nums mt-1">06 46 10 22 28</div>
           </div>
         </div>
