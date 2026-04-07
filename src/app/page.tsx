@@ -545,7 +545,7 @@ export default function Home() {
             <Image src="/avatar.png" alt="Daantje Goedhart" width={72} height={72} className="rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)] shrink-0" />
             <div className="min-w-0">
               <h2 className="text-lg font-bold text-stone-900">Daantje Goedhart</h2>
-              <p className="text-sm text-stone-500 mt-1 leading-relaxed">Oprichter van <a href="https://clearly.nl" target="_blank" rel="noopener noreferrer" className="text-phase-0 font-medium hover:underline">Clearly</a>. Dit is mijn persoonlijk beschermplan. Bekijk mijn kanalen om te zien wie ik ben.</p>
+              <p className="text-sm text-stone-500 mt-1 leading-relaxed">Oprichter van <a href="https://clearly.nl" target="_blank" rel="noopener noreferrer" className="text-phase-0 font-medium hover:underline">Clearly</a>, een supplementenmerk. Dit is mijn persoonlijk beschermplan bij bipolaire stoornis. Als je wilt begrijpen wie ik ben en hoe ik normaal functioneer, bekijk dan mijn kanalen hieronder. Dat geeft meer context dan welke intake of gesprek dan ook.</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {[
                   { label: "YouTube", href: "https://www.youtube.com/@DaantjeGoedhart", icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg> },
@@ -674,11 +674,13 @@ export default function Home() {
         {/* P.S. */}
         <div className="bg-phase-0-light border border-phase-0-border rounded-xl p-5 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
           <div className="text-sm font-bold text-phase-0">P.S. van Daantje 🍀</div>
-          <div className="text-[13px] text-stone-700 leading-relaxed">
-            Ik leef het gelukkigste leven dat ik me kan voorstellen. De missie waar we met Clearly aan bouwen voelt als de mooiste missie op aarde - ik word er elke ochtend blij van wakker. Ik heb de vetste mensen om me heen, twee hondjes die me elke dag laten lachen, en werk waar ik 100% in geloof. Ik zou dit voor <strong>niks</strong> ter wereld opgeven.
+          <div className="text-[13px] text-stone-700 leading-relaxed space-y-2">
+            <p>😄 Ik leef het gelukkigste leven dat ik me kan voorstellen. Elke ochtend word ik blij wakker. Ik heb de vetste mensen om me heen, twee hondjes die me elke dag laten lachen 🐕🐕, en werk waar ik 100% in geloof.</p>
+            <p>🩵 Clearly draait allang niet meer alleen om mij. Het draait niet meer om mijn team, niet meer om mijn familie, en ook niet meer om hun families. Het draait om de aarde 🌍. Ik wil echt helpen om deze planeet een mooiere plek te maken - voor alle mensen, alle dieren, al het leven.</p>
+            <p>🌱 Klinkt dat delusional? Misschien. Maar ik geloof dat als we stapje voor stapje zetten, we het kunnen. Met z'n allen. Alle mensen. Dat is de missie, en ik zou die voor <strong>niks</strong> ter wereld opgeven.</p>
           </div>
           <div className="text-[13px] text-stone-700 leading-relaxed">
-            Waarom dit plan dan? Niet voor mij. Als het misgaat voel ik me juist fantastisch - dat is het hele punt van manie. Dit plan is er zodat de mensen om me heen weten wat ze moeten doen als <em>zij</em> zich zorgen maken, zonder in paniek te raken. Hoe beter zij voorbereid zijn, hoe rustiger het blijft voor iedereen.
+            <p>📋 Waarom dit plan dan? Niet voor mij. Als het misgaat voel ik me juist fantastisch - dat is het hele punt van manie. Dit plan is er zodat de mensen om me heen weten wat ze moeten doen als <em>zij</em> zich zorgen maken, zonder in paniek te raken. Hoe beter zij voorbereid zijn, hoe rustiger het blijft voor iedereen. 💚</p>
           </div>
         </div>
 
