@@ -354,7 +354,7 @@ export default function Home() {
 
       {/* Top bar */}
       <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-lg border-b border-stone-200 no-print">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
               src="/avatar.png"
@@ -391,7 +391,7 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <main id="main-content" className="flex-1 max-w-3xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      <main id="main-content" className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {view === "edit" ? (
           <>
             {/* Progress */}
