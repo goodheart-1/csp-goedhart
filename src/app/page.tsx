@@ -434,7 +434,7 @@ export default function Home() {
                     : "text-stone-400 hover:text-stone-600 border border-transparent"
                 }`}
               >
-                {v === "edit" ? "✏️ Invullen" : "👁️ Preview"}
+                {v === "edit" ? "📋 Accordion" : "📊 Tabel"}
               </button>
             ))}
           </div>
