@@ -129,7 +129,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nMacBook en telefoon innemen\nNiet in discussie gaan, maar grenzen stellen\nRustige omgeving creeren (boshuisje, natuur)\nZorg dat Lotje & Doortje bij me zijn",
+            "Aad (vader) mag actief ingrijpen\nNaasten mogen contact opnemen met psychiater namens mij\nMacBook en telefoon innemen\nNiet in discussie gaan, maar grenzen stellen\n\nPlan A: Breng me naar Margha (mama) - voorkeur\nPlan B: Terug naar appartement\n\nLotje & Doortje: bij mama als het rustig is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
@@ -168,7 +168,7 @@ export const defaultCSPData: CSPData = {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Contact opnemen met psychiater of crisisdienst namens mij\nBreng me naar een rustige plek (boshuisje, natuur) - geen ziekenhuis\nAlleen pen en papier, geen MacBook of telefoon\nZorg dat Lotje & Doortje bij me zijn\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan",
+            "Contact opnemen met psychiater of crisisdienst namens mij\nAlleen pen en papier, geen MacBook of telefoon\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan\n\nPlan A: Breng me naar Margha (mama) - voorkeur\nPlan B: Terug naar appartement\n\nLotje & Doortje: bij mama als het tranquillo is, bij Aad als het heftig is",
         },
         {
           label: "Doel",
