@@ -156,19 +156,19 @@ export const defaultCSPData: CSPData = {
           label: "Wat kan ik zelf doen?",
           icon: "🛠️",
           value:
-            "In deze fase is zelfinzicht waarschijnlijk afwezig\nDaarom is dit plan er: zodat anderen mogen handelen\nAls er toch een helder moment is: bel 112 of ga naar SEH",
+            "In deze fase is zelfinzicht waarschijnlijk afwezig\nDaarom is dit plan er: zodat anderen mogen handelen\nAls er toch een helder moment is: bel crisisdienst GGZ InGeest",
         },
         {
           label: "Wie kan ik bellen voor hulp?",
           icon: "📞",
           value:
-            "112 bij direct gevaar\nPsychiater / crisisdienst GGZ\nHuisartsenpost\nAad (vader) als eerste contactpersoon",
+            "Crisisdienst GGZ InGeest\nPsychiater\nHuisartsenpost\nAad (vader) als eerste contactpersoon",
         },
         {
           label: "Wat kunnen anderen doen?",
           icon: "🤝",
           value:
-            "Contact opnemen met psychiater of crisisdienst namens mij\nBij direct gevaar: 112 bellen\nNiet alleen laten\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan",
+            "Contact opnemen met psychiater of crisisdienst namens mij\nNiet alleen laten\nNiet in discussie gaan over of het wel of niet een crisis is\nBeslissingen overnemen op basis van dit plan",
         },
         {
           label: "Doel",

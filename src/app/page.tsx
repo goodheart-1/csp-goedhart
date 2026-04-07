@@ -225,7 +225,7 @@ function ExportView({ data }: { data: CSPData }) {
 
       {/* Footer */}
       <div className="text-center text-xs text-stone-400 pt-2">
-        <p>Bij crisis: bel 112 of 113 Zelfmoordpreventie (0900-0113)</p>
+        <p>Bij crisis: bel crisisdienst GGZ InGeest of huisartsenpost</p>
       </div>
     </div>
   );
