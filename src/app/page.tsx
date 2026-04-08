@@ -764,6 +764,22 @@ export default function Home() {
               Je hebt mannen van weinig woorden. Je hebt ze van veel woorden. Van heel veel. En nog meer. Ik zit daar ergens boven, soms. Dat is niet nieuw. Dat heb ik al heel mn leven. Ik heb tientallen dagboeken volgeschreven. Je moet wat als je bij niemand je gedachtens echt kwijt kan. Ik heb duizenden uren spraakmemos naar mezelf, dat doe ik al 8 jaar. Iedereen is anders.
             </p>
 
+            {/* 2019 talk video */}
+            <div className="mt-4 rounded-xl overflow-hidden border border-stone-200/50">
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/vne1wiYRluA"
+                  title="Daantje Goedhart - Talk 2019"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="px-3 py-2 bg-stone-50 text-xs text-stone-500">
+                2019 - Talk voor 500+ mensen. Dit is wie ik ben, al ver voor welke diagnose dan ook.
+              </div>
+            </div>
+
             {/* Social links */}
             <div className="flex flex-wrap gap-2 mt-4">
               {[
