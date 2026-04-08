@@ -838,10 +838,15 @@ export default function Home() {
                 { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg" },
                 { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg" },
               ].map((v) => (
-                <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] overflow-hidden bg-stone-100">
+                <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] overflow-hidden bg-stone-100 cursor-pointer" onClick={(e) => {
+                  e.preventDefault();
+                  window.open(v.url, '_blank', 'noopener,noreferrer');
+                }}>
                   <img src={v.image} alt="" className="w-full h-full object-cover group-hover:brightness-90 transition-all duration-200" />
-                  <div className="absolute bottom-2 left-2 flex items-center gap-1">
-                    <svg className="w-3 h-3 text-white drop-shadow-md" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-black/60 transition-colors">
+                      <svg className="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
                   </div>
                 </a>
               ))}
