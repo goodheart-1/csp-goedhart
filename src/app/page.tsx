@@ -823,25 +823,25 @@ export default function Home() {
                     <span>{s.label}{s.username && <span className="opacity-60 ml-0.5">{s.username}</span>}</span>
                   </a>
                 ))}
-              {/* Video's */}
-              <div className="mt-4 pt-4 border-t border-sky-100">
-                <h3 className="text-xs font-bold uppercase tracking-[1.5px] text-sky-400 mb-3">Video&apos;s</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg", label: "Your Health" },
-                    { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg", label: "is Clearly" },
-                    { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg", label: "#1." },
-                  ].map((v) => (
-                    <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group relative rounded-xl overflow-hidden aspect-[9/16] border border-sky-100">
-                      <img src={v.image} alt={v.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                      <div className="absolute bottom-2 left-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow">
-                        <svg className="w-3 h-3 text-stone-800 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                      </div>
-                    </a>
-                  ))}
-                </div>
               </div>
-              </div>
+            </div>
+          </div>
+          {/* Video's */}
+          <div className="mt-4 pt-4 border-t border-sky-100">
+            <h3 className="text-xs font-bold uppercase tracking-[1.5px] text-sky-400 mb-3">Video&apos;s</h3>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg", label: "Your Health" },
+                { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg", label: "is Clearly" },
+                { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg", label: "#1." },
+              ].map((v) => (
+                <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group relative rounded-xl overflow-hidden aspect-[9/16] border border-sky-100">
+                  <img src={v.image} alt={v.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <div className="absolute bottom-2 left-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow">
+                    <svg className="w-3 h-3 text-stone-800 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </div>
