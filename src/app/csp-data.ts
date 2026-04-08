@@ -60,6 +60,8 @@ export const experiences: Experience[] = [
       { emoji: "🧖🏼‍♂️", label: "Wellness", desc: "Warmte, rust, even helemaal niks" },
       { emoji: "👱🏻‍♀️", label: "Rustgevende vrouw", desc: "Verplicht ontspannen, even uit mn hoofd" },
       { emoji: "💚", label: "Familie dichtbij", desc: "Maar op mijn tempo" },
+      { emoji: "🌳", label: "Boswandeling", desc: "Zonder doel, zonder telefoon" },
+      { emoji: "🌬️", label: "Ademhaling", desc: "Even stil, 5 minuten, niks anders" },
     ],
     links: [
       { label: "Lotje", url: "https://www.instagram.com/stories/highlights/17878688695950098/", image: "/highlights/lotje.jpg" },
