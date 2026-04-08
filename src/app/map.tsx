@@ -154,12 +154,8 @@ export function WellnessMap() {
         className="wellness-map"
       >
         <TileLayer
-          attribution='&copy; Stadia'
-          url="https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
-        />
-        <TileLayer
-          url="https://tiles.stadiamaps.com/tiles/stamen_toner_labels/{z}/{x}/{y}{r}.png"
-          opacity={0.4}
+          attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
         {wellnessVisited.map((w) => (
           <Marker key={w.name} position={[w.lat, w.lng]} icon={wellnessIcon("🧖🏼‍♂️", w.name.replace(/^(Thermen |Sauna |Spa |Fort Resort )/, ""), w.rating, true)}>
