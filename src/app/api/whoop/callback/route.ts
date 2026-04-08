@@ -91,6 +91,10 @@ export async function GET(req: NextRequest) {
   // Persist refresh token as Vercel env var (survives cold starts)
   await upsertVercelEnv("WHOOP_REFRESH_TOKEN", data.refresh_token);
 
+  // Also store the access token directly so the sleep endpoint can use it without refreshing
+  await upsertVercelEnv("WHOOP_ACCESS_TOKEN", data.access_token);
+  await upsertVercelEnv("WHOOP_TOKEN_EXPIRES_AT", String(Date.now() + data.expires_in * 1000 - 60000));
+
   // Redirect to the main page
   return NextResponse.redirect(new URL("/?whoop=connected", req.url));
 }

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAccessToken } from "../token-store";
 
-const WHOOP_API = "https://api.prod.whoop.com/developer/v1";
+const WHOOP_API = "https://api.prod.whoop.com/developer/v2";
 
 interface WhoopSleep {
   id: number;

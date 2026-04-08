@@ -38,6 +38,13 @@ export async function getAccessToken(): Promise<string> {
     return cachedTokens.access_token;
   }
 
+  // Check if we have a stored access token from the callback (env var)
+  const storedAccessToken = process.env.WHOOP_ACCESS_TOKEN;
+  const storedExpiresAt = process.env.WHOOP_TOKEN_EXPIRES_AT;
+  if (storedAccessToken && storedExpiresAt && Number(storedExpiresAt) > Date.now()) {
+    return storedAccessToken;
+  }
+
   // Need to refresh
   const refreshToken = cachedTokens?.refresh_token || process.env.WHOOP_REFRESH_TOKEN;
   if (!refreshToken) {
@@ -46,19 +53,14 @@ export async function getAccessToken(): Promise<string> {
 
   const { clientId, clientSecret } = getClientCredentials();
 
-  // Whoop requires Basic Auth for token requests
-  const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
-
   const res = await fetch(WHOOP_TOKEN_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Authorization": `Basic ${basicAuth}`,
-    },
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token: refreshToken,
-      scope: "read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement offline",
+      client_id: clientId,
+      client_secret: clientSecret,
     }),
   });
 

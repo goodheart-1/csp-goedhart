@@ -420,43 +420,45 @@ function ProtectorsCard() {
   return (
     <div className="space-y-4">
       {/* DNA - Familie */}
-      <div className="bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
-            🧬 DNA - Familie
-          </h2>
-          <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
-            #1 Bel altijd eerst
-          </span>
-        </div>
+      <div className="relative bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[140px] sm:text-[180px] opacity-[0.04] pointer-events-none select-none leading-none">🧬</div>
+        <div className="relative">
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
+              DNA - Familie
+            </h2>
+            <span className="text-[10px] font-bold uppercase tracking-[1.5px] bg-phase-0 text-white px-2.5 py-1 rounded-full">
+              #1 Bel altijd eerst
+            </span>
+          </div>
 
-        {/* Parents - XY & XX */}
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto_1fr] gap-3 mb-4 items-center">
-          <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-blue-50/60 transition-colors cursor-pointer">
-            <div className="relative shrink-0">
-              <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-blue-600 font-mono">XY</span>
-            </div>
-            <div>
-              <div className="text-lg font-bold text-stone-900">Aad Goedhart 💚</div>
-              <div className="text-sm text-phase-0 font-semibold">Papa / Vader</div>
-              <div className="text-xs text-stone-500 mt-0.5">Hetzelfde brein - begrijpt het als geen ander</div>
-              <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 46 10 22 28</div>
-            </div>
-          </a>
-          <div className="hidden sm:flex items-center justify-center text-4xl">🧬</div>
-          <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-pink-50/60 transition-colors cursor-pointer">
-            <div className="relative shrink-0">
-              <img src="/contacts/Margha Klaver.png" alt="Margha Klaver" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
-              <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-pink-50 border border-pink-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-pink-600 font-mono">XX</span>
-            </div>
-            <div>
-              <div className="text-lg font-bold text-stone-900">Margha Klaver 🍀</div>
-              <div className="text-sm text-phase-0 font-semibold">Mama / Moeder</div>
-              <div className="text-xs text-stone-500 mt-0.5">Dagelijks contact, check-ins</div>
-              <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 17 42 13 88</div>
-            </div>
-          </a>
+          {/* Parents - XY & XX */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <a href="https://wa.me/31646102228" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-blue-50/60 transition-colors cursor-pointer">
+              <div className="relative shrink-0">
+                <img src="/contacts/Aad Goedhart.png" alt="Aad Goedhart" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
+                <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 border border-blue-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-blue-600 font-mono">XY</span>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-stone-900">Aad Goedhart 💚</div>
+                <div className="text-sm text-phase-0 font-semibold">Papa / Vader</div>
+                <div className="text-xs text-stone-500 mt-0.5">Hetzelfde brein - begrijpt het als geen ander</div>
+                <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 46 10 22 28</div>
+              </div>
+            </a>
+            <a href="https://wa.me/31617421388" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 rounded-xl p-3 hover:bg-pink-50/60 transition-colors cursor-pointer">
+              <div className="relative shrink-0">
+                <img src="/contacts/Margha Klaver.png" alt="Margha Klaver" width={56} height={56} loading="lazy" className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.15)]" />
+                <span className="absolute -bottom-1 -right-1 flex items-center justify-center w-7 h-7 rounded-full bg-pink-50 border border-pink-200 shadow-[0_1px_2px_rgba(0,0,0,0.15)] text-[10px] font-bold text-pink-600 font-mono">XX</span>
+              </div>
+              <div>
+                <div className="text-lg font-bold text-stone-900">Margha Klaver 🍀</div>
+                <div className="text-sm text-phase-0 font-semibold">Mama / Moeder</div>
+                <div className="text-xs text-stone-500 mt-0.5">Dagelijks contact, check-ins</div>
+                <div className="text-sm font-medium text-phase-0 tabular-nums mt-1 whitespace-nowrap">+316 17 42 13 88</div>
+              </div>
+            </a>
+          </div>
         </div>
 
         {/* Siblings */}
@@ -781,15 +783,15 @@ export default function Home() {
         </div>
 
         {/* Clearly */}
-        <div className="rounded-xl p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-blue-100" style={{ background: "linear-gradient(180deg, #dbeafe 0%, #eff6ff 50%, #ffffff 100%)" }}>
+        <div className="rounded-xl p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-sky-100/80" style={{ background: "radial-gradient(ellipse at 20% 50%, #e0f2fe 0%, transparent 50%), radial-gradient(ellipse at 80% 30%, #dbeafe 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, #f0f9ff 0%, transparent 50%), linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%)" }}>
           <div className="flex items-start gap-4 sm:gap-5">
             <a href="https://www.instagram.com/clearlynl/" target="_blank" rel="noopener noreferrer" className="shrink-0">
-              <img src="/clearly-logo.jpg" alt="Clearly" width={56} height={56} className="rounded-xl object-cover shadow-[0_2px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_3px_10px_rgba(0,0,0,0.15)] transition-shadow" />
+              <img src="/clearly-logo.png" alt="Clearly" width={56} height={56} className="w-14 h-14 rounded-full object-cover shadow-[0_2px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_3px_10px_rgba(0,0,0,0.15)] transition-shadow" />
             </a>
             <div className="min-w-0">
-              <h2 className="text-lg font-bold text-[#1e3a5f]">Clearly</h2>
-              <p className="text-sm text-[#1e3a5f]/60 mt-0.5 italic">Your Health is Clearly #1.</p>
-              <p className="text-sm text-[#1e3a5f]/50 mt-2 leading-relaxed">Gezondheidsmerk opgericht door Daantje. Missie: maak gezondheid duidelijk, zodat jij je #1 leven kunt leiden. Geen verborgen formules, geen vage claims - alleen duidelijkheid, kwaliteit en intentie.</p>
+              <h2 className="text-lg font-bold text-stone-900">Clearly</h2>
+              <p className="text-sm text-stone-400 mt-0.5 italic">Your Health is Clearly #1.</p>
+              <p className="text-sm text-stone-500 mt-2 leading-relaxed">Gezondheidsmerk opgericht door Daantje. Missie: maak gezondheid duidelijk, zodat jij je #1 leven kunt leiden. Geen verborgen formules, geen vage claims - alleen duidelijkheid, kwaliteit en intentie.</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 {[
                   { label: "clearly.nl", href: "https://clearly.nl", color: "bg-[#1e3a5f] text-white hover:bg-[#2a4d7a]", icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> },
