@@ -55,8 +55,9 @@ export const personalSections: PersonalSection[] = [
     emoji: "🪪",
     items: [
       { label: "Naam", value: "Daantje Goedhart" },
-      { label: "Geboortedatum", value: "..." },
+      { label: "Geboortedatum", value: "08 juni 1997" },
       { label: "BSN", value: "...", sensitive: true },
+      { label: "Geboorteplaats", value: "Beverwijk" },
       { label: "Adres", value: "..." },
       { label: "Telefoon", value: "..." },
       { label: "E-mail", value: "daantje@clearly.co" },
@@ -98,9 +99,12 @@ export const personalSections: PersonalSection[] = [
     title: "Identificatie",
     emoji: "📋",
     items: [
-      { label: "Paspoort nr.", value: "...", sensitive: true },
+      { label: "Paspoort nr.", value: "NYCR42RC3", sensitive: true },
       { label: "Rijbewijs nr.", value: "...", sensitive: true },
-      { label: "ID geldig tot", value: "..." },
+      { label: "Paspoort geldig tot", value: "04 juni 2028" },
+      { label: "Nationaliteit", value: "Nederlandse" },
+      { label: "Geslacht", value: "M" },
+      { label: "Lengte", value: "1,85 m" },
     ],
   },
 ];
