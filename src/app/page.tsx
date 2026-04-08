@@ -781,8 +781,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="min-w-0">
-                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Boloo Presentatie, 2019</div>
-                <div className="text-xs text-stone-500 mt-0.5">Talk voor 500+ mensen. Dit is wie ik ben, al ver voor welke diagnose dan ook.</div>
+                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Boloo Presentatie - &ldquo;The art of doing.&rdquo;</div>
+                <div className="text-xs text-stone-500 mt-0.5">Talk voor 500+ mensen. 21 september 2019.</div>
               </div>
             </a>
             <a href="https://youtu.be/cTta54ae7Nc" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
@@ -795,8 +795,8 @@ export default function Home() {
                 </div>
               </div>
               <div className="min-w-0">
-                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Clearly - Your Health is Clearly #1</div>
-                <div className="text-xs text-stone-500 mt-0.5">De missie achter Clearly en wie Daantje is als ondernemer.</div>
+                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Jaap de Lada - Ondernemer vragen in een oldtimer</div>
+                <div className="text-xs text-stone-500 mt-0.5">Interview in een 40-jarige Lada. 24 juli 2019.</div>
               </div>
             </a>
             </div>
