@@ -77,7 +77,7 @@ export const personalSections: PersonalSection[] = [
     title: "Medisch",
     emoji: "🩺",
     items: [
-      { label: "Diagnose", value: "Bipolaire stoornis type I" },
+      { label: "Diagnose", value: "..." },
       { label: "Bloedgroep", value: "..." },
       { label: "Allergieen", value: "..." },
       { label: "Eerste episode", value: "..." },
