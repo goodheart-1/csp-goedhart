@@ -98,6 +98,10 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
   const chartBottom = padTop + chartH;
   const areaPath = linePath + ` L ${points[points.length - 1].x},${chartBottom} L ${points[0].x},${chartBottom} Z`;
 
+  // All-time average (1111+ days of tracking)
+  const allTimeAvg = 83; // Daantje's lifetime Whoop sleep average
+  const allTimeY = padTop + chartH - (allTimeAvg / 100) * chartH;
+
   // Y axis ticks
   const yTicks = [0, 20, 40, 60, 80, 100];
 
@@ -145,6 +149,13 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
         {xLabels.map((l) => (
           <text key={l.idx} x={l.x} y={h - 4} fill="rgba(148,163,184,0.4)" fontSize="9" textAnchor="middle" fontFamily="system-ui">{l.label}</text>
         ))}
+
+        {/* All-time average line */}
+        <line x1={padL} y1={allTimeY} x2={w - padR} y2={allTimeY} stroke="#22c55e" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.5" />
+        <rect x={w - padR - 120} y={allTimeY - 11} width={116} height={16} rx={4} fill="#22c55e" opacity="0.15" />
+        <text x={w - padR - 62} y={allTimeY + 1} fill="#22c55e" fontSize="9" textAnchor="middle" fontFamily="system-ui" opacity="0.8">
+          Gem. 1111+ dagen: {allTimeAvg}%
+        </text>
 
         {/* Area fill */}
         <path d={areaPath} fill="url(#sleepGradient)" />
