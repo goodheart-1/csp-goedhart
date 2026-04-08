@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
       { emoji: "🔇", label: "Weinig mensen", desc: "Geen drukte, geen meningen" },
       { emoji: "🛏️", label: "Mijn eigen bed", desc: "7-8 kussens, slapen als een embryo" },
       { emoji: "🥘", label: "Andijvie stamppot", desc: "Van mama, het allerlekkerste" },
-      { emoji: "🎬", label: "Film met mama", desc: "Lekker op de bank, samen kijken" },
+      { emoji: "🎬", label: "Film met moeders of vrienden", desc: "Lekker op de bank, samen kijken" },
       { emoji: "🌊", label: "Zee / water", desc: "Golven, zout, even helemaal leeg" },
       { emoji: "🥵", label: "Sauna", desc: "Hitte, zweten, loslaten" },
       { emoji: "🥶", label: "IJsbad", desc: "Na de sauna - reset voor lijf en hoofd" },
