@@ -95,6 +95,7 @@ export const experiences: Experience[] = [
       { emoji: "🎙️", label: "Podcast luisteren", desc: "Iemand anders praat, jij luistert" },
       { emoji: "🏖️", label: "Strand liggen", desc: "Zon, zand, ogen dicht" },
       { emoji: "🐶", label: "Hond uitlaten", desc: "Lotje bepaalt het tempo" },
+      { emoji: "🥋", label: "Wijsheden van papa", desc: "Mijn sensei - hij heeft het pad al bewandeld" },
     ],
     links: [
       { label: "Lotje", url: "https://www.instagram.com/stories/highlights/17878688695950098/", image: "/highlights/lotje.jpg" },
