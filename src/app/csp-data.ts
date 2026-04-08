@@ -58,9 +58,10 @@ export const personalSections: PersonalSection[] = [
       { label: "Geboortedatum", value: "08 juni 1997" },
       { label: "BSN", value: "...", sensitive: true },
       { label: "Geboorteplaats", value: "Beverwijk" },
-      { label: "Adres", value: "..." },
+      { label: "Adres", value: "Rupelmonde 49, 1081 GR Amsterdam" },
       { label: "Telefoon", value: "..." },
       { label: "E-mail", value: "daantje@clearly.co" },
+      { label: "E-mail (prive)", value: "daantjegoedhart@hotmail.com" },
     ],
   },
   {
@@ -68,9 +69,11 @@ export const personalSections: PersonalSection[] = [
     emoji: "🏥",
     items: [
       { label: "Verzekeraar", value: "Zilveren Kruis" },
-      { label: "Polisnummer", value: "...", sensitive: true },
-      { label: "Type", value: "..." },
-      { label: "Aanvullend", value: "..." },
+      { label: "Relatienummer", value: "170285723", sensitive: true },
+      { label: "Type", value: "Basis Start (Basis Budget) - Naturapolis" },
+      { label: "Aanvullend", value: "Aanvullend 1 ster" },
+      { label: "Eigen risico", value: "Verplicht: \u20AC385 + Vrijwillig: \u20AC500" },
+      { label: "Geldig", value: "1 jan 2026 - 31 dec 2026" },
     ],
   },
   {
