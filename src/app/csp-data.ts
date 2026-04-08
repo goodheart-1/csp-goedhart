@@ -54,7 +54,7 @@ export const experiences: Experience[] = [
       { emoji: "🥘", label: "Andijvie stamppot", desc: "Van mama, het allerlekkerste" },
       { emoji: "🎬", label: "Film met mama", desc: "Lekker op de bank, samen kijken" },
       { emoji: "🧖🏻", label: "Wellness / sauna", desc: "Warmte, rust, even helemaal niks" },
-      { emoji: "👩🏻", label: "Rustgevende vrouw", desc: "Verplicht ontspannen, even uit mn hoofd" },
+      { emoji: "👱🏻‍♀️", label: "Rustgevende vrouw", desc: "Verplicht ontspannen, even uit mn hoofd" },
       { emoji: "💚", label: "Familie dichtbij", desc: "Maar op mijn tempo" },
     ],
     links: [
