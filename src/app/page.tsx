@@ -319,6 +319,8 @@ const moreGoodFriends: typeof family = [
 ];
 
 const teamClearly: typeof family = [
+  { nr: 0, emoji: "🔱", name: "Don Mehrow", role: "Ook Best Brother", phone: "+31636311764" },
+  { nr: 0, emoji: "🪖", name: "Daan Bruin", role: "Ook Best Brother", phone: "+31615672234" },
   { nr: 0, emoji: "🦩", name: "Christoph Rottier", role: "", phone: "+31631239040" },
   { nr: 0, emoji: "🌑", name: "Damien Donker", role: "", phone: "+31628867077" },
   { nr: 0, emoji: "🍱", name: "Jurjen Lanting", role: "", phone: "+31640249983" },
@@ -619,12 +621,12 @@ const sections = [
   { id: "intro", emoji: "👋", label: "Intro" },
   { id: "personal", emoji: "🪪", label: "Gegevens" },
   { id: "protectors", emoji: "🛡️", label: "Protectors" },
-  { id: "medication", emoji: "💊", label: "Medicatie" },
   { id: "phases", emoji: "📊", label: "Fases" },
   { id: "facilities", emoji: "🏥", label: "Faciliteiten" },
   { id: "experiences", emoji: "📖", label: "Ervaringen" },
   { id: "sleep", emoji: "😴", label: "Slaap" },
   { id: "locations", emoji: "📍", label: "Locaties" },
+  { id: "medication", emoji: "💊", label: "Medicatie" },
   { id: "crisis", emoji: "📞", label: "Crisis" },
 ] as const;
 
@@ -831,9 +833,6 @@ export default function Home() {
         {/* Protectors */}
             <div id="protectors" className="scroll-mt-20"><ProtectorsCard /></div>
 
-        {/* Medicatie */}
-        <MedicationSection />
-
         {/* View toggle */}
         <div id="phases" className="flex items-center justify-between no-print scroll-mt-20">
           <div className="flex bg-stone-100/80 rounded-[10px] p-0.5" role="group" aria-label="Weergave wisselen">
@@ -933,6 +932,9 @@ export default function Home() {
                 <LocationMap />
               </div>
             </div>
+
+        {/* Medicatie - bewust onderaan: medicatie is plan F */}
+        <MedicationSection />
 
         {/* Crisis banner */}
         <div id="crisis" className="bg-red-50 border border-red-200/50 rounded-xl p-5 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20">

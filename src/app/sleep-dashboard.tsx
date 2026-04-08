@@ -185,7 +185,7 @@ export default function SleepDashboard() {
       <div className="relative rounded-2xl overflow-hidden p-6 shadow-lg" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" }}>
         <StarField />
         <div className="relative z-10">
-          <h3 className="text-lg font-bold text-white">Hoe gaat het met Daantje?</h3>
+          <h3 className="text-lg font-bold text-white">Hoe slaapt Daantje?</h3>
           <p className="text-blue-200/50 text-sm mt-2">Whoop is nog niet gekoppeld.</p>
           <a href="/api/whoop/authorize" className="inline-block mt-3 px-4 py-2 bg-white/10 text-white text-sm rounded-lg hover:bg-white/20 transition-colors cursor-pointer border border-white/10">
             Koppel Whoop
@@ -200,7 +200,7 @@ export default function SleepDashboard() {
       <div className="relative rounded-2xl overflow-hidden p-6 shadow-lg" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" }}>
         <StarField />
         <div className="relative z-10">
-          <h3 className="text-lg font-bold text-white">Hoe gaat het met Daantje?</h3>
+          <h3 className="text-lg font-bold text-white">Hoe slaapt Daantje?</h3>
           <p className="text-blue-200/50 text-sm mt-2">Kan gezondheidsdata niet laden.</p>
         </div>
       </div>
@@ -220,7 +220,7 @@ export default function SleepDashboard() {
       <div className="relative z-10">
         {/* Header */}
         <div className="flex items-center justify-between mb-1">
-          <h3 className="text-lg font-bold text-white">Hoe gaat het met Daantje?</h3>
+          <h3 className="text-lg font-bold text-white">Hoe slaapt Daantje?</h3>
           <span className="text-[10px] text-blue-300/30 font-medium">WHOOP @Goodheart</span>
         </div>
 
