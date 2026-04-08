@@ -56,7 +56,7 @@ export const experiences: Experience[] = [
       { emoji: "🌊", label: "Zee / water", desc: "Golven, zout, even helemaal leeg" },
       { emoji: "🥵", label: "Sauna", desc: "Hitte, zweten, loslaten" },
       { emoji: "🥶", label: "IJsbad", desc: "Na de sauna - reset voor lijf en hoofd" },
-      { emoji: "🧖🏻", label: "Wellness", desc: "Warmte, rust, even helemaal niks" },
+      { emoji: "🧖🏼‍♂️", label: "Wellness", desc: "Warmte, rust, even helemaal niks" },
       { emoji: "👱🏻‍♀️", label: "Rustgevende vrouw", desc: "Verplicht ontspannen, even uit mn hoofd" },
       { emoji: "💚", label: "Familie dichtbij", desc: "Maar op mijn tempo" },
     ],
