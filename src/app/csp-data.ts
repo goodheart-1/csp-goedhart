@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
     verdict: "good",
     emoji: "🌿",
     summary: "Een ondernemer in overdrive heeft geen instelling nodig - maar rust, natuur en warmte",
-    details: "",
+    details: "Ik hou zoveel van mijn gezin. Van mama, papa, Roosje, Sanne, de neefjes, Sven, Niels - van iedereen. Zij zijn de reden dat ik tot rust kom. Niet een pil, niet een instelling, maar de mensen van wie ik hou.",
     website: "https://www.natuurhuisje.nl/in-het-bos",
     calmingItems: [
       { emoji: "🏡", label: "Hutje in het bos", desc: "Natuur, stilte, geen prikkels" },
@@ -50,6 +50,11 @@ export const experiences: Experience[] = [
       { emoji: "🌲", label: "Natuur", desc: "Bos, water, frisse lucht" },
       { emoji: "🧹", label: "Schone omgeving", desc: "Fris, opgeruimd, geen chaos" },
       { emoji: "🤫", label: "Weinig mensen", desc: "Geen drukte, geen meningen" },
+      { emoji: "🛏️", label: "Mijn eigen bed", desc: "7-8 kussens, slapen als een embryo" },
+      { emoji: "🥘", label: "Andijvie stamppot", desc: "Van mama, het allerlekkerste" },
+      { emoji: "🎬", label: "Film met mama", desc: "Lekker op de bank, samen kijken" },
+      { emoji: "🧖", label: "Wellness / sauna", desc: "Warmte, rust, even helemaal niks" },
+      { emoji: "👩", label: "Rustgevende vrouw", desc: "Verplicht ontspannen, even uit mn hoofd" },
       { emoji: "🫂", label: "Familie dichtbij", desc: "Maar op mijn tempo" },
     ],
     links: [
