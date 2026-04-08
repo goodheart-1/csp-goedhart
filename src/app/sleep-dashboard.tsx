@@ -59,17 +59,19 @@ function weekSummary(avgHours: number, goodNights: number, total: number): strin
 function SleepChart({ nights }: { nights: SleepNight[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
-  const w = 600;
-  const h = 160;
-  const padX = 0;
-  const padTop = 20;
-  const padBot = 0;
+  const w = 640;
+  const h = 180;
+  const padL = 36; // space for Y axis labels
+  const padR = 8;
+  const padTop = 10;
+  const padBot = 22; // space for X axis labels
+  const chartW = w - padL - padR;
   const chartH = h - padTop - padBot;
   const minScore = 0;
   const maxScore = 100;
 
   const points = nights.map((n, i) => {
-    const x = padX + (i / (nights.length - 1)) * (w - padX * 2);
+    const x = padL + (i / (nights.length - 1)) * chartW;
     const y = padTop + chartH - ((n.sleepScore - minScore) / (maxScore - minScore)) * chartH;
     return { x, y, night: n, index: i };
   });
@@ -93,11 +95,18 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
   }
 
   const linePath = cardinalSpline(points);
-  const areaPath = linePath + ` L ${points[points.length - 1].x},${h} L ${points[0].x},${h} Z`;
+  const chartBottom = padTop + chartH;
+  const areaPath = linePath + ` L ${points[points.length - 1].x},${chartBottom} L ${points[0].x},${chartBottom} Z`;
 
-  // Threshold lines
-  const y80 = padTop + chartH - (80 / 100) * chartH;
-  const y60 = padTop + chartH - (60 / 100) * chartH;
+  // Y axis ticks
+  const yTicks = [0, 20, 40, 60, 80, 100];
+
+  // X axis: show ~5 evenly spaced date labels
+  const xLabelCount = Math.min(5, nights.length);
+  const xLabels = Array.from({ length: xLabelCount }, (_, i) => {
+    const idx = Math.round((i / (xLabelCount - 1)) * (nights.length - 1));
+    return { idx, x: points[idx].x, label: i === xLabelCount - 1 ? "vandaag" : new Date(nights[idx].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" }) };
+  });
 
   return (
     <div className="mt-5 mb-2 relative">
@@ -110,8 +119,8 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
       >
         <defs>
           <linearGradient id="sleepGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#22c55e" stopOpacity="0.4" />
-            <stop offset="40%" stopColor="#eab308" stopOpacity="0.2" />
+            <stop offset="0%" stopColor="#22c55e" stopOpacity="0.35" />
+            <stop offset="50%" stopColor="#eab308" stopOpacity="0.15" />
             <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
@@ -121,11 +130,21 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
           </linearGradient>
         </defs>
 
-        {/* Threshold lines */}
-        <line x1={0} y1={y80} x2={w} y2={y80} stroke="rgba(34,197,94,0.15)" strokeWidth="1" strokeDasharray="4 4" />
-        <line x1={0} y1={y60} x2={w} y2={y60} stroke="rgba(234,179,8,0.1)" strokeWidth="1" strokeDasharray="4 4" />
-        <text x={w - 4} y={y80 - 4} fill="rgba(34,197,94,0.3)" fontSize="9" textAnchor="end">80%</text>
-        <text x={w - 4} y={y60 - 4} fill="rgba(234,179,8,0.2)" fontSize="9" textAnchor="end">60%</text>
+        {/* Y axis labels + grid lines */}
+        {yTicks.map((tick) => {
+          const y = padTop + chartH - (tick / 100) * chartH;
+          return (
+            <g key={tick}>
+              <line x1={padL} y1={y} x2={w - padR} y2={y} stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+              <text x={padL - 6} y={y + 3} fill="rgba(148,163,184,0.5)" fontSize="9" textAnchor="end" fontFamily="system-ui">{tick}%</text>
+            </g>
+          );
+        })}
+
+        {/* X axis labels */}
+        {xLabels.map((l) => (
+          <text key={l.idx} x={l.x} y={h - 4} fill="rgba(148,163,184,0.4)" fontSize="9" textAnchor="middle" fontFamily="system-ui">{l.label}</text>
+        ))}
 
         {/* Area fill */}
         <path d={areaPath} fill="url(#sleepGradient)" />
@@ -172,12 +191,6 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
         </div>
       )}
 
-      {/* Date axis */}
-      <div className="flex justify-between mt-1 text-[10px] text-blue-300/30">
-        <span>{new Date(nights[0].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}</span>
-        {nights.length > 10 && <span>{new Date(nights[Math.floor(nights.length / 2)].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}</span>}
-        <span>vandaag</span>
-      </div>
     </div>
   );
 }

@@ -14,6 +14,20 @@ function emojiIcon(emoji: string) {
   });
 }
 
+function wellnessIcon(emoji: string, label: string, rating: number, visited: boolean) {
+  return L.divIcon({
+    html: `<div style="display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap">
+      <span style="font-size:22px;line-height:1;filter:${visited ? 'none' : 'grayscale(0.5) opacity(0.7)'}">${emoji}</span>
+      <span style="font-size:9px;font-weight:600;color:${visited ? '#065f46' : '#6b7280'};background:${visited ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)'};padding:1px 4px;border-radius:4px;line-height:1.2;text-align:center;max-width:80px;overflow:hidden;text-overflow:ellipsis">${label}</span>
+      <span style="font-size:8px;color:#d97706;background:rgba(255,255,255,0.85);padding:0 3px;border-radius:3px;line-height:1.3">★ ${rating}</span>
+    </div>`,
+    className: "bg-transparent",
+    iconSize: [80, 52],
+    iconAnchor: [40, 26],
+    popupAnchor: [0, -26],
+  });
+}
+
 const locations = [
   { name: "Margha Klaver", label: "Mama", lat: 52.4631, lng: 4.6219, emoji: "🍀" },
   { name: "Aad Goedhart", label: "Vader", lat: 52.4863, lng: 4.6572, emoji: "💚" },
@@ -83,15 +97,15 @@ export function FacilitiesMap() {
 }
 
 const wellnessVisited = [
-  { name: "Thermen Soesterberg", city: "Soesterberg", lat: 52.1275, lng: 5.2919 },
-  { name: "Sauna van Egmond", city: "Haarlem", lat: 52.3814, lng: 4.6460 },
-  { name: "Spa Zuiver", city: "Amsterdam", lat: 52.3283, lng: 4.8357 },
-  { name: "Fort Resort Beemster", city: "Zuidoostbeemster", lat: 52.5369, lng: 4.9492 },
-  { name: "Thermen Bussloo", city: "Bussloo", lat: 52.2583, lng: 6.1347 },
-  { name: "Elysium", city: "Bloemendaal", lat: 52.4025, lng: 4.5258 },
-  { name: "SpaSereen", city: "Rijswijk (Gld)", lat: 51.9361, lng: 5.9694 },
-  { name: "Thermen Berendonck", city: "Wijchen", lat: 51.7867, lng: 5.7256 },
-  { name: "Spa Weesp", city: "Weesp", lat: 52.3078, lng: 5.0436 },
+  { name: "Thermen Soesterberg", city: "Soesterberg", lat: 52.1275, lng: 5.2919, rating: 4.5 },
+  { name: "Sauna van Egmond", city: "Haarlem", lat: 52.3814, lng: 4.6460, rating: 4.6 },
+  { name: "Spa Zuiver", city: "Amsterdam", lat: 52.3283, lng: 4.8357, rating: 4.3 },
+  { name: "Fort Resort Beemster", city: "Beemster", lat: 52.5369, lng: 4.9492, rating: 4.5 },
+  { name: "Thermen Bussloo", city: "Bussloo", lat: 52.2583, lng: 6.1347, rating: 4.4 },
+  { name: "Elysium", city: "Bloemendaal", lat: 52.4025, lng: 4.5258, rating: 4.5 },
+  { name: "SpaSereen", city: "Rijswijk (Gld)", lat: 51.9361, lng: 5.9694, rating: 4.7 },
+  { name: "Thermen Berendonck", city: "Wijchen", lat: 51.7867, lng: 5.7256, rating: 4.3 },
+  { name: "Spa Weesp", city: "Weesp", lat: 52.3078, lng: 5.0436, rating: 4.4 },
 ];
 
 const wellnessTodo = [
