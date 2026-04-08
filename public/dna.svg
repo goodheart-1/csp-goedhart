@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 500" fill="none">
+  <defs>
+    <linearGradient id="strand1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="strand2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="rung" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <!-- Rungs (base pairs) -->
+  <g stroke="url(#rung)" stroke-width="3" stroke-linecap="round">
+    <line x1="58" y1="30" x2="142" y2="30"/>
+    <line x1="38" y1="60" x2="162" y2="60"/>
+    <line x1="30" y1="90" x2="170" y2="90"/>
+    <line x1="38" y1="120" x2="162" y2="120"/>
+    <line x1="58" y1="150" x2="142" y2="150"/>
+    <line x1="85" y1="175" x2="115" y2="175"/>
+    <line x1="58" y1="210" x2="142" y2="210"/>
+    <line x1="38" y1="240" x2="162" y2="240"/>
+    <line x1="30" y1="270" x2="170" y2="270"/>
+    <line x1="38" y1="300" x2="162" y2="300"/>
+    <line x1="58" y1="330" x2="142" y2="330"/>
+    <line x1="85" y1="355" x2="115" y2="355"/>
+    <line x1="58" y1="390" x2="142" y2="390"/>
+    <line x1="38" y1="420" x2="162" y2="420"/>
+    <line x1="30" y1="450" x2="170" y2="450"/>
+    <line x1="38" y1="480" x2="162" y2="480"/>
+  </g>
+  <!-- Strand 1 (left helix) -->
+  <path d="M100,0 C30,45 30,90 100,135 C170,180 170,225 100,270 C30,315 30,360 100,405 C170,450 170,495 100,500"
+        stroke="url(#strand1)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <!-- Strand 2 (right helix) -->
+  <path d="M100,0 C170,45 170,90 100,135 C30,180 30,225 100,270 C170,315 170,360 100,405 C30,450 30,495 100,500"
+        stroke="url(#strand2)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <!-- Glow dots at intersections -->
+  <circle cx="100" cy="0" r="5" fill="#06b6d4" opacity="0.6"/>
+  <circle cx="100" cy="135" r="5" fill="#8b5cf6" opacity="0.6"/>
+  <circle cx="100" cy="270" r="5" fill="#ec4899" opacity="0.6"/>
+  <circle cx="100" cy="405" r="5" fill="#8b5cf6" opacity="0.6"/>
+  <circle cx="100" cy="500" r="5" fill="#06b6d4" opacity="0.6"/>
+</svg>
