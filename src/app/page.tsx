@@ -826,23 +826,22 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* Video's */}
-          <div className="mt-5 pt-5 border-t border-sky-100">
-            <div className="grid grid-cols-3 gap-6 max-w-md mx-auto">
+          {/* Instagram-style reels grid */}
+          <div className="mt-4 pt-4 border-t border-sky-100/60">
+            <div className="flex items-center gap-2 mb-3">
+              <svg className="w-4 h-4 text-stone-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              <span className="text-xs font-medium text-stone-500">@clearlynl</span>
+            </div>
+            <div className="grid grid-cols-3 gap-[2px] rounded-lg overflow-hidden">
               {[
-                { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg", emoji: "☝️", heading: <>Your <strong>Health</strong></>, desc: "Je gezondheid zou altijd op de eerste plaats moeten komen." },
-                { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg", emoji: "🩵", heading: <>is <strong>Clearly</strong></>, desc: "Wij maken de gezondheid duidelijk." },
-                { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg", emoji: "🥇", heading: <><strong>#1.</strong></>, desc: "Onze standaard. Met minder nemen we nooit genoegen." },
+                { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg" },
+                { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg" },
+                { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg" },
               ].map((v) => (
-                <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center text-center">
-                  <span className="text-lg mb-0.5">{v.emoji}</span>
-                  <p className="text-xs font-medium text-stone-800 mb-1">{v.heading}</p>
-                  <p className="text-[10px] text-stone-400 mb-2 leading-snug">{v.desc}</p>
-                  <div className="relative w-full max-w-[120px] rounded-xl overflow-hidden aspect-[9/16] shadow-sm ring-1 ring-black/5">
-                    <img src={v.image} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute bottom-1.5 left-1.5 w-5 h-5 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center">
-                      <svg className="w-2 h-2 text-stone-700 ml-px" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
+                <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] overflow-hidden bg-stone-100">
+                  <img src={v.image} alt="" className="w-full h-full object-cover group-hover:brightness-90 transition-all duration-200" />
+                  <div className="absolute bottom-2 left-2 flex items-center gap-1">
+                    <svg className="w-3 h-3 text-white drop-shadow-md" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                   </div>
                 </a>
               ))}
