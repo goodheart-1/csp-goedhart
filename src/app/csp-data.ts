@@ -36,7 +36,7 @@ export const experiences: Experience[] = [
     verdict: "good",
     emoji: "🌿",
     summary: "Een ondernemer in overdrive heeft geen instelling nodig - maar rust, natuur en warmte",
-    details: "Ik hou zoveel van mijn gezin. Van mama, papa, Roosje, Sanne, de neefjes, Sven, Niels - van iedereen. Zij zijn de reden dat ik tot rust kom. Niet een pil, niet een instelling, maar de mensen van wie ik hou.",
+    details: "Ik hou zoveel van de mensen om me heen. En m'n gezin natuurlijk in het bijzonder. Lieve moeder Margje, zorgzame tweelingzusje Santje, snelle slimmerik regelaar Roosje, en de wijsheid hemzelfde m'n vader Aad. En dan nu ook zo'n godsgeschenk met m'n neefjes: Joe, Billy & Nick - en straks ook nog een kindje van Sanne. M'n brothers-in-law zijn ook geweldig; Niels & Sven, echte bazen. Het liefst ben ik gewoon dichtbij hen. Dat geeft mij een fijn en gelukkig gevoel. Ik hou van iedereen hoor, maar van hun het allermeest.",
     website: "https://www.natuurhuisje.nl/in-het-bos",
     calmingItems: [
       { emoji: "🏡", label: "Hutje in het bos", desc: "Natuur, stilte, geen prikkels" },
