@@ -931,13 +931,13 @@ export default function Home() {
                           </p>
                         </div>
                       )}
-                      <div className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                      <div className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">
                         {exp.calmingItems.map((item) => (
-                          <div key={item.label} className="flex items-center gap-2.5 rounded-lg bg-emerald-50/60 border border-emerald-100 p-2.5">
-                            <span className="text-lg leading-none shrink-0">{item.emoji}</span>
+                          <div key={item.label} className="flex items-center gap-2 rounded-lg bg-emerald-50/60 border border-emerald-100 px-2 py-1.5">
+                            <span className="text-xl leading-none shrink-0">{item.emoji}</span>
                             <div className="min-w-0">
-                              <div className="text-[13px] font-semibold text-stone-800">{item.label}</div>
-                              <div className="text-[11px] text-stone-500 leading-snug">{item.desc}</div>
+                              <div className="text-sm font-semibold text-stone-800">{item.label}</div>
+                              <div className="text-xs text-stone-500 leading-snug">{item.desc}</div>
                             </div>
                           </div>
                         ))}
