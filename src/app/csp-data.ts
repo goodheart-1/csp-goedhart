@@ -48,6 +48,7 @@ export const experiences: Experience[] = [
       { emoji: "📝", label: "Pen en papier", desc: "Schrijven zonder schermen" },
       { emoji: "📵", label: "Geen schermen", desc: "Telefoon weg, laptop dicht" },
       { emoji: "🌲", label: "Natuur", desc: "Bos, water, frisse lucht" },
+      { emoji: "🏃🏼‍♂️", label: "Hardlopen", desc: "In het bos, hoofd leeg maken" },
       { emoji: "🧹", label: "Schone omgeving", desc: "Fris, opgeruimd, geen chaos" },
       { emoji: "🔇", label: "Weinig mensen", desc: "Geen drukte, geen meningen" },
       { emoji: "🛏️", label: "Mijn eigen bed", desc: "7-8 kussens, slapen als een embryo" },
