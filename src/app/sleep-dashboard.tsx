@@ -43,11 +43,11 @@ function formatDate(dateStr: string): string {
 }
 
 function sleepVerdict(hours: number, score: number): { emoji: string; text: string } {
-  if (hours >= 7 && score >= 80) return { emoji: "😴", text: `${hours} uur geslapen vannacht - lekker geslapen` };
-  if (hours >= 7 && score >= 60) return { emoji: "🙂", text: `${hours} uur geslapen vannacht - prima` };
-  if (hours >= 6 && score >= 60) return { emoji: "😐", text: `${hours} uur geslapen vannacht - kan beter` };
-  if (hours >= 5) return { emoji: "😟", text: `${hours} uur geslapen vannacht - te weinig` };
-  return { emoji: "⚠️", text: `${hours} uur geslapen vannacht - veel te weinig, let op` };
+  if (hours >= 7 && score >= 80) return { emoji: "😴", text: `${hours} uur geslapen vannacht - alles goed` };
+  if (hours >= 7 && score >= 60) return { emoji: "😴", text: `${hours} uur geslapen vannacht - prima` };
+  if (hours >= 6 && score >= 60) return { emoji: "🙂", text: `${hours} uur geslapen vannacht - oké` };
+  if (hours >= 5 && score >= 40) return { emoji: "😐", text: `${hours} uur geslapen vannacht - matig` };
+  return { emoji: "😟", text: `${hours} uur geslapen vannacht - let op` };
 }
 
 function weekSummary(avgHours: number, goodNights: number, total: number): string {
@@ -150,12 +150,6 @@ function SleepChart({ nights }: { nights: SleepNight[] }) {
           <text key={l.idx} x={l.x} y={h - 4} fill="rgba(148,163,184,0.4)" fontSize="9" textAnchor="middle" fontFamily="system-ui">{l.label}</text>
         ))}
 
-        {/* All-time average line */}
-        <line x1={padL} y1={allTimeY} x2={w - padR} y2={allTimeY} stroke="#22c55e" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.5" />
-        <rect x={w - padR - 120} y={allTimeY - 11} width={116} height={16} rx={4} fill="#22c55e" opacity="0.15" />
-        <text x={w - padR - 62} y={allTimeY + 1} fill="#22c55e" fontSize="9" textAnchor="middle" fontFamily="system-ui" opacity="0.8">
-          Gem. 1111+ dagen: {allTimeAvg}%
-        </text>
 
         {/* Area fill */}
         <path d={areaPath} fill="url(#sleepGradient)" />
@@ -345,12 +339,21 @@ export default function SleepDashboard() {
         <div className="grid grid-cols-4 gap-2 mt-4">
           <StatPill label="Slaap" value={`${latest?.sleepScore || 0}%`} sub="vannacht" color={latest ? scoreColor(latest.sleepScore) : undefined} />
           <StatPill label="Herstel" value={data.recovery ? `${data.recovery.score}%` : "-"} sub="vandaag" color={data.recovery ? scoreColor(data.recovery.score) : undefined} />
-          <StatPill label="Gem. slaap" value={`${avgHours}u`} sub="per nacht" />
+          <StatPill label="Gem. slaap" value={`${avgHours}u`} sub="deze week" />
           <StatPill label="HRV" value={data.recovery ? `${data.recovery.hrv}` : "-"} sub="ms" />
         </div>
 
+        {/* Track record - reassuring */}
+        <div className="mt-4 flex items-center gap-3 bg-white/[0.03] rounded-xl px-4 py-2.5 border border-white/5">
+          <span className="text-lg">&#x1F4AA;</span>
+          <div>
+            <span className="text-sm text-white/70">Daantje trackt zijn slaap al <span className="text-white font-semibold">1111+ dagen</span> op rij</span>
+            <span className="text-sm text-blue-200/40"> - geen nacht gemist</span>
+          </div>
+        </div>
+
         {/* Footer */}
-        <div className="mt-4 text-[10px] text-blue-300/25 text-right">
+        <div className="mt-3 text-[10px] text-blue-300/25 text-right">
           Bijgewerkt {new Date(data.updatedAt).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" })}
         </div>
       </div>
