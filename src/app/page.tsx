@@ -846,15 +846,14 @@ export default function Home() {
                 "7494212432534064406",
                 "7345923688027540768",
               ].map((id) => (
-                <div key={id} className="rounded-lg overflow-hidden shadow-sm">
-                  <iframe
-                    src={`https://www.tiktok.com/player/v1/${id}?music_info=0&description=0&rel=0`}
-                    className="w-full aspect-[9/16]"
-                    allowFullScreen
-                    allow="encrypted-media"
-                    loading="lazy"
-                  />
-                </div>
+                <a key={id} href={`https://www.tiktok.com/@clearly.nl/video/${id}`} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] rounded-lg overflow-hidden shadow-sm bg-stone-100 cursor-pointer block">
+                  <img src={`/tiktok-thumbs/${id}.jpg`} alt="" className="w-full h-full object-cover group-hover:brightness-90 transition-all duration-200" loading="lazy" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-11 h-11 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-black/60 transition-colors">
+                      <svg className="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </div>
+                </a>
               ))}
             </div>
           </div>
