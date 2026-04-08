@@ -61,6 +61,7 @@ export async function getAccessToken(): Promise<string> {
       refresh_token: refreshToken,
       client_id: clientId,
       client_secret: clientSecret,
+      redirect_uri: process.env.WHOOP_REDIRECT_URI || "https://protect.goodheart.earth/api/whoop/callback",
     }),
   });
 

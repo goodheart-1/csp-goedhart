@@ -36,6 +36,19 @@ interface WhoopRecovery {
 }
 
 export async function GET() {
+  // Serve static sleep data file
+  try {
+    const fs = await import("fs");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "public", "whoop-data.json");
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+      return NextResponse.json(data, {
+        headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" },
+      });
+    }
+  } catch { /* fall through */ }
+
   try {
     const accessToken = await getAccessToken();
     const headers = { Authorization: `Bearer ${accessToken}` };
