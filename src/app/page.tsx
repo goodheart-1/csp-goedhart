@@ -767,18 +767,21 @@ export default function Home() {
             </p>
 
             {/* 2019 talk video */}
-            <div className="mt-4 rounded-xl overflow-hidden border border-stone-200/50">
-              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/vne1wiYRluA"
-                  title="Daantje Goedhart - Talk 2019"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+            <div className="mt-4 flex flex-col sm:flex-row gap-4 items-start">
+              <div className="sm:w-1/2 text-sm text-stone-500 leading-relaxed">
+                <p className="font-medium text-stone-700 mb-1">Boloo Presentatie, 2019</p>
+                <p>Talk voor 500+ mensen over ondernemen. Dit is wie ik ben, al ver voor welke diagnose dan ook. Sinds mijn 16e sta ik op podia en bouw ik bedrijven.</p>
               </div>
-              <div className="px-3 py-2 bg-stone-50 text-xs text-stone-500">
-                2019 - Talk voor 500+ mensen. Dit is wie ik ben, al ver voor welke diagnose dan ook.
+              <div className="sm:w-1/2 w-full rounded-xl overflow-hidden border border-stone-200/50">
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/vne1wiYRluA"
+                    title="Daantje Goedhart - Talk 2019"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
               </div>
             </div>
 
@@ -902,11 +905,19 @@ export default function Home() {
                     {exp.details}
                   </div>
                   {exp.links && exp.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex gap-5 mt-4">
                       {exp.links.map((link) => (
-                        <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white text-xs font-medium hover:opacity-90 transition-opacity">
-                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                          {link.label}
+                        <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 group">
+                          <div className="w-16 h-16 rounded-full p-[2.5px] bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600">
+                            <div className="w-full h-full rounded-full border-2 border-white overflow-hidden">
+                              {link.image ? (
+                                <img src={link.image} alt={link.label} className="w-full h-full object-cover" />
+                              ) : (
+                                <div className="w-full h-full bg-stone-200 flex items-center justify-center text-lg">📷</div>
+                              )}
+                            </div>
+                          </div>
+                          <span className="text-[11px] text-stone-600 group-hover:text-stone-900 transition-colors">{link.label}</span>
                         </a>
                       ))}
                     </div>
