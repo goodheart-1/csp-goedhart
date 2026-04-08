@@ -767,21 +767,26 @@ export default function Home() {
               Je hebt mannen van weinig woorden. Je hebt ze van veel woorden. Van heel veel. En nog meer. Ik zit daar ergens boven, soms. Dat is niet nieuw. Dat heb ik al heel mn leven. Ik heb tientallen dagboeken volgeschreven. Je moet wat als je bij niemand je gedachtens echt kwijt kan. Ik heb duizenden uren spraakmemos naar mezelf, dat doe ik al 8 jaar. Iedereen is anders.
             </p>
 
-            {/* Video link */}
-            <a href="https://youtu.be/vne1wiYRluA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
-              <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
-                <img src="https://img.youtube.com/vi/vne1wiYRluA/mqdefault.jpg" alt="Boloo Presentatie 2019" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                    <svg className="w-3.5 h-3.5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            {/* YouTube embeds */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {[
+                { id: "vne1wiYRluA", title: "Boloo - The art of doing", desc: "Talk voor 500+ mensen, 2019" },
+                { id: "cTta54ae7Nc", title: "Video", desc: "" },
+              ].map((v) => (
+                <div key={v.id} className="rounded-xl overflow-hidden border border-stone-200/50 bg-stone-50/50">
+                  <div className="relative w-full aspect-video">
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${v.id}`}
+                      title={v.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 w-full h-full"
+                    />
                   </div>
+                  {v.desc && <div className="px-3 py-2 text-xs text-stone-500">{v.desc}</div>}
                 </div>
-              </div>
-              <div className="min-w-0">
-                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Boloo Presentatie - &ldquo;The art of doing.&rdquo;</div>
-                <div className="text-xs text-stone-500 mt-0.5">Talk voor 500+ mensen. 21 september 2019.</div>
-              </div>
-            </a>
+              ))}
+            </div>
 
             {/* Social links */}
             <div className="flex flex-wrap gap-2 mt-4">
