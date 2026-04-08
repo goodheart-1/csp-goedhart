@@ -768,8 +768,9 @@ export default function Home() {
               Je hebt mannen van weinig woorden. Je hebt ze van veel woorden. Van heel veel. En nog meer. Ik zit daar ergens boven, soms. Dat is niet nieuw. Dat heb ik al heel mn leven. Ik heb tientallen dagboeken volgeschreven. Je moet wat als je bij niemand je gedachtens echt kwijt kan. Ik heb duizenden uren spraakmemos naar mezelf, dat doe ik al 8 jaar. Iedereen is anders.
             </p>
 
-            {/* 2019 talk video */}
-            <a href="https://youtu.be/vne1wiYRluA" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
+            {/* Video links */}
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <a href="https://youtu.be/vne1wiYRluA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
               <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
                 <img src="https://img.youtube.com/vi/vne1wiYRluA/mqdefault.jpg" alt="Boloo Presentatie 2019" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -783,7 +784,7 @@ export default function Home() {
                 <div className="text-xs text-stone-500 mt-0.5">Talk voor 500+ mensen. Dit is wie ik ben, al ver voor welke diagnose dan ook.</div>
               </div>
             </a>
-            <a href="https://youtu.be/cTta54ae7Nc" target="_blank" rel="noopener noreferrer" className="mt-2 flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
+            <a href="https://youtu.be/cTta54ae7Nc" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
               <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
                 <img src="https://img.youtube.com/vi/cTta54ae7Nc/mqdefault.jpg" alt="Clearly video" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -797,6 +798,7 @@ export default function Home() {
                 <div className="text-xs text-stone-500 mt-0.5">De missie achter Clearly en wie Daantje is als ondernemer.</div>
               </div>
             </a>
+            </div>
 
             {/* Social links */}
             <div className="flex flex-wrap gap-2 mt-4">
