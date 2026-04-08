@@ -767,8 +767,7 @@ export default function Home() {
               Je hebt mannen van weinig woorden. Je hebt ze van veel woorden. Van heel veel. En nog meer. Ik zit daar ergens boven, soms. Dat is niet nieuw. Dat heb ik al heel mn leven. Ik heb tientallen dagboeken volgeschreven. Je moet wat als je bij niemand je gedachtens echt kwijt kan. Ik heb duizenden uren spraakmemos naar mezelf, dat doe ik al 8 jaar. Iedereen is anders.
             </p>
 
-            {/* Video links */}
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {/* Video link */}
             <a href="https://youtu.be/vne1wiYRluA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
               <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
                 <img src="https://img.youtube.com/vi/vne1wiYRluA/mqdefault.jpg" alt="Boloo Presentatie 2019" className="w-full h-full object-cover" />
@@ -783,21 +782,6 @@ export default function Home() {
                 <div className="text-xs text-stone-500 mt-0.5">Talk voor 500+ mensen. 21 september 2019.</div>
               </div>
             </a>
-            <a href="https://youtu.be/cTta54ae7Nc" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
-              <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
-                <img src="https://img.youtube.com/vi/cTta54ae7Nc/mqdefault.jpg" alt="Clearly video" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                    <svg className="w-3.5 h-3.5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                  </div>
-                </div>
-              </div>
-              <div className="min-w-0">
-                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Jaap de Lada - Ondernemer vragen in een oldtimer</div>
-                <div className="text-xs text-stone-500 mt-0.5">Interview in een 40-jarige Lada. 24 juli 2019.</div>
-              </div>
-            </a>
-            </div>
 
             {/* Social links */}
             <div className="flex flex-wrap gap-2 mt-4">
@@ -841,18 +825,18 @@ export default function Home() {
                 ))}
               {/* Video's */}
               <div className="mt-4 pt-4 border-t border-sky-100">
-                <h3 className="text-xs font-bold uppercase tracking-[1.5px] text-sky-400 mb-2">Video&apos;s</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <h3 className="text-xs font-bold uppercase tracking-[1.5px] text-sky-400 mb-3">Video&apos;s</h3>
+                <div className="grid grid-cols-3 gap-2">
                   {[
-                    { url: "https://www.instagram.com/p/DJjjshYI-_y/", label: "Instagram Reel 1" },
-                    { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", label: "Instagram Reel 2" },
-                    { url: "https://www.instagram.com/p/DJG3lRri20W/", label: "Instagram Reel 3" },
+                    { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg", label: "Your Health" },
+                    { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg", label: "is Clearly" },
+                    { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg", label: "#1." },
                   ].map((v) => (
-                    <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 rounded-lg bg-sky-50/60 border border-sky-100 px-3 py-2.5 hover:bg-sky-100/60 transition-colors">
-                      <span className="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center">
-                        <svg className="w-3.5 h-3.5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                      </span>
-                      <span className="text-sm font-medium text-stone-700 group-hover:text-stone-900 transition-colors">{v.label}</span>
+                    <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group relative rounded-xl overflow-hidden aspect-[9/16] border border-sky-100">
+                      <img src={v.image} alt={v.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <div className="absolute bottom-2 left-2 w-7 h-7 bg-white/90 rounded-full flex items-center justify-center shadow">
+                        <svg className="w-3 h-3 text-stone-800 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                      </div>
                     </a>
                   ))}
                 </div>
