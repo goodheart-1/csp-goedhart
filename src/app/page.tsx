@@ -677,10 +677,8 @@ function SideNav() {
               : "text-stone-400 hover:text-stone-600 hover:bg-white/60 border border-transparent"
             }`}
         >
-          <span className="text-sm">{s.emoji}</span>
-          <span className={`transition-all duration-200 ${active === s.id ? "opacity-100 max-w-24" : "opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-24"}`}>
-            {s.label}
-          </span>
+          <span className="text-sm shrink-0">{s.emoji}</span>
+          <span className="text-[11px] truncate">{s.label}</span>
         </button>
       ))}
     </nav>
