@@ -75,7 +75,6 @@ export const experiences: Experience[] = [
       { emoji: "🍳", label: "Koken voor anderen", desc: "Iets maken met je handen" },
       { emoji: "🌧️", label: "Regen luisteren", desc: "Binnen, warm, regen op het dak" },
       { emoji: "🛋️", label: "Niks doen op de bank", desc: "Echt niks, geen schuldgevoel" },
-      { emoji: "🧩", label: "Puzzelen", desc: "Focus op iets simpels" },
       { emoji: "🪴", label: "Planten verzorgen", desc: "Rustig ritueel, groei zien" },
       { emoji: "🏊🏼‍♂️", label: "Zwemmen", desc: "Water, stilte, gewichtloos" },
       { emoji: "🌾", label: "Buiten zitten", desc: "Tuin, terras, zon op je gezicht" },
