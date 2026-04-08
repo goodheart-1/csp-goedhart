@@ -254,6 +254,18 @@ export const defaultCSPData: CSPData = {
             "✅ Naasten hoeven niks speciaals te doen\n💬 Open communicatie onderhouden over hoe het gaat\n🙏 Vraag hoe je kunt ondersteunen, geef geen ongevraagde adviezen\n📚 Leer over bipolaire stoornis (psycho-educatie) zodat je signalen herkent",
         },
         {
+          label: "Suicidaliteit",
+          icon: "🛡️",
+          value:
+            "🟢 Ik heb **geen doodsgedachten**\n📋 Veiligheidsplan is opgesteld en besproken met behandelaar\n💬 Ik kan open praten over hoe ik me voel",
+        },
+        {
+          label: "Middelengebruik",
+          icon: "🍷",
+          value:
+            "✅ Onder controle / niet gebruiken\n💊 Medicatie wordt ingenomen zoals voorgeschreven\n🚫 Geen alcohol of drugs",
+        },
+        {
           label: "Doel",
           icon: "🎯",
           value:
@@ -272,7 +284,7 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "😴 Slaap zakt naar **5-6 uur** per nacht\n💛 Whoop recovery **geel** (**34-66%**)\n⚡ Meer energie dan normaal, voelt fijn\n🗣️ Sneller praten, meer ideeen tegelijk\n🌙 's Avonds langer op met AI of werk\n🔀 Meerdere projecten tegelijk willen oppakken\n🏃 Minder behoefte aan pauzes",
+            "😴 Slaap zakt naar **5-6 uur** per nacht\n💛 Whoop recovery **geel** (**34-66%**)\n⚡ Meer energie dan normaal, voelt fijn\n🗣️ Sneller praten, meer ideeen tegelijk\n🌙 's Avonds langer op met AI of werk\n🔀 Meerdere projecten tegelijk willen oppakken\n🏃 Minder behoefte aan pauzes\n😤 Sneller boos, vooral als ik mijn zin niet krijg, zoek discussies op\n🫥 Minder contact zoeken, in mijzelf gekeerd\n😰 Gespannen of angstig, soms bang zonder reden\n💭 Snelle gedachten die ik niet kan stoppen\n🌀 Meer piekeren over nare gebeurtenissen uit het verleden",
         },
         {
           label: "Wat kan ik zelf doen?",
@@ -293,6 +305,18 @@ export const defaultCSPData: CSPData = {
             "💤 Naasten mogen vragen: 'Hoeveel slaap je?'\n🪞 Naasten mogen zeggen: 'Ik merk dat je sneller praat / meer energie hebt'\n👂 Serieus nemen als zij iets signaleren\n🗣️ Gebruik korte zinnen, praat rustiger, herhaal dingen als het nodig is\n🤝 Bekrachtig gewenst gedrag, ga niet de strijd aan\n❤️ Richt je op onderliggende gevoelens, niet op de inhoud van de ontregeling",
         },
         {
+          label: "Suicidaliteit",
+          icon: "🛡️",
+          value:
+            "🟡 Soms liever dood, soms liever leven\n💬 Bespreek deze gedachten met behandelaar of vertrouwenspersoon\n📋 Veiligheidsplan opnieuw doornemen\n📞 Bij acute nood: bel **113** (Zelfmoordpreventie) of **0900-0113**",
+        },
+        {
+          label: "Middelengebruik",
+          icon: "🍷",
+          value:
+            "⚠️ Meer alcohol of drugs dan normaal\n💊 Medicatie wordt nog wel ingenomen\n🚩 Let op: middelengebruik versterkt ontregeling",
+        },
+        {
           label: "Doel",
           icon: "🎯",
           value:
@@ -311,7 +335,7 @@ export const defaultCSPData: CSPData = {
           label: "Signalen",
           icon: "👁️",
           value:
-            "😴 Slaap **3-4 uur** en het 'geweldig' vinden\n❤️ Whoop recovery **rood** (**<34%**), meerdere dagen\n🔀 Meerdere projecten tegelijk starten\n😤 Ongeduldig of geirriteerd als iemand tegenspreekt\n💸 Impulsieve beslissingen (financieel, zakelijk)\n🔍 Achterdocht richting collega's of naasten\n🌙 's Nachts actief met AI, werk of plannen\n✊ Lichamelijke spanning: gebalde vuisten, dreigende houding, paniekaanvallen",
+            "😴 Slaap **3-4 uur** en het 'geweldig' vinden\n❤️ Whoop recovery **rood** (**<34%**), meerdere dagen\n🔀 Meerdere projecten tegelijk starten\n😤 Ongeduldig of geirriteerd als iemand tegenspreekt\n💸 Impulsieve beslissingen (financieel, zakelijk)\n🔍 Achterdocht richting collega's of naasten\n🌙 's Nachts actief met AI, werk of plannen\n✊ Lichamelijke spanning: gebalde vuisten, dreigende houding, paniekaanvallen\n😶 Oninvoelbaar voor anderen, moeilijk te volgen in gesprek\n🫸 Bemoei mij met anderen, prikkelbaar\n😡 Dreig met agressie maar soms nog tot rust te brengen\n🧠 Kan moeilijk denken, concentreren en beslissingen nemen\n↔️ Moeite met afstand en nabijheid tot anderen",
         },
         {
           label: "Wat kan ik zelf doen?",
@@ -330,6 +354,18 @@ export const defaultCSPData: CSPData = {
           icon: "🤝",
           value:
             "💚 **Aad (vader)** mag actief ingrijpen\n🩺 Naasten mogen contact opnemen met psychiater namens mij\n💻 MacBook en telefoon innemen\n🤫 Niet in discussie gaan, maar grenzen stellen\n🏡 Haal mij weg bij de bron van onrust, bied een **prikkelarme omgeving**\n🕊️ Maak de situatie veilig met **zo min mogelijk dwang en drang**\n💛 Stel mij gerust en geef hoop, maar geen valse geruststellingen\n🗣️ Gebruik korte zinnen, praat rustiger, herhaal indien nodig\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het rustig is, bij Aad als het heftig is",
+        },
+        {
+          label: "Suicidaliteit",
+          icon: "🛡️",
+          value:
+            "🟠 Ik denk dat ik beter dood kan zijn\n🚨 Dit moet **direct** besproken worden met psychiater of crisisdienst\n📞 Bel **113** (Zelfmoordpreventie) of **0900-0113**\n👥 Naasten: vraag hier **actief** naar, wacht niet tot ik het zelf zeg",
+        },
+        {
+          label: "Middelengebruik",
+          icon: "🍷",
+          value:
+            "🔴 Toenemend gebruik, stopt niet ondanks waarschuwingen\n💊 Niet eens met medicatie - neemt het onregelmatig of weigert\n⚠️ Combinatie alcohol/drugs + geen medicatie = **hoog risico**",
         },
         {
           label: "Doel",
@@ -369,6 +405,18 @@ export const defaultCSPData: CSPData = {
           icon: "🤝",
           value:
             "🩺 Contact opnemen met psychiater of crisisdienst namens mij\n📝 Alleen pen en papier, geen MacBook of telefoon\n🤫 Niet in discussie gaan over of het wel of niet een crisis is\n📋 Beslissingen overnemen op basis van dit plan\n🕊️ Maak de situatie veilig met **zo min mogelijk dwang en drang**\n🗣️ Praat langzamer, gebruik korte zinnen, herhaal dingen\n💛 Stel mij gerust, verzeker mij van mijn veiligheid\n👨‍👩‍👦 Betrek naasten, moedig ze aan om bij mij te blijven (rooming-in)\n\n🏠 **Plan 1**: Terug naar **Margha (mama)** - voorkeur\n🔑 **Plan 2**: Terug naar **Rupelmonde 49**\n🏘️ **Plan 3**: Eigen nieuw appartement zoeken\n\n📞 Wie bellen?\n🎳 Onschuldige avonturen (spontane uitjes): bel mama\n🚨 Echt grensoverschrijdend gedrag: bel **Aad (vader)**\n\n🐕 **Lotje & Doortje**: bij mama als het tranquillo is, bij Aad als het heftig is\n\n🏥 Mocht opname ooit nodig zijn (niet verwacht):\n✅ **Parnassia Castricum Unit 6** - prima\n✅ **De Nieuwe Valerius** - prima\n🚫 **NIET Amstelmeren** - onhygienisch, kan daar niet tot rust komen",
+        },
+        {
+          label: "Suicidaliteit",
+          icon: "🛡️",
+          value:
+            "🔴 Ik heb een **plan gemaakt** voor zelfdoding\n🚨 **DIRECT HANDELEN** - bel crisisdienst **GGZ InGeest** of **112**\n📞 **113** (Zelfmoordpreventie) - 24/7 bereikbaar\n👥 Naasten: neem regie over, laat mij **niet alleen**\n🏥 Veiligheidsplan activeren - opname kan nodig zijn",
+        },
+        {
+          label: "Middelengebruik",
+          icon: "🍷",
+          value:
+            "🔴 Veel gebruik, werkt niet mee over medicatie\n💊 Weigert medicatie volledig\n⚠️ Middelengebruik verhoogt **suiciderisico** aanzienlijk\n🩺 Behandelaar moet hiervan op de hoogte zijn",
         },
         {
           label: "Doel",

@@ -421,7 +421,7 @@ function ProtectorsCard() {
     <div className="space-y-4">
       {/* DNA - Familie */}
       <div className="relative bg-phase-0-light rounded-xl border-2 border-phase-0-border p-4 sm:p-6 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[140px] sm:text-[180px] opacity-[0.04] pointer-events-none select-none leading-none">🧬</div>
+        <div className="absolute -right-6 top-1/2 -translate-y-1/2 text-[280px] sm:text-[340px] opacity-[0.09] pointer-events-none select-none leading-none">🧬</div>
         <div className="relative">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-phase-0">
