@@ -42,11 +42,18 @@ function formatDate(dateStr: string): string {
   return new Date(dateStr + "T00:00:00").toLocaleDateString("nl-NL", { weekday: "short", day: "numeric", month: "short" });
 }
 
-function positiveMessage(avgScore: number, goodNights: number, total: number): string {
-  if (avgScore >= 85) return `Uitstekende week - ${goodNights}/${total} nachten goed geslapen`;
-  if (avgScore >= 70) return `Goede week - ${goodNights}/${total} nachten boven 80%`;
-  if (avgScore >= 55) return `Redelijke week - slaap is stabiel`;
-  return `Zware week - extra rust nodig`;
+function sleepVerdict(hours: number, score: number): { emoji: string; text: string } {
+  if (hours >= 7 && score >= 80) return { emoji: "😴", text: `${hours} uur geslapen vannacht - lekker geslapen` };
+  if (hours >= 7 && score >= 60) return { emoji: "🙂", text: `${hours} uur geslapen vannacht - prima` };
+  if (hours >= 6 && score >= 60) return { emoji: "😐", text: `${hours} uur geslapen vannacht - kan beter` };
+  if (hours >= 5) return { emoji: "😟", text: `${hours} uur geslapen vannacht - te weinig` };
+  return { emoji: "⚠️", text: `${hours} uur geslapen vannacht - veel te weinig, let op` };
+}
+
+function weekSummary(avgHours: number, goodNights: number, total: number): string {
+  if (goodNights >= 5) return `Goede week: ${goodNights} van ${total} nachten goed geslapen`;
+  if (goodNights >= 3) return `Redelijke week: ${goodNights} van ${total} nachten goed geslapen`;
+  return `Zware week: maar ${goodNights} van ${total} nachten goed geslapen`;
 }
 
 function SleepChart({ nights }: { nights: SleepNight[] }) {
@@ -279,20 +286,32 @@ export default function SleepDashboard() {
   const avgScore = week.length > 0 ? Math.round(week.reduce((s, n) => s + n.sleepScore, 0) / week.length) : 0;
   const avgHours = week.length > 0 ? Math.round(week.reduce((s, n) => s + n.hoursSlept, 0) / week.length * 10) / 10 : 0;
 
+  const verdict = latest ? sleepVerdict(latest.hoursSlept, latest.sleepScore) : null;
+  const weekMsg = weekSummary(avgHours, goodNights, week.length);
+
   return (
     <div className="relative rounded-2xl overflow-hidden p-6 shadow-lg" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" }}>
       <StarField />
 
       <div className="relative z-10">
         {/* Header */}
-        <div className="flex items-center justify-between mb-1">
+        <div className="flex items-center justify-between mb-3">
           <h3 className="text-lg font-bold text-white">Hoe slaapt Daantje?</h3>
           <span className="text-[10px] text-blue-300/30 font-medium">WHOOP @Goodheart</span>
         </div>
 
-        {/* Positive message */}
-        <p className="text-sm font-medium" style={{ color: scoreColor(avgScore) }}>
-          {positiveMessage(avgScore, goodNights, week.length)}
+        {/* Vannacht - big and clear for mama */}
+        {verdict && (
+          <div className="bg-white/5 rounded-xl px-4 py-3 mb-2 border border-white/5">
+            <div className="text-2xl font-bold text-white">
+              {verdict.emoji} {verdict.text}
+            </div>
+          </div>
+        )}
+
+        {/* Week summary */}
+        <p className="text-sm text-blue-200/50 mb-1">
+          {weekMsg} (gem. {avgHours} uur per nacht)
         </p>
 
         {/* Bar chart */}

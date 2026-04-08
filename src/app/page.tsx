@@ -900,9 +900,24 @@ export default function Home() {
                   <div className={`text-sm font-medium mb-2 ${exp.verdict === "bad" ? "text-red-700" : "text-phase-0"}`}>
                     {exp.summary}
                   </div>
-                  <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
-                    {exp.details}
-                  </div>
+                  {exp.details && (
+                    <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
+                      {exp.details}
+                    </div>
+                  )}
+                  {exp.calmingItems && exp.calmingItems.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
+                      {exp.calmingItems.map((item) => (
+                        <div key={item.label} className="flex items-start gap-2.5 rounded-lg bg-emerald-50/60 border border-emerald-100 p-2.5">
+                          <span className="text-lg leading-none mt-0.5">{item.emoji}</span>
+                          <div className="min-w-0">
+                            <div className="text-[13px] font-semibold text-stone-800">{item.label}</div>
+                            <div className="text-[11px] text-stone-500 leading-snug">{item.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   {exp.website && (
                     <a href={exp.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-lg bg-emerald-50 border border-emerald-200/50 text-emerald-700 text-sm font-medium hover:bg-emerald-100 transition-colors">
                       <span>🏡</span> Natuurhuisje in het bos

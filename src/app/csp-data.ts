@@ -5,6 +5,7 @@ export interface Experience {
   summary: string;
   details: string;
   website?: string;
+  calmingItems?: { emoji: string; label: string; desc: string }[];
   links?: { label: string; url: string; image?: string }[];
 }
 
@@ -31,12 +32,26 @@ export const experiences: Experience[] = [
     details: "Het bad was nice. Personeel was heel vriendelijk (maar dat zijn ze overal). Wel hele heftige mensen daar. De voornaamste uitdaging was het vermijden van alle impulsen, en dat ging lastig omdat het een vrij kleine plek was."
   },
   {
-    facility: "Wat WEL werkt bij manie",
+    facility: "Wat mij tot rust brengt",
     verdict: "good",
-    emoji: "🏡",
-    summary: "Hutje in het bos, hot tub, warme douche, rust",
-    details: "Iemand in een manie moet tot rust komen. Dat betekent:\n- Rustige omgeving (bos, natuur)\n- Niet te veel mensen\n- Goede hygiene (schoon, fris)\n- Hot tub / warm bad\n- Warme douche\n- Pen en papier (geen schermen)\n- Hondjes Lotje & Doortje als anker\n- Neefjes om me heen\n\nDit is het tegenovergestelde van een drukke, vieze instelling. Rust, natuur, en warmte zijn de sleutel.\n\n🏡 Een natuurhuisje in het bos brengt mij 10x meer tot rust dan welke instelling dan ook.",
+    emoji: "🌿",
+    summary: "Een ondernemer in overdrive heeft geen instelling nodig - maar rust, natuur en warmte",
+    details: "",
     website: "https://www.natuurhuisje.nl/in-het-bos",
+    calmingItems: [
+      { emoji: "🏡", label: "Hutje in het bos", desc: "Natuur, stilte, geen prikkels" },
+      { emoji: "🛁", label: "Hot tub / warm bad", desc: "Warmte ontspant het hele lichaam" },
+      { emoji: "🚿", label: "Warme douche", desc: "Reset-knop, even alles loslaten" },
+      { emoji: "🐕", label: "Lotje knuffelen", desc: "Beste manier om tot rust te komen" },
+      { emoji: "🐾", label: "Doortje erbij", desc: "Twee hondjes = dubbel anker" },
+      { emoji: "👶", label: "Neefjes om me heen", desc: "Onvoorwaardelijke liefde, in het moment" },
+      { emoji: "📝", label: "Pen en papier", desc: "Schrijven zonder schermen" },
+      { emoji: "📵", label: "Geen schermen", desc: "Telefoon weg, laptop dicht" },
+      { emoji: "🌲", label: "Natuur", desc: "Bos, water, frisse lucht" },
+      { emoji: "🧹", label: "Schone omgeving", desc: "Fris, opgeruimd, geen chaos" },
+      { emoji: "🤫", label: "Weinig mensen", desc: "Geen drukte, geen meningen" },
+      { emoji: "🫂", label: "Familie dichtbij", desc: "Maar op mijn tempo" },
+    ],
     links: [
       { label: "Lotje", url: "https://www.instagram.com/stories/highlights/17878688695950098/", image: "/highlights/lotje.jpg" },
       { label: "Doortje", url: "https://www.instagram.com/stories/highlights/17880308928183060/", image: "/highlights/doortje.jpg" },
