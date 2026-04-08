@@ -110,38 +110,36 @@ const wellnessVisited = [
 
 const wellnessTodo = [
   // Noord-Holland
-  { name: "Sauna Deco", city: "Amsterdam", lat: 52.3791, lng: 4.8980 },
-  { name: "Spa Velserend", city: "IJmuiden", lat: 52.4614, lng: 4.6020 },
-  { name: "Spa Sport Hotel Zuiver", city: "Amstelveen", lat: 52.3283, lng: 4.8357 },
-  { name: "Sauna Driehuizen", city: "Driehuizen", lat: 52.5550, lng: 4.8100 },
-  { name: "Wellness de Kennemerduinen", city: "Overveen", lat: 52.3900, lng: 4.5750 },
-  { name: "Spa Luxx", city: "Alkmaar", lat: 52.6324, lng: 4.7534 },
-  { name: "Spaarnwoude Spa", city: "Spaarnwoude", lat: 52.4130, lng: 4.7050 },
+  { name: "Sauna Deco", city: "Amsterdam", lat: 52.3791, lng: 4.8980, rating: 4.5 },
+  { name: "Spa Velserend", city: "IJmuiden", lat: 52.4614, lng: 4.6020, rating: 4.2 },
+  { name: "Sauna Driehuizen", city: "Driehuizen", lat: 52.5550, lng: 4.8100, rating: 4.6 },
+  { name: "Kennemerduinen", city: "Overveen", lat: 52.3900, lng: 4.5750, rating: 4.3 },
+  { name: "Spa Luxx", city: "Alkmaar", lat: 52.6324, lng: 4.7534, rating: 4.4 },
+  { name: "Spaarnwoude Spa", city: "Spaarnwoude", lat: 52.4130, lng: 4.7050, rating: 4.1 },
   // Zuid-Holland
-  { name: "Elysium Den Haag", city: "Den Haag", lat: 52.0705, lng: 4.3007 },
-  { name: "Thermae Son", city: "Son en Breugel", lat: 51.5100, lng: 5.5000 },
-  // Utrecht
-  { name: "Sanadome", city: "Nijmegen", lat: 51.8400, lng: 5.8550 },
+  { name: "Elysium Den Haag", city: "Den Haag", lat: 52.0705, lng: 4.3007, rating: 4.4 },
   // Brabant
-  { name: "Sauna Devarana", city: "Den Bosch", lat: 51.6900, lng: 5.2950 },
-  { name: "SpaSense", city: "Geldrop", lat: 51.4200, lng: 5.5600 },
-  { name: "Thermen Goirle", city: "Goirle", lat: 51.5200, lng: 5.0650 },
-  { name: "SpaPuur", city: "Someren", lat: 51.3833, lng: 5.7167 },
+  { name: "Thermae Son", city: "Son en Breugel", lat: 51.5100, lng: 5.5000, rating: 4.5 },
+  { name: "Devarana", city: "Den Bosch", lat: 51.6900, lng: 5.2950, rating: 4.6 },
+  { name: "SpaSense", city: "Geldrop", lat: 51.4200, lng: 5.5600, rating: 4.3 },
+  { name: "Thermen Goirle", city: "Goirle", lat: 51.5200, lng: 5.0650, rating: 4.4 },
+  { name: "SpaPuur", city: "Someren", lat: 51.3833, lng: 5.7167, rating: 4.5 },
   // Gelderland
-  { name: "Veluwse Bron", city: "Emst", lat: 52.3200, lng: 5.9600 },
-  { name: "De Zwaluwhoeve", city: "Hierden", lat: 52.3700, lng: 5.6700 },
+  { name: "Sanadome", city: "Nijmegen", lat: 51.8400, lng: 5.8550, rating: 4.2 },
+  { name: "Veluwse Bron", city: "Emst", lat: 52.3200, lng: 5.9600, rating: 4.4 },
+  { name: "De Zwaluwhoeve", city: "Hierden", lat: 52.3700, lng: 5.6700, rating: 4.3 },
   // Limburg
-  { name: "Thermae 2000", city: "Valkenburg", lat: 50.8650, lng: 5.8320 },
-  { name: "Ridderode", city: "Heerlen", lat: 50.8917, lng: 5.9667 },
-  { name: "Wellness Sittard", city: "Sittard", lat: 51.0000, lng: 5.8700 },
-  // Overijssel
-  { name: "Saunapaleis De Bonte Wever", city: "Assen", lat: 52.9950, lng: 6.5550 },
-  { name: "Thermen Bad Nieuweschans", city: "Bad Nieuweschans", lat: 53.1760, lng: 7.2080 },
+  { name: "Thermae 2000", city: "Valkenburg", lat: 50.8650, lng: 5.8320, rating: 4.3 },
+  { name: "Ridderode", city: "Heerlen", lat: 50.8917, lng: 5.9667, rating: 4.2 },
+  { name: "Wellness Sittard", city: "Sittard", lat: 51.0000, lng: 5.8700, rating: 4.1 },
+  // Noord
+  { name: "De Bonte Wever", city: "Assen", lat: 52.9950, lng: 6.5550, rating: 4.0 },
+  { name: "Thermen Bad Nieuweschans", city: "Bad Nieuweschans", lat: 53.1760, lng: 7.2080, rating: 4.4 },
   // Zeeland
-  { name: "Sauna & Beauty Middelburg", city: "Middelburg", lat: 51.4988, lng: 3.6136 },
+  { name: "Sauna Middelburg", city: "Middelburg", lat: 51.4988, lng: 3.6136, rating: 4.3 },
   // Belgie
-  { name: "Elaisa", city: "Geel (BE)", lat: 51.1597, lng: 4.9897 },
-  { name: "Thermae Grimbergen", city: "Grimbergen (BE)", lat: 50.9340, lng: 4.3710 },
+  { name: "Elaisa", city: "Geel (BE)", lat: 51.1597, lng: 4.9897, rating: 4.5 },
+  { name: "Thermae Grimbergen", city: "Grimbergen (BE)", lat: 50.9340, lng: 4.3710, rating: 4.3 },
 ];
 
 export function WellnessMap() {
@@ -164,20 +162,22 @@ export function WellnessMap() {
           opacity={0.4}
         />
         {wellnessVisited.map((w) => (
-          <Marker key={w.name} position={[w.lat, w.lng]} icon={emojiIcon("🧖🏼‍♂️")}>
+          <Marker key={w.name} position={[w.lat, w.lng]} icon={wellnessIcon("🧖🏼‍♂️", w.name.replace(/^(Thermen |Sauna |Spa |Fort Resort )/, ""), w.rating, true)}>
             <Popup>
               <strong>{w.name}</strong>
               <div className="text-xs text-stone-500">{w.city}</div>
-              <div className="text-xs text-emerald-600 font-medium">Bezocht ✓</div>
+              <div className="text-xs text-amber-600">★ {w.rating}</div>
+              <div className="text-xs text-emerald-600 font-medium mt-1">Bezocht ✓</div>
             </Popup>
           </Marker>
         ))}
         {wellnessTodo.map((w) => (
-          <Marker key={w.name} position={[w.lat, w.lng]} icon={emojiIcon("🧘")}>
+          <Marker key={w.name} position={[w.lat, w.lng]} icon={wellnessIcon("🧘", w.name.replace(/^(Thermen |Sauna |Spa |Wellness )/, ""), w.rating, false)}>
             <Popup>
               <strong>{w.name}</strong>
               <div className="text-xs text-stone-500">{w.city}</div>
-              <div className="text-xs text-violet-600 font-medium">Nog te ontdekken</div>
+              <div className="text-xs text-amber-600">★ {w.rating}</div>
+              <div className="text-xs text-violet-600 font-medium mt-1">Nog te ontdekken</div>
             </Popup>
           </Marker>
         ))}
