@@ -49,61 +49,127 @@ function positiveMessage(avgScore: number, goodNights: number, total: number): s
   return `Zware week - extra rust nodig`;
 }
 
-function SleepBarChart({ nights }: { nights: SleepNight[] }) {
+function SleepChart({ nights }: { nights: SleepNight[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
-  return (
-    <div className="mt-6 mb-2">
-      <div className="flex items-end gap-[3px] h-36" role="img" aria-label="Slaapscores">
-        {nights.map((night, i) => {
-          const height = Math.max(8, (night.sleepScore / 100) * 100);
-          const color = scoreColor(night.sleepScore);
-          const isHovered = hovered === i;
-          const isLatest = i === nights.length - 1;
+  const w = 600;
+  const h = 160;
+  const padX = 0;
+  const padTop = 20;
+  const padBot = 0;
+  const chartH = h - padTop - padBot;
+  const minScore = 0;
+  const maxScore = 100;
 
-          return (
-            <button
-              key={night.date}
-              className="relative flex-1 flex flex-col justify-end cursor-pointer transition-opacity duration-150"
-              style={{ opacity: hovered !== null && !isHovered ? 0.4 : 1 }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-              onFocus={() => setHovered(i)}
-              onBlur={() => setHovered(null)}
-              aria-label={`${formatDate(night.date)}: ${night.sleepScore}%`}
-            >
-              <div
-                className="w-full rounded-t transition-all duration-200 ease-out"
-                style={{
-                  height: `${height}%`,
-                  background: isLatest
-                    ? `linear-gradient(to top, ${color}, ${color}cc)`
-                    : `linear-gradient(to top, ${color}90, ${color}50)`,
-                  boxShadow: isHovered ? `0 0 12px ${color}60` : "none",
-                }}
-              />
-              {isHovered && (
-                <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white text-stone-900 text-xs rounded-xl px-3 py-2 whitespace-nowrap z-10 shadow-xl pointer-events-none">
-                  <div className="font-bold">{formatDate(night.date)}</div>
-                  <div className="text-stone-500">{night.sleepScore}% slaapscore</div>
-                  <div className="text-stone-500">{night.hoursSlept}u slaap</div>
-                  {night.deep > 0 && <div className="text-stone-400">{night.deep}m diep / {night.rem}m REM</div>}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-white" />
-                </div>
-              )}
-            </button>
-          );
-        })}
-      </div>
+  const points = nights.map((n, i) => {
+    const x = padX + (i / (nights.length - 1)) * (w - padX * 2);
+    const y = padTop + chartH - ((n.sleepScore - minScore) / (maxScore - minScore)) * chartH;
+    return { x, y, night: n, index: i };
+  });
+
+  // Smooth curve using cardinal spline
+  function cardinalSpline(pts: { x: number; y: number }[], tension = 0.3): string {
+    if (pts.length < 2) return "";
+    let path = `M ${pts[0].x},${pts[0].y}`;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[Math.max(0, i - 1)];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = pts[Math.min(pts.length - 1, i + 2)];
+      const cp1x = p1.x + (p2.x - p0.x) * tension;
+      const cp1y = p1.y + (p2.y - p0.y) * tension;
+      const cp2x = p2.x - (p3.x - p1.x) * tension;
+      const cp2y = p2.y - (p3.y - p1.y) * tension;
+      path += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2.x},${p2.y}`;
+    }
+    return path;
+  }
+
+  const linePath = cardinalSpline(points);
+  const areaPath = linePath + ` L ${points[points.length - 1].x},${h} L ${points[0].x},${h} Z`;
+
+  // Threshold lines
+  const y80 = padTop + chartH - (80 / 100) * chartH;
+  const y60 = padTop + chartH - (60 / 100) * chartH;
+
+  return (
+    <div className="mt-5 mb-2 relative">
+      <svg
+        viewBox={`0 0 ${w} ${h}`}
+        className="w-full h-auto"
+        role="img"
+        aria-label="Slaapscores grafiek"
+        onMouseLeave={() => setHovered(null)}
+      >
+        <defs>
+          <linearGradient id="sleepGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#22c55e" stopOpacity="0.4" />
+            <stop offset="40%" stopColor="#eab308" stopOpacity="0.2" />
+            <stop offset="100%" stopColor="#0f172a" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+            {points.map((p, i) => (
+              <stop key={i} offset={`${(i / (points.length - 1)) * 100}%`} stopColor={scoreColor(p.night.sleepScore)} />
+            ))}
+          </linearGradient>
+        </defs>
+
+        {/* Threshold lines */}
+        <line x1={0} y1={y80} x2={w} y2={y80} stroke="rgba(34,197,94,0.15)" strokeWidth="1" strokeDasharray="4 4" />
+        <line x1={0} y1={y60} x2={w} y2={y60} stroke="rgba(234,179,8,0.1)" strokeWidth="1" strokeDasharray="4 4" />
+        <text x={w - 4} y={y80 - 4} fill="rgba(34,197,94,0.3)" fontSize="9" textAnchor="end">80%</text>
+        <text x={w - 4} y={y60 - 4} fill="rgba(234,179,8,0.2)" fontSize="9" textAnchor="end">60%</text>
+
+        {/* Area fill */}
+        <path d={areaPath} fill="url(#sleepGradient)" />
+
+        {/* Line */}
+        <path d={linePath} fill="none" stroke="url(#lineGradient)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+
+        {/* Interactive dots + hover zones */}
+        {points.map((p) => (
+          <g key={p.index}>
+            <rect
+              x={p.x - (w / nights.length) / 2}
+              y={0}
+              width={w / nights.length}
+              height={h}
+              fill="transparent"
+              className="cursor-pointer"
+              onMouseEnter={() => setHovered(p.index)}
+            />
+            <circle
+              cx={p.x} cy={p.y} r={hovered === p.index ? 5 : (p.index === nights.length - 1 ? 4 : 0)}
+              fill={scoreColor(p.night.sleepScore)}
+              stroke="#0f172a" strokeWidth="2"
+              className="transition-all duration-150"
+            />
+          </g>
+        ))}
+      </svg>
+
+      {/* Tooltip */}
+      {hovered !== null && points[hovered] && (
+        <div
+          className="absolute bg-white text-stone-900 text-xs rounded-xl px-3 py-2 whitespace-nowrap z-10 shadow-xl pointer-events-none"
+          style={{
+            left: `${(points[hovered].x / w) * 100}%`,
+            bottom: `${((h - points[hovered].y) / h) * 100 + 8}%`,
+            transform: "translateX(-50%)",
+          }}
+        >
+          <div className="font-bold">{formatDate(points[hovered].night.date)}</div>
+          <div className="text-stone-500">{points[hovered].night.sleepScore}% slaapscore</div>
+          <div className="text-stone-500">{points[hovered].night.hoursSlept}u slaap</div>
+          <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-white" />
+        </div>
+      )}
+
       {/* Date axis */}
-      <div className="flex justify-between mt-2 text-[10px] text-blue-300/40">
-        {nights.length > 0 && (
-          <>
-            <span>{new Date(nights[0].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}</span>
-            {nights.length > 10 && <span>{new Date(nights[Math.floor(nights.length / 2)].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}</span>}
-            <span>vandaag</span>
-          </>
-        )}
+      <div className="flex justify-between mt-1 text-[10px] text-blue-300/30">
+        <span>{new Date(nights[0].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}</span>
+        {nights.length > 10 && <span>{new Date(nights[Math.floor(nights.length / 2)].date + "T00:00:00").toLocaleDateString("nl-NL", { day: "numeric", month: "short" })}</span>}
+        <span>vandaag</span>
       </div>
     </div>
   );
@@ -230,7 +296,7 @@ export default function SleepDashboard() {
         </p>
 
         {/* Bar chart */}
-        <SleepBarChart nights={data.nights} />
+        <SleepChart nights={data.nights} />
 
         {/* Stats */}
         <div className="grid grid-cols-4 gap-2 mt-4">

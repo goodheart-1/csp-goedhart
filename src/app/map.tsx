@@ -82,6 +82,77 @@ export function FacilitiesMap() {
   );
 }
 
+const wellnessVisited = [
+  { name: "Thermen Soesterberg", city: "Soesterberg", lat: 52.1275, lng: 5.2919 },
+  { name: "Sauna van Egmond", city: "Haarlem", lat: 52.3814, lng: 4.6460 },
+  { name: "Spa Zuiver", city: "Amsterdam", lat: 52.3283, lng: 4.8357 },
+  { name: "Fort Resort Beemster", city: "Zuidoostbeemster", lat: 52.5369, lng: 4.9492 },
+  { name: "Thermen Bussloo", city: "Bussloo", lat: 52.2583, lng: 6.1347 },
+  { name: "Elysium", city: "Bloemendaal", lat: 52.4025, lng: 4.5258 },
+  { name: "SpaSereen", city: "Rijswijk (Gld)", lat: 51.9361, lng: 5.9694 },
+  { name: "Thermen Berendonck", city: "Wijchen", lat: 51.7867, lng: 5.7256 },
+  { name: "Spa Weesp", city: "Weesp", lat: 52.3078, lng: 5.0436 },
+];
+
+const wellnessTodo = [
+  { name: "Ridderode", city: "Heerlen", lat: 50.8917, lng: 5.9667 },
+  { name: "Elaisa", city: "Geel (BE)", lat: 51.1597, lng: 4.9897 },
+  { name: "SpaPuur", city: "Someren", lat: 51.3833, lng: 5.7167 },
+];
+
+export function WellnessMap() {
+  return (
+    <div className="relative rounded-xl overflow-hidden" style={{ height: 450 }}>
+      <MapContainer
+        key="wellness-map"
+        center={[52.0, 5.3]}
+        zoom={8}
+        scrollWheelZoom={false}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer
+          attribution='Tiles &copy; Esri'
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        />
+        {wellnessVisited.map((w) => (
+          <Marker key={w.name} position={[w.lat, w.lng]} icon={emojiIcon("♨️")}>
+            <Popup>
+              <strong>{w.name}</strong>
+              <div className="text-xs text-stone-500">{w.city}</div>
+              <div className="text-xs text-green-600 font-medium">Bezocht</div>
+            </Popup>
+          </Marker>
+        ))}
+        {wellnessTodo.map((w) => (
+          <Marker key={w.name} position={[w.lat, w.lng]} icon={emojiIcon("🎯")}>
+            <Popup>
+              <strong>{w.name}</strong>
+              <div className="text-xs text-stone-500">{w.city}</div>
+              <div className="text-xs text-amber-600 font-medium">Nog te bezoeken</div>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+
+      <div className="absolute bottom-3 left-3 z-[1000] bg-white/80 backdrop-blur-xl rounded-lg border border-stone-200/60 px-4 py-3 shadow-lg">
+        <div className="text-[10px] font-bold uppercase tracking-[2px] text-stone-400 mb-2">
+          Legenda
+        </div>
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2 text-sm text-stone-700">
+            <span>♨️</span>
+            <span>Bezocht ({wellnessVisited.length})</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm text-stone-700">
+            <span>🎯</span>
+            <span>Nog te bezoeken ({wellnessTodo.length})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LocationMap() {
   return (
     <div className="relative rounded-xl overflow-hidden" style={{ height: 400 }}>

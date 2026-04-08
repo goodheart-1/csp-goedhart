@@ -8,6 +8,7 @@ import SleepDashboard from "./sleep-dashboard";
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
 const FacilitiesMap = dynamic(() => import("./map").then(mod => ({ default: mod.FacilitiesMap })), { ssr: false });
+const WellnessMap = dynamic(() => import("./map").then(mod => ({ default: mod.WellnessMap })), { ssr: false });
 
 const amstelmerePhotos = Array.from({ length: 11 }, (_, i) => `/amstelmere/${String(i + 1).padStart(2, "0")}.jpg`);
 
@@ -904,6 +905,12 @@ export default function Home() {
                   <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
                     {exp.details}
                   </div>
+                  {exp.website && (
+                    <a href={exp.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-lg bg-emerald-50 border border-emerald-200/50 text-emerald-700 text-sm font-medium hover:bg-emerald-100 transition-colors">
+                      <span>🏡</span> Natuurhuisje in het bos
+                      <svg className="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  )}
                   {exp.links && exp.links.length > 0 && (
                     <div className="flex gap-5 mt-4">
                       {exp.links.map((link) => (
