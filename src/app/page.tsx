@@ -625,6 +625,7 @@ const sections = [
   { id: "phases", emoji: "📊", label: "Fases" },
   { id: "facilities", emoji: "🏥", label: "Faciliteiten" },
   { id: "experiences", emoji: "📖", label: "Ervaringen" },
+  { id: "rust", emoji: "🌿", label: "Rust" },
   { id: "sleep", emoji: "😴", label: "Slaap" },
   { id: "locations", emoji: "📍", label: "Locaties" },
   { id: "wellness", emoji: "♨️", label: "Wellness" },
@@ -908,7 +909,7 @@ export default function Home() {
                 📖 Ervaringen & Lessen
               </h2>
               {experiences.map((exp) => (
-                <div key={exp.facility} className={`rounded-xl p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] ${exp.verdict === "bad" ? "bg-red-50 border border-red-200/50" : "bg-white border border-stone-200/20"}`}>
+                <div key={exp.facility} id={exp.calmingItems ? "rust" : undefined} className={`rounded-xl p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20 ${exp.verdict === "bad" ? "bg-red-50 border border-red-200/50" : "bg-white border border-stone-200/20"}`}>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xl">{exp.emoji}</span>
                     <h3 className="text-sm font-bold text-stone-900">{exp.facility}</h3>
