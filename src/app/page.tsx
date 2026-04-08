@@ -826,22 +826,22 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* Video's - zoals op clearly.nl/pages/our-goal */}
+          {/* Video's */}
           <div className="mt-5 pt-5 border-t border-sky-100">
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-3 gap-6 max-w-md mx-auto">
               {[
-                { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg", emoji: "☝️", heading: <>Your <strong>Health</strong></>, desc: "Je gezondheid zou altijd op de eerste plaats moeten komen. Maar al te vaak zetten bedrijven winst op de eerste plaats." },
-                { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg", emoji: "🩵", heading: <>is <strong>Clearly</strong></>, desc: "De wereld van de gezondheid is onduidelijk. Wij maken het duidelijk. Van onze formules tot onze communicatie." },
-                { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg", emoji: "🥇", heading: <><strong>#1.</strong></>, desc: "#1 is niet alleen een icoon, het is onze standaard. Met minder nemen we nooit genoegen." },
+                { url: "https://www.instagram.com/p/DJjjshYI-_y/", image: "/clearly-reels/reel1.jpg", emoji: "☝️", heading: <>Your <strong>Health</strong></>, desc: "Je gezondheid zou altijd op de eerste plaats moeten komen." },
+                { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", image: "/clearly-reels/reel2.jpg", emoji: "🩵", heading: <>is <strong>Clearly</strong></>, desc: "Wij maken de gezondheid duidelijk." },
+                { url: "https://www.instagram.com/p/DJG3lRri20W/", image: "/clearly-reels/reel3.jpg", emoji: "🥇", heading: <><strong>#1.</strong></>, desc: "Onze standaard. Met minder nemen we nooit genoegen." },
               ].map((v) => (
                 <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group flex flex-col items-center text-center">
-                  <span className="text-2xl mb-1">{v.emoji}</span>
-                  <p className="text-sm text-stone-800 mb-1.5">{v.heading}</p>
-                  <p className="text-[11px] text-stone-500 mb-3 leading-relaxed">{v.desc}</p>
-                  <div className="relative w-full rounded-2xl overflow-hidden aspect-[9/16] shadow-md">
+                  <span className="text-lg mb-0.5">{v.emoji}</span>
+                  <p className="text-xs font-medium text-stone-800 mb-1">{v.heading}</p>
+                  <p className="text-[10px] text-stone-400 mb-2 leading-snug">{v.desc}</p>
+                  <div className="relative w-full max-w-[120px] rounded-xl overflow-hidden aspect-[9/16] shadow-sm ring-1 ring-black/5">
                     <img src={v.image} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute bottom-3 left-3 w-7 h-7 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow">
-                      <svg className="w-3 h-3 text-stone-700 ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <div className="absolute bottom-1.5 left-1.5 w-5 h-5 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center">
+                      <svg className="w-2 h-2 text-stone-700 ml-px" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                   </div>
                 </a>
