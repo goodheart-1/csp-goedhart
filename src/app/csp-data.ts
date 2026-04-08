@@ -67,7 +67,7 @@ export const personalSections: PersonalSection[] = [
     title: "Zorgverzekering",
     emoji: "🏥",
     items: [
-      { label: "Verzekeraar", value: "..." },
+      { label: "Verzekeraar", value: "Zilveren Kruis" },
       { label: "Polisnummer", value: "...", sensitive: true },
       { label: "Type", value: "..." },
       { label: "Aanvullend", value: "..." },
