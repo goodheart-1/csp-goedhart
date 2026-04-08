@@ -627,6 +627,7 @@ const sections = [
   { id: "experiences", emoji: "📖", label: "Ervaringen" },
   { id: "sleep", emoji: "😴", label: "Slaap" },
   { id: "locations", emoji: "📍", label: "Locaties" },
+  { id: "wellness", emoji: "♨️", label: "Wellness" },
   { id: "medication", emoji: "💊", label: "Medicatie" },
   { id: "crisis", emoji: "📞", label: "Crisis" },
 ] as const;
@@ -945,6 +946,16 @@ export default function Home() {
               </h2>
               <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
                 <LocationMap />
+              </div>
+            </div>
+
+        {/* Wellness kaart */}
+        <div id="wellness" className="space-y-2 scroll-mt-20">
+              <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+                ♨️ Wellness & Sauna
+              </h2>
+              <div className="rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] border border-stone-200/20 ring-1 ring-inset ring-black/5">
+                <WellnessMap />
               </div>
             </div>
 
