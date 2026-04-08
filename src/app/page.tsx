@@ -841,6 +841,24 @@ export default function Home() {
                     <span>{s.label}{s.username && <span className="opacity-60 ml-0.5">{s.username}</span>}</span>
                   </a>
                 ))}
+              {/* Video's */}
+              <div className="mt-4 pt-4 border-t border-sky-100">
+                <h3 className="text-xs font-bold uppercase tracking-[1.5px] text-sky-400 mb-2">Video&apos;s</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  {[
+                    { url: "https://www.instagram.com/p/DJjjshYI-_y/", label: "Instagram Reel 1" },
+                    { url: "https://www.instagram.com/p/DJQ9FqMiT4X/", label: "Instagram Reel 2" },
+                    { url: "https://www.instagram.com/p/DJG3lRri20W/", label: "Instagram Reel 3" },
+                  ].map((v) => (
+                    <a key={v.url} href={v.url} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 rounded-lg bg-sky-50/60 border border-sky-100 px-3 py-2.5 hover:bg-sky-100/60 transition-colors">
+                      <span className="shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center">
+                        <svg className="w-3.5 h-3.5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                      </span>
+                      <span className="text-sm font-medium text-stone-700 group-hover:text-stone-900 transition-colors">{v.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
               </div>
             </div>
           </div>
