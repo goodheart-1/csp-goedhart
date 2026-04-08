@@ -4,6 +4,7 @@ export interface Experience {
   emoji: string;
   summary: string;
   details: string;
+  links?: { label: string; url: string }[];
 }
 
 export const experiences: Experience[] = [
@@ -33,7 +34,12 @@ export const experiences: Experience[] = [
     verdict: "good",
     emoji: "🏡",
     summary: "Hutje in het bos, hot tub, warme douche, rust",
-    details: "Iemand in een manie moet tot rust komen. Dat betekent:\n- Rustige omgeving (bos, natuur)\n- Niet te veel mensen\n- Goede hygiene (schoon, fris)\n- Hot tub / warm bad\n- Warme douche\n- Pen en papier (geen schermen)\n- Hondjes Lotje & Doortje als anker\n\nDit is het tegenovergestelde van een drukke, vieze instelling. Rust, natuur, en warmte zijn de sleutel."
+    details: "Iemand in een manie moet tot rust komen. Dat betekent:\n- Rustige omgeving (bos, natuur)\n- Niet te veel mensen\n- Goede hygiene (schoon, fris)\n- Hot tub / warm bad\n- Warme douche\n- Pen en papier (geen schermen)\n- Hondjes Lotje & Doortje als anker\n- Neefjes om me heen\n\nDit is het tegenovergestelde van een drukke, vieze instelling. Rust, natuur, en warmte zijn de sleutel.",
+    links: [
+      { label: "Lotje", url: "https://www.instagram.com/stories/highlights/17878688695950098/" },
+      { label: "Doortje", url: "https://www.instagram.com/stories/highlights/17880308928183060/" },
+      { label: "Neefjes", url: "https://www.instagram.com/stories/highlights/17991284398359243/" }
+    ]
   }
 ];
 
