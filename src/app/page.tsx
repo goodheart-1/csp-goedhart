@@ -768,23 +768,20 @@ export default function Home() {
             </p>
 
             {/* 2019 talk video */}
-            <div className="mt-4 flex flex-col sm:flex-row gap-4 items-start">
-              <div className="sm:w-1/2 text-sm text-stone-500 leading-relaxed">
-                <p className="font-medium text-stone-700 mb-1">Boloo Presentatie, 2019</p>
-                <p>Talk voor 500+ mensen over ondernemen. Dit is wie ik ben, al ver voor welke diagnose dan ook. Sinds mijn 16e sta ik op podia en bouw ik bedrijven.</p>
-              </div>
-              <div className="sm:w-1/2 w-full rounded-xl overflow-hidden border border-stone-200/50">
-                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
-                    className="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/vne1wiYRluA"
-                    title="Daantje Goedhart - Talk 2019"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+            <a href="https://youtu.be/vne1wiYRluA" target="_blank" rel="noopener noreferrer" className="mt-4 flex items-center gap-3 p-3 rounded-xl border border-stone-200/50 bg-stone-50/50 hover:bg-stone-100/50 transition-colors group">
+              <div className="relative w-24 h-16 sm:w-32 sm:h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <img src="https://img.youtube.com/vi/vne1wiYRluA/mqdefault.jpg" alt="Boloo Presentatie 2019" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                    <svg className="w-3.5 h-3.5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div className="min-w-0">
+                <div className="text-sm font-medium text-stone-900 group-hover:text-stone-700">Boloo Presentatie, 2019</div>
+                <div className="text-xs text-stone-500 mt-0.5">Talk voor 500+ mensen. Dit is wie ik ben, al ver voor welke diagnose dan ook.</div>
+              </div>
+            </a>
 
             {/* Social links */}
             <div className="flex flex-wrap gap-2 mt-4">
