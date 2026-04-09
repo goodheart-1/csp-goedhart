@@ -1,16 +1,16 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Bescherm Plan - Daantje Goedhart";
+export const alt = "Protect ~ Daantje Goedhart";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function Image() {
   const phases = [
-    { emoji: "😊", name: "Stabiel", color: "#16a34a", bg: "#f0fdf4" },
-    { emoji: "😐", name: "Waarschuwing", color: "#ca8a04", bg: "#fefce8" },
-    { emoji: "😟", name: "Ernstig", color: "#ea580c", bg: "#fff7ed" },
-    { emoji: "🆘", name: "Crisis", color: "#dc2626", bg: "#fef2f2" },
+    { name: "STABIEL", color: "#34d399" },
+    { name: "WAARSCHUWING", color: "#fbbf24" },
+    { name: "ERNSTIG", color: "#fb923c" },
+    { name: "CRISIS", color: "#f87171" },
   ];
 
   return new ImageResponse(
@@ -21,88 +21,155 @@ export default function Image() {
           flexDirection: "column",
           width: "100%",
           height: "100%",
-          backgroundColor: "#fafaf9",
-          padding: "60px 70px",
-          fontFamily: "system-ui, sans-serif",
+          background:
+            "linear-gradient(135deg, #0a0f0d 0%, #0f1e17 50%, #0a1512 100%)",
+          padding: "72px 80px",
+          fontFamily: "serif",
+          color: "#f5f5f4",
+          position: "relative",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <span style={{ fontSize: 52 }}>🔰</span>
+        {/* Top: brand mark */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            fontFamily: "system-ui, sans-serif",
+          }}
+        >
+          <span style={{ fontSize: 28 }}>🍀</span>
           <span
             style={{
-              fontSize: 48,
-              fontWeight: 700,
-              color: "#1c1917",
-              letterSpacing: "-0.02em",
+              fontSize: 16,
+              fontWeight: 600,
+              letterSpacing: "0.24em",
+              color: "#a7f3d0",
+              textTransform: "uppercase",
             }}
           >
-            Bescherm Plan
+            Goodheart
           </span>
         </div>
 
-        <span
-          style={{
-            fontSize: 24,
-            color: "#78716c",
-            marginTop: 12,
-            marginBottom: 48,
-          }}
-        >
-          Crisissignaleringsplan - 4 fases van stabiliteit tot crisis
-        </span>
-
+        {/* Main: big editorial headline */}
         <div
           style={{
             display: "flex",
-            gap: "20px",
+            flexDirection: "column",
             flex: 1,
-            alignItems: "stretch",
+            justifyContent: "center",
+            marginTop: "-40px",
           }}
         >
-          {phases.map((phase) => (
+          <div
+            style={{
+              fontSize: 180,
+              fontWeight: 400,
+              letterSpacing: "-0.04em",
+              lineHeight: 0.95,
+              color: "#fafaf9",
+              fontStyle: "italic",
+            }}
+          >
+            Protect.
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              marginTop: 32,
+              fontFamily: "system-ui, sans-serif",
+            }}
+          >
             <div
-              key={phase.name}
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                flex: 1,
-                backgroundColor: phase.bg,
-                borderRadius: 20,
-                borderLeft: `5px solid ${phase.color}`,
-                padding: "32px 16px",
-                gap: "12px",
+                width: 48,
+                height: 1,
+                backgroundColor: "#57534e",
+              }}
+            />
+            <span
+              style={{
+                fontSize: 22,
+                color: "#a8a29e",
+                fontWeight: 400,
+                letterSpacing: "0.01em",
               }}
             >
-              <span style={{ fontSize: 56 }}>{phase.emoji}</span>
-              <span
-                style={{
-                  fontSize: 22,
-                  fontWeight: 600,
-                  color: phase.color,
-                }}
-              >
-                {phase.name}
-              </span>
-            </div>
-          ))}
+              Een persoonlijk document van Daantje Goedhart
+            </span>
+          </div>
         </div>
 
+        {/* Bottom: phase gradient bar */}
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: 32,
+            flexDirection: "column",
+            gap: "12px",
+            fontFamily: "system-ui, sans-serif",
           }}
         >
-          <span style={{ fontSize: 18, color: "#a8a29e" }}>
-            Daantje Goedhart
-          </span>
-          <span style={{ fontSize: 18, color: "#a8a29e" }}>
-            csp-goedhart.vercel.app
-          </span>
+          <div
+            style={{
+              display: "flex",
+              height: 6,
+              borderRadius: 3,
+              overflow: "hidden",
+            }}
+          >
+            {phases.map((p) => (
+              <div
+                key={p.name}
+                style={{
+                  flex: 1,
+                  backgroundColor: p.color,
+                }}
+              />
+            ))}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            {phases.map((p) => (
+              <span
+                key={p.name}
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: "0.16em",
+                  color: p.color,
+                  flex: 1,
+                  textAlign: "center",
+                }}
+              >
+                {p.name}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* URL bottom right */}
+        <div
+          style={{
+            position: "absolute",
+            top: 80,
+            right: 80,
+            fontSize: 14,
+            fontWeight: 500,
+            letterSpacing: "0.08em",
+            color: "#57534e",
+            fontFamily: "system-ui, sans-serif",
+            textTransform: "uppercase",
+          }}
+        >
+          protect.goodheart.earth
         </div>
       </div>
     ),

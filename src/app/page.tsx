@@ -723,7 +723,7 @@ export default function Home() {
               className="rounded-full object-cover"
             />
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-[3px] text-stone-400">Bescherm Plan</div>
+              <div className="text-[11px] font-bold uppercase tracking-[3px] text-stone-400">Protect</div>
               <h1 className="font-sans font-semibold text-lg text-stone-900">
                 Daantje Goedhart
               </h1>
@@ -839,7 +839,8 @@ export default function Home() {
               <svg className="w-4 h-4 text-stone-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
               <span className="text-xs font-medium text-stone-500">@clearly.nl</span>
             </div>
-            <div className="grid grid-cols-5 gap-2 max-w-[85%]">
+            {/* Mobile: horizontal scroll slider, Desktop: grid */}
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-5 sm:gap-2 sm:max-w-[85%] sm:overflow-visible scrollbar-hide">
               {[
                 "7499424239926218006",
                 "7500875712912526614",
@@ -847,11 +848,11 @@ export default function Home() {
                 "7494212432534064406",
                 "7345923688027540768",
               ].map((id) => (
-                <a key={id} href={`https://www.tiktok.com/@clearly.nl/video/${id}`} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] rounded-lg overflow-hidden shadow-sm bg-stone-100 cursor-pointer block">
+                <a key={id} href={`https://www.tiktok.com/@clearly.nl/video/${id}`} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] rounded-xl sm:rounded-lg overflow-hidden shadow-sm bg-stone-100 cursor-pointer block shrink-0 w-[55%] sm:w-auto snap-center">
                   <img src={`/tiktok-thumbs/${id}.jpg`} alt="" className="w-full h-full object-cover group-hover:brightness-90 transition-all duration-200" loading="lazy" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-11 h-11 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-black/60 transition-colors">
-                      <svg className="w-5 h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <div className="w-14 h-14 sm:w-11 sm:h-11 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center group-hover:bg-black/60 transition-colors">
+                      <svg className="w-6 h-6 sm:w-5 sm:h-5 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                     </div>
                   </div>
                 </a>
@@ -1092,7 +1093,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="text-center text-xs text-stone-400 py-4 space-y-1 no-print">
-          <p>Bescherm Plan - Print via Cmd+P</p>
+          <p>Protect ~ Daantje Goedhart - Print via Cmd+P</p>
         </footer>
       </main>
     </div>
