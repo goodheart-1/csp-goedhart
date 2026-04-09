@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { defaultCSPData, type CSPData, type Phase, experiences, medications, type Medication, personalSections } from "./csp-data";
+import { defaultCSPData, type CSPData, type Phase, experiences, medications, type Medication, personalSections, medicationArsenal } from "./csp-data";
 import SleepDashboard from "./sleep-dashboard";
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
@@ -620,6 +620,65 @@ function MedicationSection() {
   );
 }
 
+const arsenalStatusConfig = {
+  actief: { label: "Actief", color: "bg-emerald-100 text-emerald-800 border-emerald-200" },
+  gestopt: { label: "Gestopt", color: "bg-stone-100 text-stone-700 border-stone-200" },
+  geweigerd: { label: "Geweigerd", color: "bg-red-100 text-red-800 border-red-200" },
+  geprobeerd: { label: "Geprobeerd", color: "bg-amber-100 text-amber-800 border-amber-200" },
+  "nog nooit": { label: "Nog nooit", color: "bg-stone-50 text-stone-400 border-stone-200" },
+} as const;
+
+function MedicationArsenalSection() {
+  return (
+    <div id="arsenal" className="space-y-3 scroll-mt-20">
+      <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
+        ⚔️ Medicatie Arsenaal
+      </h2>
+      <div className="rounded-xl bg-white border border-stone-200/20 p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)]">
+        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+          Alle medicatie-opties bij bipolaire stoornis - gegroepeerd per categorie. Dit overzicht is informatief en vervangt geen medisch advies. Bespreek wijzigingen altijd met je psychiater.
+        </p>
+        <div className="space-y-5">
+          {medicationArsenal.map((cat) => (
+            <div key={cat.title}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xl">{cat.emoji}</span>
+                <h3 className="text-sm font-bold text-stone-900">{cat.title}</h3>
+              </div>
+              <p className="text-xs text-stone-500 mb-3 italic">{cat.description}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                {cat.meds.map((med) => {
+                  const statusCfg = med.myStatus ? arsenalStatusConfig[med.myStatus] : null;
+                  return (
+                    <div key={med.name} className="rounded-lg border border-stone-200/60 bg-stone-50/40 p-3">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <div className="min-w-0">
+                          <div className="flex items-baseline gap-1.5 flex-wrap">
+                            <span className="font-bold text-sm text-stone-900">{med.name}</span>
+                            {med.brand && <span className="text-xs text-stone-500">({med.brand})</span>}
+                          </div>
+                          <div className="text-[11px] text-stone-400 mt-0.5">{med.class}</div>
+                        </div>
+                        {statusCfg && (
+                          <span className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border ${statusCfg.color}`}>
+                            {statusCfg.label}
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-xs text-stone-700 font-medium mt-2">💊 {med.dose}</div>
+                      <div className="text-[11px] text-stone-500 mt-1 leading-snug">{med.notes}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const sections = [
   { id: "intro", emoji: "👋", label: "Intro" },
   { id: "personal", emoji: "🪪", label: "Gegevens" },
@@ -633,6 +692,7 @@ const sections = [
   { id: "locations", emoji: "📍", label: "Locaties" },
   { id: "wellness", emoji: "🧖🏼‍♂️", label: "Wellness" },
   { id: "medication", emoji: "💊", label: "Medicatie" },
+  { id: "arsenal", emoji: "⚔️", label: "Arsenaal" },
   { id: "crisis", emoji: "📞", label: "Crisis" },
 ] as const;
 
@@ -1064,6 +1124,9 @@ export default function Home() {
 
         {/* Medicatie - bewust onderaan: medicatie is plan F */}
         <MedicationSection />
+
+        {/* Medicatie Arsenaal - alle opties als referentie */}
+        <MedicationArsenalSection />
 
         {/* Crisis banner */}
         <div id="crisis" className="bg-red-50 border border-red-200/50 rounded-xl p-5 space-y-3 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20">

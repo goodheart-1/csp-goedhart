@@ -303,6 +303,102 @@ export const medications: Medication[] = [
   },
 ];
 
+export interface ArsenalMed {
+  name: string;
+  brand?: string;
+  class: string;
+  dose: string;
+  notes: string;
+  myStatus?: "actief" | "gestopt" | "geweigerd" | "geprobeerd" | "nog nooit";
+}
+
+export interface ArsenalCategory {
+  emoji: string;
+  title: string;
+  description: string;
+  meds: ArsenalMed[];
+}
+
+export const medicationArsenal: ArsenalCategory[] = [
+  {
+    emoji: "🧘",
+    title: "Stemmingsstabilisatoren",
+    description: "Eerstekeus bij bipolaire stoornis - dempen pieken en dalen",
+    meds: [
+      { name: "Lithium", brand: "Priadel, Camcolit", class: "Klassieke stabilisator", dose: "400-1200 mg/dag", notes: "Goudstandaard. Bloedspiegel 0.6-1.0 mmol/L. Nier + schildklier monitoren.", myStatus: "actief" },
+      { name: "Valproaat", brand: "Depakine", class: "Anti-epilepticum", dose: "500-2000 mg/dag", notes: "Snelle werking bij manie. Niet bij vrouwen met kinderwens.", myStatus: "gestopt" },
+      { name: "Carbamazepine", brand: "Tegretol", class: "Anti-epilepticum", dose: "400-1600 mg/dag", notes: "Alternatief bij lithium-intolerantie. Veel interacties met andere medicatie.", myStatus: "nog nooit" },
+      { name: "Lamotrigine", brand: "Lamictal", class: "Anti-epilepticum", dose: "100-400 mg/dag", notes: "Vooral bij bipolaire depressie. Langzaam opbouwen ivm huiduitslag.", myStatus: "nog nooit" },
+    ],
+  },
+  {
+    emoji: "🧪",
+    title: "Antipsychotica (atypisch)",
+    description: "Bij manie, psychose of als aanvulling - nieuwere generatie",
+    meds: [
+      { name: "Olanzapine", brand: "Zyprexa", class: "Atypisch antipsychoticum", dose: "5-20 mg/dag", notes: "Gestopt: voelde als zombie, wereld werd grauw. NOOIT MEER.", myStatus: "gestopt" },
+      { name: "Quetiapine", brand: "Seroquel", class: "Atypisch antipsychoticum", dose: "300-800 mg/dag", notes: "Ook gebruikt voor slaap (lage dosis). Gewichtstoename risico.", myStatus: "geweigerd" },
+      { name: "Aripiprazol", brand: "Abilify", class: "Atypisch antipsychoticum", dose: "10-30 mg/dag", notes: "Minder sufheid dan andere. Kan onrust veroorzaken.", myStatus: "gestopt" },
+      { name: "Risperidon", brand: "Risperdal", class: "Atypisch antipsychoticum", dose: "2-6 mg/dag", notes: "Prolactine verhoging mogelijk.", myStatus: "nog nooit" },
+      { name: "Clozapine", brand: "Leponex", class: "Atypisch antipsychoticum", dose: "200-600 mg/dag", notes: "Laatste redmiddel. Wekelijkse bloedcontrole verplicht.", myStatus: "nog nooit" },
+      { name: "Asenapine", brand: "Sycrest", class: "Atypisch antipsychoticum", dose: "10-20 mg/dag", notes: "Sublinguaal (onder de tong).", myStatus: "nog nooit" },
+    ],
+  },
+  {
+    emoji: "🚫",
+    title: "Antipsychotica (klassiek)",
+    description: "Oudere generatie - meer bijwerkingen, minder vaak gebruikt",
+    meds: [
+      { name: "Haloperidol", brand: "Haldol", class: "Klassiek antipsychoticum", dose: "2-10 mg/dag", notes: "Veel bijwerkingen (bewegingsstoornissen). Geweigerd.", myStatus: "geweigerd" },
+    ],
+  },
+  {
+    emoji: "😴",
+    title: "Benzodiazepines",
+    description: "Kalmerend, anti-angst, slaapverwekkend - verslavingsgevoelig",
+    meds: [
+      { name: "Lorazepam", brand: "Temesta", class: "Kortwerkend benzo", dose: "0.5-2.5 mg/dag", notes: "Snelle werking, korte halfwaardetijd. Ik neem 2.5mg verplicht.", myStatus: "actief" },
+      { name: "Oxazepam", brand: "Seresta", class: "Kortwerkend benzo", dose: "10-50 mg/dag", notes: "Vergelijkbaar met lorazepam. Niet aangeboden.", myStatus: "nog nooit" },
+      { name: "Diazepam", brand: "Valium", class: "Langwerkend benzo", dose: "2-10 mg/dag", notes: "Lange halfwaardetijd (stapeling).", myStatus: "nog nooit" },
+      { name: "Clonazepam", brand: "Rivotril", class: "Langwerkend benzo", dose: "0.5-4 mg/dag", notes: "Ook bij epilepsie.", myStatus: "nog nooit" },
+      { name: "Alprazolam", brand: "Xanax", class: "Kortwerkend benzo", dose: "0.25-3 mg/dag", notes: "Sterk verslavend. Vaak off-label.", myStatus: "nog nooit" },
+      { name: "Midazolam", brand: "Dormicum", class: "Ultrakort benzo", dose: "7.5-15 mg", notes: "Kortdurend voor slaap of sedatie.", myStatus: "nog nooit" },
+    ],
+  },
+  {
+    emoji: "💤",
+    title: "Z-drugs (benzo-achtig)",
+    description: "Specifiek voor slaap - minder overdag-sufheid",
+    meds: [
+      { name: "Zolpidem", brand: "Stilnoct", class: "Z-drug", dose: "5-10 mg voor het slapen", notes: "Kortdurend. Slaapwandelen mogelijk.", myStatus: "nog nooit" },
+      { name: "Zopiclon", brand: "Imovane", class: "Z-drug", dose: "3.75-7.5 mg voor het slapen", notes: "Metaal-smaak in mond.", myStatus: "nog nooit" },
+      { name: "Zaleplon", brand: "Sonata", class: "Z-drug", dose: "5-10 mg voor het slapen", notes: "Zeer korte werking.", myStatus: "nog nooit" },
+    ],
+  },
+  {
+    emoji: "🌙",
+    title: "Niet-verslavende slaapopties",
+    description: "Zonder verslavingsrisico, ook langdurig veilig",
+    meds: [
+      { name: "Melatonine", class: "Lichaamseigen hormoon", dose: "0.5-5 mg voor het slapen", notes: "Lage dosis vaak effectiever dan hoge. 30-60 min voor bedtijd.", myStatus: "geprobeerd" },
+      { name: "Mirtazapine (laag)", brand: "Remeron", class: "Antidepressivum", dose: "7.5-15 mg voor het slapen", notes: "Lage dosis = slaap. Hogere dosis = antidepressief.", myStatus: "nog nooit" },
+      { name: "Promethazine", brand: "Phenergan", class: "Antihistaminicum", dose: "25 mg voor het slapen", notes: "Sedatief antihistaminicum. Niet verslavend.", myStatus: "nog nooit" },
+      { name: "Trazodon", class: "Antidepressivum", dose: "25-100 mg voor het slapen", notes: "Veel gebruikt voor slaap in VS, minder in NL.", myStatus: "nog nooit" },
+    ],
+  },
+  {
+    emoji: "🌿",
+    title: "Supplementen",
+    description: "Ondersteunend - niet als vervanging, wel als aanvulling",
+    meds: [
+      { name: "Omega-3 (EPA/DHA)", class: "Visolie", dose: "1-2 gram EPA/dag", notes: "Onderzoek suggereert stabiliserend effect. Hoge EPA werkt beter dan DHA.", myStatus: "actief" },
+      { name: "Magnesium", class: "Mineraal", dose: "200-400 mg/dag", notes: "Bisglycinaat voor beste opname. Helpt bij slaap en stress.", myStatus: "actief" },
+      { name: "Vitamine D", class: "Vitamine", dose: "1000-4000 IE/dag", notes: "Laag niveau = slechtere stemming. Bloedwaarde 80-100 nmol/L.", myStatus: "actief" },
+      { name: "N-Acetylcysteine (NAC)", class: "Aminozuur", dose: "1000-2000 mg/dag", notes: "Onderzoek laat mogelijk stabiliserend effect zien bij bipolair.", myStatus: "nog nooit" },
+    ],
+  },
+];
+
 export interface PhaseField {
   label: string;
   icon: string;
