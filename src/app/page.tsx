@@ -626,6 +626,7 @@ const sections = [
   { id: "facilities", emoji: "🏥", label: "Faciliteiten" },
   { id: "experiences", emoji: "📖", label: "Ervaringen" },
   { id: "rust", emoji: "🌿", label: "Rust" },
+  { id: "onrust", emoji: "⚠️", label: "Onrust" },
   { id: "sleep", emoji: "😴", label: "Slaap" },
   { id: "locations", emoji: "📍", label: "Locaties" },
   { id: "wellness", emoji: "🧖🏼‍♂️", label: "Wellness" },
@@ -772,7 +773,7 @@ export default function Home() {
               {[
                 { id: "vne1wiYRluA", title: "Boloo - The art of doing", desc: "Talk voor 500+ mensen. Laat zien hoe ik denk, presenteer en energie geef als ik in mijn element ben." },
                 { id: "cTta54ae7Nc", title: "Ondernemer Q&A in een oldtimer", desc: "Open en eerlijk over ondernemen, twijfels en keuzes. Zo praat ik als ik ontspannen ben." },
-                { id: "4TtLYVH96to", title: "Daily routine vlog", desc: "Mijn dagelijkse structuur - ochtend en avond. Dit is mijn baseline, zo ziet 'normaal' eruit." },
+                { id: "4TtLYVH96to", title: "Daily routine vlog", desc: "Mijn dagelijkse structuur - ochtend en avond. Dit is mijn baseline, zo ziet 'normaal' eruit. Althans, in 2021." },
               ].map((v) => (
                 <div key={v.id} className="rounded-xl overflow-hidden border border-stone-200/50 bg-stone-50/50">
                   <div className="relative w-full aspect-video">
@@ -921,21 +922,43 @@ export default function Home() {
               <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
                 📖 Ervaringen & Lessen
               </h2>
-              {experiences.map((exp) => (
-                <div key={exp.facility} id={exp.calmingItems ? "rust" : undefined} className={`rounded-xl p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20 ${exp.verdict === "bad" ? "bg-red-50 border border-red-200/50" : "bg-white border border-stone-200/20"}`}>
+              {experiences.map((exp) => {
+                const isRust = !!exp.calmingItems;
+                const isOnrust = !!exp.unrestItems;
+                const isSpecial = isRust || isOnrust;
+                return (
+                <div
+                  key={exp.facility}
+                  id={isRust ? "rust" : isOnrust ? "onrust" : undefined}
+                  className={`rounded-xl p-4 sm:p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20 ${
+                    isSpecial
+                      ? "bg-white border border-stone-200/20"
+                      : exp.verdict === "bad"
+                      ? "bg-red-50 border border-red-200/50"
+                      : "bg-white border border-stone-200/20"
+                  }`}
+                >
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xl">{exp.emoji}</span>
                     <h3 className="text-sm font-bold text-stone-900">{exp.facility}</h3>
                   </div>
-                  <div className={`text-sm font-medium mb-2 ${exp.verdict === "bad" ? "text-red-700" : "text-phase-0"}`}>
+                  <div
+                    className={`text-sm font-medium mb-2 ${
+                      isOnrust
+                        ? "text-amber-700"
+                        : exp.verdict === "bad"
+                        ? "text-red-700"
+                        : "text-phase-0"
+                    }`}
+                  >
                     {exp.summary}
                   </div>
-                  {exp.details && !exp.calmingItems && (
+                  {exp.details && !isSpecial && (
                     <div className="text-[13px] text-stone-600 leading-relaxed whitespace-pre-wrap">
                       {exp.details}
                     </div>
                   )}
-                  {exp.calmingItems && exp.calmingItems.length > 0 && (
+                  {isRust && exp.calmingItems && exp.calmingItems.length > 0 && (
                     <>
                       {exp.details && (
                         <div className="rounded-lg bg-emerald-50 border border-emerald-200/50 px-4 py-3 mt-1 mb-3">
@@ -947,6 +970,28 @@ export default function Home() {
                       <div className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">
                         {exp.calmingItems.map((item) => (
                           <div key={item.label} className="flex items-center gap-2 rounded-lg bg-emerald-50/60 border border-emerald-100 px-2 py-1.5">
+                            <span className="text-xl leading-none shrink-0">{item.emoji}</span>
+                            <div className="min-w-0">
+                              <div className="text-sm font-semibold text-stone-800">{item.label}</div>
+                              <div className="text-xs text-stone-500 leading-snug">{item.desc}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  {isOnrust && exp.unrestItems && exp.unrestItems.length > 0 && (
+                    <>
+                      {exp.details && (
+                        <div className="rounded-lg bg-amber-50 border border-amber-200/50 px-4 py-3 mt-1 mb-3">
+                          <p className="text-[13px] sm:text-sm text-amber-800 leading-relaxed font-medium">
+                            ⚠️ {exp.details}
+                          </p>
+                        </div>
+                      )}
+                      <div className="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-1.5">
+                        {exp.unrestItems.map((item) => (
+                          <div key={item.label} className="flex items-center gap-2 rounded-lg bg-amber-50/60 border border-amber-100 px-2 py-1.5">
                             <span className="text-xl leading-none shrink-0">{item.emoji}</span>
                             <div className="min-w-0">
                               <div className="text-sm font-semibold text-stone-800">{item.label}</div>
@@ -981,9 +1026,10 @@ export default function Home() {
                       ))}
                     </div>
                   )}
-                  {exp.verdict === "bad" && <PhotoGallery />}
+                  {exp.verdict === "bad" && !isOnrust && <PhotoGallery />}
                 </div>
-              ))}
+                );
+              })}
             </div>
           </>
         ) : (

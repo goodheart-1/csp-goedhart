@@ -6,6 +6,7 @@ export interface Experience {
   details: string;
   website?: string;
   calmingItems?: { emoji: string; label: string; desc: string }[];
+  unrestItems?: { emoji: string; label: string; desc: string }[];
   links?: { label: string; url: string; image?: string }[];
 }
 
@@ -101,6 +102,39 @@ export const experiences: Experience[] = [
       { label: "Doortje", url: "https://www.instagram.com/stories/highlights/17880308928183060/", image: "/highlights/doortje.jpg" },
       { label: "Neefjes", url: "https://www.instagram.com/stories/highlights/17991284398359243/", image: "/highlights/neefjes.jpg" }
     ]
+  },
+  {
+    facility: "Wat mij onrustig maakt",
+    verdict: "bad",
+    emoji: "⚠️",
+    summary: "De dingen die mij triggeren, uit balans brengen, of ontregeling versnellen",
+    details: "Dit is geen zwakte - dit is zelfkennis. Als ik te veel hiervan op mijn bordje krijg, ga ik sneller in overdrive. Weten wat mij onrustig maakt helpt om op tijd bij te sturen.",
+    unrestItems: [
+      { emoji: "🏥", label: "Gedwongen opname", desc: "Vrijheid afpakken = escalatie, nooit oplossing" },
+      { emoji: "🚫", label: "Amstelmeren", desc: "Vieze, chaotische instelling - nooit meer" },
+      { emoji: "👥", label: "Te veel mensen", desc: "Drukke ruimtes, veel stemmen, overprikkeling" },
+      { emoji: "📱", label: "Te veel schermen", desc: "Notificaties, info-overload, geen rust" },
+      { emoji: "😴", label: "Te weinig slaap", desc: "Onder de 7 uur = gevaarzone" },
+      { emoji: "🗣️", label: "Mijn verhaal herhalen", desc: "Steeds opnieuw uitleggen aan nieuwe mensen" },
+      { emoji: "🤷", label: "Onbegrip", desc: "Mensen die mijn tempo niet volgen of me niet geloven" },
+      { emoji: "⛓️", label: "Geen controle", desc: "Dingen moeten die ik niet wil, geen keuze hebben" },
+      { emoji: "🍺", label: "Alcohol", desc: "Vergroot alles - stemmingen, impulsen, slaapproblemen" },
+      { emoji: "💊", label: "Verkeerde medicatie", desc: "Zombie-gevoel, creativiteit weg" },
+      { emoji: "🌀", label: "Te veel parallelle projecten", desc: "Te veel ballen hooghouden tegelijk" },
+      { emoji: "📋", label: "Onder tijdsdruk plannen", desc: "Grote beslissingen moeten nemen op moment zelf" },
+      { emoji: "🧹", label: "Chaos / rommel", desc: "Vieze omgeving, geen structuur" },
+      { emoji: "🚨", label: "Conflict / ruzie", desc: "Vooral met mensen van wie ik hou" },
+      { emoji: "🔊", label: "Harde geluiden", desc: "Onverwachte, scherpe, doorlopende geluiden" },
+      { emoji: "💡", label: "Fel TL-licht", desc: "Ziekenhuisverlichting, geen natuurlijk licht" },
+      { emoji: "🕐", label: "Gehaast zijn", desc: "Te weinig tijd, steeds te laat, achter de feiten" },
+      { emoji: "📉", label: "Whoop recovery rood", desc: "Onder 34% = lichaam vraagt om pauze" },
+      { emoji: "❓", label: "Onzekerheid", desc: "Niet weten wat er gaat gebeuren, geen duidelijkheid" },
+      { emoji: "🙋", label: "Alleen moeten regelen", desc: "Te weinig support, alles zelf moeten oplossen" },
+      { emoji: "🥤", label: "Te veel cafeïne", desc: "Meer dan 2 koffies = rusteloos" },
+      { emoji: "🍔", label: "Slecht eten", desc: "Suiker, geen voeding, blood sugar crashes" },
+      { emoji: "📵", label: "Geen contact met naasten", desc: "Isolement, afgesloten voelen" },
+      { emoji: "⏰", label: "Verstoorde routine", desc: "Gebroken ritme, geen vast ritueel" },
+    ],
   }
 ];
 
