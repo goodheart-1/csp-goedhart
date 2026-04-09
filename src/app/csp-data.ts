@@ -232,33 +232,24 @@ export interface Medication {
 export const medications: Medication[] = [
   // --- Actief ---
   {
-    name: "Lithium",
+    name: "Lithium (Priadel)",
     type: "mood_stabilizer",
     status: "active",
-    dosage: "...",
-    timing: "... x per dag",
+    dosage: "800mg",
+    timing: "Per dag",
     started: "2026-04",
     prescribed_by: "De Nieuwe Valerius (GGZ inGeest)",
-    notes: "Gestart tijdens opname april 2026. Bloedspiegel elke 3 maanden controleren. Veel water drinken.",
+    notes: "VERPLICHT - neem ik alleen omdat het moet. Niet uit eigen keuze. Bloedspiegel elke 3 maanden controleren. Veel water drinken.",
   },
   {
     name: "Lorazepam",
     type: "sleep",
     status: "active",
-    dosage: "...",
-    timing: "Om tot rust te komen na opname",
+    dosage: "2.5mg",
+    timing: "Per dag",
     started: "2026-04",
     prescribed_by: "De Nieuwe Valerius (GGZ inGeest)",
-    notes: "Tijdelijk - om te herstellen van wat er is gebeurd. Verslavingsgevoelig, niet langer dan nodig.",
-  },
-  {
-    name: "Melatonine",
-    type: "sleep",
-    status: "active",
-    dosage: "...",
-    timing: "'s Avonds voor het slapen",
-    started: "...",
-    notes: "...",
+    notes: "VERPLICHT - neem ik alleen omdat het moet. Niet uit eigen keuze. Verslavingsgevoelig, niet langer dan nodig.",
   },
 
   // --- Zo nodig ---
