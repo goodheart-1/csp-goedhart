@@ -134,6 +134,10 @@ export const experiences: Experience[] = [
       { emoji: "🍔", label: "Slecht eten", desc: "Suiker, geen voeding, blood sugar crashes" },
       { emoji: "📵", label: "Geen contact met naasten", desc: "Isolement, afgesloten voelen" },
       { emoji: "⏰", label: "Verstoorde routine", desc: "Gebroken ritme, geen vast ritueel" },
+      { emoji: "👽", label: "Medebewoners in psychose", desc: "Mensen die denken dat ze Bruce Lee of een alien zijn" },
+      { emoji: "🥷", label: "Agressief gedrag", desc: "Tegen muren aanrennen, poep gooien, schreeuwen" },
+      { emoji: "🍣", label: "Geen privacy", desc: "Dikke man die mijn sushi opeet - geen eigen ruimte" },
+      { emoji: "🌀", label: "Illuminati-theorieen", desc: "Iedereen denkt afgeluisterd te worden - paranoia is besmettelijk" },
     ],
   }
 ];
@@ -233,9 +237,19 @@ export const medications: Medication[] = [
     status: "active",
     dosage: "...",
     timing: "... x per dag",
-    started: "...",
-    prescribed_by: "...",
-    notes: "Bloedspiegel elke 3 maanden controleren. Veel water drinken.",
+    started: "2026-04",
+    prescribed_by: "De Nieuwe Valerius (GGZ inGeest)",
+    notes: "Gestart tijdens opname april 2026. Bloedspiegel elke 3 maanden controleren. Veel water drinken.",
+  },
+  {
+    name: "Lorazepam",
+    type: "sleep",
+    status: "active",
+    dosage: "...",
+    timing: "Om tot rust te komen na opname",
+    started: "2026-04",
+    prescribed_by: "De Nieuwe Valerius (GGZ inGeest)",
+    notes: "Tijdelijk - om te herstellen van wat er is gebeurd. Verslavingsgevoelig, niet langer dan nodig.",
   },
   {
     name: "Melatonine",
