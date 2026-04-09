@@ -220,7 +220,7 @@ export const personalSections: PersonalSection[] = [
 export interface Medication {
   name: string;
   type: "mood_stabilizer" | "antipsychotic" | "sleep" | "supplement" | "other";
-  status: "active" | "refused" | "stopped" | "as_needed";
+  status: "active" | "refused" | "stopped" | "as_needed" | "other";
   dosage?: string;
   timing?: string;
   started?: string;
@@ -252,15 +252,12 @@ export const medications: Medication[] = [
     notes: "VERPLICHT - neem ik alleen omdat het moet. Niet uit eigen keuze. Verslavingsgevoelig, niet langer dan nodig.",
   },
 
-  // --- Zo nodig ---
+  // --- Overig (niet aangeboden, niet genomen, niet geweigerd) ---
   {
     name: "Oxazepam",
     type: "sleep",
-    status: "as_needed",
-    dosage: "...",
-    timing: "Alleen bij acute onrust / slapeloosheid",
-    prescribed_by: "...",
-    notes: "Niet langer dan 2 weken achtereen. Verslavingsgevoelig.",
+    status: "other",
+    notes: "Niet aangeboden, niet genomen, niet geweigerd.",
   },
 
   // --- Geweigerd ---

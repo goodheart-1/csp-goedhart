@@ -538,6 +538,7 @@ const statusConfig = {
   refused: { label: "Geweigerd", emoji: "🚫", color: "bg-red-50 border-red-200/50 text-red-800" },
   stopped: { label: "Gestopt", emoji: "⏹️", color: "bg-stone-50 border-stone-200/50 text-stone-600" },
   as_needed: { label: "Zo nodig", emoji: "💊", color: "bg-amber-50 border-amber-200/50 text-amber-800" },
+  other: { label: "Overig", emoji: "❔", color: "bg-stone-50 border-stone-200/50 text-stone-500" },
 } as const;
 
 const typeLabels: Record<Medication["type"], string> = {
@@ -554,6 +555,7 @@ function MedicationSection() {
     as_needed: medications.filter((m) => m.status === "as_needed"),
     refused: medications.filter((m) => m.status === "refused"),
     stopped: medications.filter((m) => m.status === "stopped"),
+    other: medications.filter((m) => m.status === "other"),
   };
 
   const MedCard = ({ med }: { med: Medication }) => {
@@ -597,7 +599,7 @@ function MedicationSection() {
         </div>
       ) : (
         <div className="space-y-4">
-          {(["active", "as_needed", "refused", "stopped"] as const).map((status) => {
+          {(["active", "as_needed", "refused", "stopped", "other"] as const).map((status) => {
             const meds = grouped[status];
             if (meds.length === 0) return null;
             const cfg = statusConfig[status];
