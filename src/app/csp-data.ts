@@ -264,9 +264,8 @@ export const medications: Medication[] = [
   {
     name: "Olanzapine (Zyprexa)",
     type: "antipsychotic",
-    status: "refused",
-    dosage: "...",
-    notes: "Reden: ...",
+    status: "stopped",
+    notes: "Gestopt EN daarna geweigerd. Reden: voelde letterlijk alsof ik een zombie werd. Heel erg akelig - mijn gekleurde, vrolijke wereld werd opeens een zwarte, donkere, grauwe nachtmerrie-wereld. Nooit meer.",
   },
   {
     name: "Quetiapine (Seroquel)",
