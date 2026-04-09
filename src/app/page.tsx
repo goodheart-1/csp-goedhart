@@ -550,6 +550,16 @@ const typeLabels: Record<Medication["type"], string> = {
 };
 
 function MedicationSection() {
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+  const toggleSection = (s: string) => {
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(s)) next.delete(s);
+      else next.add(s);
+      return next;
+    });
+  };
+
   const grouped = {
     active: medications.filter((m) => m.status === "active"),
     as_needed: medications.filter((m) => m.status === "as_needed"),
@@ -564,7 +574,7 @@ function MedicationSection() {
       <div className={`rounded-lg border p-3 sm:p-4 ${cfg.color}`}>
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <span className="font-bold text-sm">{med.name}</span>
               {med.dosage && <span className="text-xs opacity-70">{med.dosage}</span>}
             </div>
@@ -587,6 +597,7 @@ function MedicationSection() {
   };
 
   const hasAny = medications.length > 0;
+  const collapsibleStatuses = ["as_needed", "refused", "stopped", "other"] as const;
 
   return (
     <div id="medication" className="space-y-3 scroll-mt-20">
@@ -599,18 +610,41 @@ function MedicationSection() {
         </div>
       ) : (
         <div className="space-y-4">
-          {(["active", "as_needed", "refused", "stopped", "other"] as const).map((status) => {
+          {/* Actief - altijd open en prominent */}
+          {grouped.active.length > 0 && (
+            <div>
+              <h3 className="text-xs font-semibold text-stone-500 mb-2 flex items-center gap-1.5">
+                <span>{statusConfig.active.emoji}</span> {statusConfig.active.label} <span className="text-stone-300">({grouped.active.length})</span>
+              </h3>
+              <div className="space-y-2">
+                {grouped.active.map((med) => <MedCard key={`${med.name}-${med.started || med.status}`} med={med} />)}
+              </div>
+            </div>
+          )}
+
+          {/* Andere categorieen - collapsible */}
+          {collapsibleStatuses.map((status) => {
             const meds = grouped[status];
             if (meds.length === 0) return null;
             const cfg = statusConfig[status];
+            const isOpen = openSections.has(status);
             return (
-              <div key={status}>
-                <h3 className="text-xs font-semibold text-stone-500 mb-2 flex items-center gap-1.5">
-                  <span>{cfg.emoji}</span> {cfg.label} <span className="text-stone-300">({meds.length})</span>
-                </h3>
-                <div className="space-y-2">
-                  {meds.map((med) => <MedCard key={`${med.name}-${med.started || med.status}`} med={med} />)}
-                </div>
+              <div key={status} className="rounded-lg border border-stone-200/60 overflow-hidden">
+                <button
+                  onClick={() => toggleSection(status)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between gap-2 px-3 py-2.5 bg-stone-50/60 hover:bg-stone-100/60 transition-colors text-left"
+                >
+                  <span className="text-xs font-semibold text-stone-600 flex items-center gap-1.5">
+                    <span>{cfg.emoji}</span> {cfg.label} <span className="text-stone-400">({meds.length})</span>
+                  </span>
+                  <svg className={`w-4 h-4 text-stone-400 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {isOpen && (
+                  <div className="space-y-2 p-3 bg-white">
+                    {meds.map((med) => <MedCard key={`${med.name}-${med.started || med.status}`} med={med} />)}
+                  </div>
+                )}
               </div>
             );
           })}
@@ -629,6 +663,16 @@ const arsenalStatusConfig = {
 } as const;
 
 function MedicationArsenalSection() {
+  const [openCats, setOpenCats] = useState<Set<string>>(new Set());
+  const toggleCat = (title: string) => {
+    setOpenCats((prev) => {
+      const next = new Set(prev);
+      if (next.has(title)) next.delete(title);
+      else next.add(title);
+      return next;
+    });
+  };
+
   return (
     <div id="arsenal" className="space-y-3 scroll-mt-20">
       <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">
@@ -638,41 +682,64 @@ function MedicationArsenalSection() {
         <p className="text-sm text-stone-600 mb-4 leading-relaxed">
           Alle medicatie-opties bij bipolaire stoornis - gegroepeerd per categorie. Dit overzicht is informatief en vervangt geen medisch advies. Bespreek wijzigingen altijd met je psychiater.
         </p>
-        <div className="space-y-5">
-          {medicationArsenal.map((cat) => (
-            <div key={cat.title}>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">{cat.emoji}</span>
-                <h3 className="text-sm font-bold text-stone-900">{cat.title}</h3>
-              </div>
-              <p className="text-xs text-stone-500 mb-3 italic">{cat.description}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                {cat.meds.map((med) => {
-                  const statusCfg = med.myStatus ? arsenalStatusConfig[med.myStatus] : null;
-                  return (
-                    <div key={med.name} className="rounded-lg border border-stone-200/60 bg-stone-50/40 p-3">
-                      <div className="flex items-start justify-between gap-2 mb-1">
-                        <div className="min-w-0">
-                          <div className="flex items-baseline gap-1.5 flex-wrap">
-                            <span className="font-bold text-sm text-stone-900">{med.name}</span>
-                            {med.brand && <span className="text-xs text-stone-500">({med.brand})</span>}
-                          </div>
-                          <div className="text-[11px] text-stone-400 mt-0.5">{med.class}</div>
-                        </div>
-                        {statusCfg && (
-                          <span className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border ${statusCfg.color}`}>
-                            {statusCfg.label}
+        <div className="space-y-2">
+          {medicationArsenal.map((cat) => {
+            const isOpen = openCats.has(cat.title);
+            const activeCount = cat.meds.filter((m) => m.myStatus === "actief").length;
+            return (
+              <div key={cat.title} className="rounded-lg border border-stone-200/60 overflow-hidden">
+                <button
+                  onClick={() => toggleCat(cat.title)}
+                  aria-expanded={isOpen}
+                  className="w-full flex items-center justify-between gap-2 px-3 sm:px-4 py-3 bg-stone-50/60 hover:bg-stone-100/60 transition-colors text-left"
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="text-xl shrink-0">{cat.emoji}</span>
+                    <div className="min-w-0">
+                      <div className="text-sm font-bold text-stone-900 flex items-center gap-2 flex-wrap">
+                        {cat.title}
+                        <span className="text-[11px] font-medium text-stone-400">({cat.meds.length})</span>
+                        {activeCount > 0 && (
+                          <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+                            {activeCount} actief
                           </span>
                         )}
                       </div>
-                      <div className="text-xs text-stone-700 font-medium mt-2">💊 {med.dose}</div>
-                      <div className="text-[11px] text-stone-500 mt-1 leading-snug">{med.notes}</div>
+                      <div className="text-[11px] text-stone-500 italic mt-0.5">{cat.description}</div>
                     </div>
-                  );
-                })}
+                  </div>
+                  <svg className={`w-4 h-4 text-stone-400 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                {isOpen && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 p-3 bg-white">
+                    {cat.meds.map((med) => {
+                      const statusCfg = med.myStatus ? arsenalStatusConfig[med.myStatus] : null;
+                      return (
+                        <div key={med.name} className="rounded-lg border border-stone-200/60 bg-stone-50/40 p-3">
+                          <div className="flex items-start justify-between gap-2 mb-1">
+                            <div className="min-w-0">
+                              <div className="flex items-baseline gap-1.5 flex-wrap">
+                                <span className="font-bold text-sm text-stone-900">{med.name}</span>
+                                {med.brand && <span className="text-xs text-stone-500">({med.brand})</span>}
+                              </div>
+                              <div className="text-[11px] text-stone-400 mt-0.5">{med.class}</div>
+                            </div>
+                            {statusCfg && (
+                              <span className={`shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full border ${statusCfg.color}`}>
+                                {statusCfg.label}
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-xs text-stone-700 font-medium mt-2">💊 {med.dose}</div>
+                          <div className="text-[11px] text-stone-500 mt-1 leading-snug">{med.notes}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
