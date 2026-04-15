@@ -3,8 +3,8 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { defaultCSPData, type CSPData, type Phase, experiences, medications, type Medication, personalSections, medicationArsenal } from "./csp-data";
-import SleepDashboard from "./sleep-dashboard";
+import { defaultCSPData, type CSPData, type Phase, experiences, medications, type Medication, personalSections, medicationArsenal, stoplichtModel } from "./csp-data";
+
 
 const LocationMap = dynamic(() => import("./map"), { ssr: false });
 const FacilitiesMap = dynamic(() => import("./map").then(mod => ({ default: mod.FacilitiesMap })), { ssr: false });
@@ -419,6 +419,20 @@ function CollapsibleGroup({ title, count, children, defaultOpen = false }: { tit
   );
 }
 
+function LockedGroup({ title, count }: { title: string; count: number }) {
+  return (
+    <div className="bg-white rounded-xl border border-stone-200/20 shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden opacity-60">
+      <div className="w-full flex items-center justify-between p-4 sm:px-6">
+        <div className="flex items-center gap-2">
+          <h2 className="text-[11px] font-bold uppercase tracking-[2px] text-stone-400">{title}</h2>
+          <span className="text-[11px] font-semibold text-stone-500 bg-stone-200 px-2 py-0.5 rounded-full">{count}</span>
+        </div>
+        <span className="text-xs text-stone-400">🔒 Privé</span>
+      </div>
+    </div>
+  );
+}
+
 function ProtectorsCard() {
   return (
     <div className="space-y-4">
@@ -472,21 +486,10 @@ function ProtectorsCard() {
         </div>
       </div>
 
-      <CollapsibleGroup title="💍 Aangetrouwd" count={inlaws.length}>
-        {inlaws.map((p) => <ContactCard key={p.phone} p={p} />)}
-      </CollapsibleGroup>
-
-      <CollapsibleGroup title="👊 Best Brothers" count={friends.length}>
-        {friends.map((p) => <ContactCard key={p.phone} p={p} />)}
-      </CollapsibleGroup>
-
-      <CollapsibleGroup title="🤙 More Good Friends" count={moreGoodFriends.length}>
-        {moreGoodFriends.map((p) => <ContactCard key={p.phone} p={p} />)}
-      </CollapsibleGroup>
-
-      <CollapsibleGroup title="🩵 Team Clearly" count={teamClearly.length}>
-        {teamClearly.map((p) => <ContactCard key={p.phone} p={p} />)}
-      </CollapsibleGroup>
+      <LockedGroup title="💍 Aangetrouwd" count={inlaws.length} />
+      <LockedGroup title="👊 Best Brothers" count={friends.length} />
+      <LockedGroup title="🤙 More Good Friends" count={moreGoodFriends.length} />
+      <LockedGroup title="🩵 Team Clearly" count={teamClearly.length} />
     </div>
   );
 }
@@ -742,6 +745,76 @@ function MedicationArsenalSection() {
           })}
         </div>
       </div>
+
+      {/* PS */}
+      <div className="px-5 sm:px-8 pb-6">
+        <div className="rounded-xl bg-stone-50 border border-stone-200/60 p-5 text-center">
+          <p className="text-lg font-semibold text-stone-800 italic">&ldquo;Your health is clearly #1&rdquo;</p>
+          <p className="text-sm text-stone-500 mt-2">Ik was die van mezelf alleen eventjes vergeten. Te druk met gezondheid van anderen.</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const stoplichtKleuren = {
+  groen: { bg: "bg-emerald-50", border: "border-emerald-200", header: "bg-emerald-100 text-emerald-900", dot: "bg-emerald-500" },
+  oranje: { bg: "bg-amber-50", border: "border-amber-200", header: "bg-amber-100 text-amber-900", dot: "bg-amber-500" },
+  rood: { bg: "bg-red-50", border: "border-red-200", header: "bg-red-100 text-red-900", dot: "bg-red-500" },
+};
+
+function StoplichtCard() {
+  const s = stoplichtModel;
+  return (
+    <div className="bg-white rounded-2xl border border-stone-200/60 shadow-[0_2px_8px_rgba(0,0,0,0.06)] overflow-hidden">
+      {/* Header */}
+      <div className="px-5 sm:px-8 pt-6 pb-4">
+        <div className="flex items-center gap-3 mb-1">
+          <span className="text-2xl">🚦</span>
+          <h2 className="text-xl font-bold text-stone-900">Klinisch Signaleringsplan</h2>
+        </div>
+        <p className="text-sm text-stone-500">{s.afdeling} - {s.datum}</p>
+      </div>
+
+      {/* Beschermend & Stress */}
+      <div className="px-5 sm:px-8 pb-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="rounded-xl p-4 bg-emerald-50 border border-emerald-200/60">
+          <div className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-2">Beschermende factoren</div>
+          <p className="text-sm text-emerald-900 leading-relaxed">{s.beschermend}</p>
+        </div>
+        <div className="rounded-xl p-4 bg-red-50 border border-red-200/60">
+          <div className="text-xs font-bold uppercase tracking-wider text-red-700 mb-2">Stressfactoren</div>
+          <p className="text-sm text-red-900 leading-relaxed">{s.stress}</p>
+        </div>
+      </div>
+
+      {/* Fases */}
+      <div className="px-5 sm:px-8 pb-6 space-y-4">
+        {s.fases.map((fase) => {
+          const kleur = stoplichtKleuren[fase.kleur as keyof typeof stoplichtKleuren];
+          return (
+            <div key={fase.kleur} className={`rounded-xl border ${kleur.border} overflow-hidden`}>
+              <div className={`px-4 py-2.5 ${kleur.header} flex items-center gap-2`}>
+                <span className={`w-3 h-3 rounded-full ${kleur.dot}`} />
+                <span className="font-semibold text-sm">{fase.label}</span>
+              </div>
+              <div className={`${kleur.bg} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x ${kleur.border}`}>
+                {([
+                  ["Wat doe/zie ik zelf?", fase.watZieIk],
+                  ["Wat zien anderen?", fase.watZienAnderen],
+                  ["Wat kan ik zelf doen?", fase.watKanIk],
+                  ["Wat kunnen anderen doen?", fase.watKunnenAnderen],
+                ] as const).map(([label, content]) => (
+                  <div key={label} className="p-3 sm:p-4">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-2">{label}</div>
+                    <p className="text-sm text-stone-800 leading-relaxed whitespace-pre-line">{content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -750,6 +823,7 @@ const sections = [
   { id: "intro", emoji: "👋", label: "Intro" },
   { id: "personal", emoji: "🪪", label: "Gegevens" },
   { id: "protectors", emoji: "🛡️", label: "Protectors" },
+  { id: "stoplicht", emoji: "🚦", label: "Stoplicht" },
   { id: "phases", emoji: "📊", label: "Fases" },
   { id: "facilities", emoji: "🏥", label: "Faciliteiten" },
   { id: "experiences", emoji: "📖", label: "Ervaringen" },
@@ -864,6 +938,12 @@ export default function Home() {
 
       {/* Main content */}
       <main id="main-content" className="flex-1 max-w-full w-full px-4 sm:px-6 xl:pl-36 xl:pr-12 py-6 sm:py-8 space-y-6">
+        {/* Waarom ik dit deel */}
+        <div className="rounded-2xl border border-stone-200/40 bg-white/80 backdrop-blur-sm p-5 sm:p-6 shadow-sm">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-stone-400 mb-3">Waarom ik dit deel</h2>
+          <p className="text-sm text-stone-600 leading-relaxed">Ik ben transparant en een open boek. Mijn bedrijf heet niet voor niks <strong>Clearly</strong>. In principe deel ik alles, en soms misschien zelfs te veel - maar ik hoop en ga ervan uit dat wat ik deel in de juiste handen terechtkomt. Bij mensen die het beste met mij voorhebben, net zoals de mensen om mij heen. Ik geloof dat alle mensen in de GGZ iedereen zo goed mogelijk willen helpen. Ik zie dat in. En ik hoop dat dat vertrouwen op de juiste plek zit.</p>
+        </div>
+
         {/* Intro Hero */}
         <div id="intro" className="bg-white rounded-2xl border border-stone-200/20 overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] scroll-mt-20">
           {/* Hero photo banner */}
@@ -975,7 +1055,6 @@ export default function Home() {
                 "7500875712912526614",
                 "7503556939394075926",
                 "7494212432534064406",
-                "7345923688027540768",
               ].map((id) => (
                 <a key={id} href={`https://www.tiktok.com/@clearly.nl/video/${id}`} target="_blank" rel="noopener noreferrer" className="group relative aspect-[9/16] rounded-xl sm:rounded-lg overflow-hidden shadow-sm bg-stone-100 cursor-pointer block shrink-0 w-[55%] sm:w-auto snap-center">
                   <img src={`/tiktok-thumbs/${id}.jpg`} alt="" className="w-full h-full object-cover group-hover:brightness-90 transition-all duration-200" loading="lazy" />
@@ -995,6 +1074,9 @@ export default function Home() {
 
         {/* Protectors */}
             <div id="protectors" className="scroll-mt-20"><ProtectorsCard /></div>
+
+        {/* Stoplicht model */}
+        <div id="stoplicht" className="scroll-mt-20"><StoplichtCard /></div>
 
         {/* View toggle */}
         <div id="phases" className="flex items-center justify-between no-print scroll-mt-20">
@@ -1167,7 +1249,47 @@ export default function Home() {
         )}
 
         {/* Sleep & Recovery */}
-            <div id="sleep" className="scroll-mt-20"><SleepDashboard /></div>
+            <div id="sleep" className="scroll-mt-20">
+              <div className="relative rounded-2xl overflow-hidden p-6 shadow-lg" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)" }}>
+                {/* Stars */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+                  <div className="absolute inset-0" style={{
+                    backgroundImage: `
+                      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4) 50%, transparent 50%),
+                      radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.3) 50%, transparent 50%),
+                      radial-gradient(1.5px 1.5px at 40% 10%, rgba(255,255,255,0.5) 50%, transparent 50%),
+                      radial-gradient(1px 1px at 55% 42%, rgba(255,255,255,0.25) 50%, transparent 50%),
+                      radial-gradient(1px 1px at 70% 18%, rgba(255,255,255,0.35) 50%, transparent 50%),
+                      radial-gradient(1.5px 1.5px at 85% 28%, rgba(255,255,255,0.45) 50%, transparent 50%),
+                      radial-gradient(1px 1px at 60% 72%, rgba(255,255,255,0.4) 50%, transparent 50%),
+                      radial-gradient(1px 1px at 92% 48%, rgba(255,255,255,0.35) 50%, transparent 50%)
+                    `,
+                  }} />
+                  <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full" style={{
+                    background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)",
+                  }} />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-bold text-white">Gezondheid</h3>
+                    <span className="text-[10px] text-blue-300/30 font-medium">WHOOP @Goodheart</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 bg-white/5 rounded-xl px-4 py-3 border border-white/5 mb-4">
+                    <span className="text-2xl">&#x1F4AA;</span>
+                    <div>
+                      <span className="text-sm text-white/90">Ik track mijn slaap al <span className="text-white font-bold">4 jaar</span>, elke dag</span>
+                      <span className="text-sm text-blue-200/40"> - 1111+ nachten op rij, geen nacht gemist</span>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-blue-200/50 leading-relaxed">
+                    Als iemand zich bekommert om zijn gezondheid, dan ben ik het wel. Mijn naasten - mijn moeder, mijn vrienden - geef ik inzicht in hoe het met me gaat. Dat heb ik eigenlijk altijd al gedaan.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             {/* Map */}
             <div id="locations" className="space-y-2 scroll-mt-20">
